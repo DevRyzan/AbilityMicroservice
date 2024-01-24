@@ -4,9 +4,7 @@ namespace Domain.Abilities;
 
 public class Ability : Entity<Guid>
 {
-    public Guid AbilityId { get; set; }
-    public int StatValue { get; set; }
-    public int Cooldown { get; set; }
-    public int Cost { get; set; }
-    public string CostType { get; set; }
+    //you should take a references as a ObjecytId for HeroId,AbilityLevelId and AbilityComboId.
+    public string IconUrl { get; set; }
+
 }

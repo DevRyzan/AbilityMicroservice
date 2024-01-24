@@ -4,7 +4,7 @@ namespace Domain.Abilities;
 
 public class AbilityDamageType : Entity<Guid>
 {
-    public Guid AbilityId { get; set; }
+    //public Guid AbilityId { get; set; } you should take a references ObjectId as AbilityId 
     public string Icon { get; set; }
     public string Color { get; set; }
 }

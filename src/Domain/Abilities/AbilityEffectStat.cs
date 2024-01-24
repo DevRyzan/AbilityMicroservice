@@ -1,12 +1,13 @@
 ﻿using Core.Persistence.Repositories;
+using Domain.Enums;
 
 namespace Domain.Abilities;
 
 public class AbilityEffectStat : Entity<Guid>
 {
-    public Guid AbilityId { get; set; }
-    public int StatValue { get; set; }
-    public int CoolDown { get; set; }
-    public int Cost { get; set; }
-    public string CostType { get; set; }
+    //you should take a reference AbilityId as a ObjectId
+    public double StatValue { get; set; }
+    public double CoolDown { get; set; }
+    public double Cost { get; set; }
+    public CostType CostType { get; set; }
 }

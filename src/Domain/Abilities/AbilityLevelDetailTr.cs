@@ -1,10 +1,11 @@
 ﻿using Core.Persistence.Repositories;
+using Domain.Enums;
 
 namespace Domain.Abilities;
 
 public class AbilityLevelDetailTr : Entity<Guid>
 {
-    public Guid AbilityId { get; set; }
-    public string LanguageCode { get; set; }
+    //You should take a references AbilityLevelId
+    public LanguageCode LanguageCode { get; set; }
     public string Description { get; set; }
 }

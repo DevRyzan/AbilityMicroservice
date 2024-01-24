@@ -4,7 +4,7 @@ namespace Domain.Abilities;
 
 public class AbilityType : Entity<Guid>
 {
-    public Guid AbilityId { get; set; }
+    //public Guid AbilityId { get; set; } you should take a references Objectıd
     public string Icon { get; set; }
     public bool IsPassive { get; set; }
     public bool IsActive { get; set; }

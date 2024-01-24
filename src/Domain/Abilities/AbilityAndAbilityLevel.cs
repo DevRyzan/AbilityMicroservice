@@ -4,6 +4,6 @@ namespace Domain.Abilities;
 
 public class AbilityAndAbilityLevel : Entity<Guid>
 {
-    public Guid AbilityId { get; set; }
-    public Guid AbilityLevelId { get; set; }
+    //public Guid AbilityId { get; set; }
+    //public Guid AbilityLevelId { get; set; } you should take a references as objectId()
 }
