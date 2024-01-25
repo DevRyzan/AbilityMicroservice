@@ -1,10 +1,13 @@
 ﻿using Core.Persistence.Repositories;
+using Domain.Enums;
 
 namespace Domain.Abilities;
 
 public class Ability : Entity<Guid>
 {
-    //you should take a references as a ObjecytId for HeroId,AbilityLevelId and AbilityComboId.
-    public string IconUrl { get; set; }
+    public decimal StatValue { get; set; }
+    public decimal CollDown { get; set; }
+    public decimal Cost { get; set; }
+    public CostType CostType { get; set; }
 
 }

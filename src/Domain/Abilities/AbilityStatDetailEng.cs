@@ -1,13 +1,19 @@
 ﻿using Core.Persistence.Repositories;
 using Domain.Enums;
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
 
 namespace Domain.Abilities;
 
 public class AbilityStatDetailEng : Entity<Guid>
 {
-    //public Guid AbilityStatId { get; set; } you shoul take a references as a ObjectId
+    [BsonRepresentation(BsonType.ObjectId)]
+    public Guid AbilityStatId { get; set; } 
     public LanguageCode LanguageCode { get; set; }
     public string Name { get; set; }
     public string Description { get; set; }
+
+    [BsonIgnore]
+    public AbilityStat AbilityStat { get; set; }
 
 }

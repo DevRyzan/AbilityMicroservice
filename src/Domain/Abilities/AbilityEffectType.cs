@@ -1,23 +1,19 @@
 ﻿using Core.Persistence.Repositories;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
 
-namespace Domain.Abilities
+namespace Domain.Abilities;
+
+public class AbilityEffectType : Entity<Guid>
 {
-    public class AbilityEffectType : Entity<Guid>
-    {
-       
-        //you should take a reference AbilityId as a ObjectId
-        public string Icon { get; set; }
-        public double Duration { get; set; }
-        public bool IsPositive { get; set; }
-        public bool IsNegative { get; set; }
 
+    [BsonRepresentation(BsonType.ObjectId)]
+    public Guid AbilityId { get; set; }
+    public string Icon { get; set; }
+    public double Duration { get; set; }
+    public bool IsPositive { get; set; }
+    public bool IsNegative { get; set; }
 
-
-
-    }
+    [BsonIgnore]
+    public Ability Ability { get; set; }
 }
