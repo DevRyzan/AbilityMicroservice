@@ -18,6 +18,8 @@ public static class PersistenceServiceRegistration
                 options.Database = configuration.GetSection(nameof(MongoDbSettings) + ":" + MongoDbSettings.DatabaseValue).Value;
             })
             .AddTransient<BaseDbContext>()
-            .AddScoped<IAbilityCategoryRepository, AbilityCategoryRepository>();
+            .AddScoped<IAbilityCategoryRepository, AbilityCategoryRepository>()
+            .AddScoped<IAbilityRepository, AbilityRepository>()
+            .AddScoped<IAbilityCategoryDetailEngRepository, AbilityCategoryDetailEngRepository>();
     }
 }

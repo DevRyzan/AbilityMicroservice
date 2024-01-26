@@ -1,7 +1,7 @@
 ﻿using Core.Persistence.Paging;
 using Domain.Abilities;
 
-namespace Application.Service.AbilitiyServices.AbilityCategoryService;
+namespace Application.Service.AbilityServices.AbilityCategoryService;
 
 public interface IAbilityCategoryService
 {
@@ -11,7 +11,6 @@ public interface IAbilityCategoryService
     Task<AbilityCategory> Remove(AbilityCategory abilityCategory);
 
     Task<AbilityCategory> GetById(Guid id);
-    Task<AbilityCategory> GetByName(string name);
     Task<AbilityCategory> GetByIdStatusTrue(Guid id);
     Task<AbilityCategory> GetByIdStatusFalse(Guid id);
 

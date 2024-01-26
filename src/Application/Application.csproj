@@ -7,9 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Feature\AbilityFeatures\AbilityCategory\Constants\" />
     <Folder Include="Feature\AbilityFeatures\AbilityCategory\Models\" />
-    <Folder Include="Feature\AbilityFeatures\AbilityCategory\Queries\" />
+    <Folder Include="Feature\AbilityFeatures\Ability\Dtos\" />
+    <Folder Include="Feature\AbilityFeatures\Ability\Models\" />
+    <Folder Include="Feature\AbilityFeatures\Ability\Queries\" />
   </ItemGroup>
 
   <ItemGroup>

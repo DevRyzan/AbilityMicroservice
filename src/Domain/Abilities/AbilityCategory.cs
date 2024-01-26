@@ -4,5 +4,4 @@ namespace Domain.Abilities;
 
 public class AbilityCategory : Entity<Guid>
 {
-
 }

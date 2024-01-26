@@ -1,9 +1,8 @@
 ﻿using Application.Service.Repositories;
 using Core.Persistence.Paging;
 using Domain.Abilities;
-using System.Xml.Linq;
 
-namespace Application.Service.AbilitiyServices.AbilityCategoryService;
+namespace Application.Service.AbilityServices.AbilityCategoryService;
 
 public class AbilityCategoryManager : IAbilityCategoryService
 {
@@ -21,7 +20,7 @@ public class AbilityCategoryManager : IAbilityCategoryService
 
     public async Task<AbilityCategory> Delete(AbilityCategory abilityCategory)
     {
-        return await _abilityCategoryRepository.UpdateAsync(abilityCategory.Id,abilityCategory);
+        return await _abilityCategoryRepository.UpdateAsync(abilityCategory.Id, abilityCategory);
     }
 
     public async Task<AbilityCategory> GetById(Guid id)
@@ -38,24 +37,19 @@ public class AbilityCategoryManager : IAbilityCategoryService
     {
         return await _abilityCategoryRepository.GetAsync(x => x.Id.Equals(id) && x.Status.Equals(false));
     }
-
-    public async Task<AbilityCategory> GetByName(string name)
-    {
-        return await _abilityCategoryRepository.GetAsync(x => x.Name.Equals(name));
-    }
     public Task<IPaginate<AbilityCategory>> GetListByInActive(int index = 0, int size = 10)
     {
         throw new NotImplementedException();
     }
 
-    public Task<AbilityCategory> Remove(AbilityCategory abilityCategory)
+    public async Task<AbilityCategory> Remove(AbilityCategory abilityCategory)
     {
-        throw new NotImplementedException();
+        return await _abilityCategoryRepository.DeleteAsync(entity:abilityCategory);
     }
 
-    public Task<AbilityCategory> Update(AbilityCategory abilityCategory)
+    public async Task<AbilityCategory> Update(AbilityCategory abilityCategory)
     {
-        throw new NotImplementedException();
+        return await _abilityCategoryRepository.UpdateAsync(id: abilityCategory.Id, entity: abilityCategory);
     }
 
     Task<IPaginate<AbilityCategory>> IAbilityCategoryService.GetListByActive(int index, int size)
