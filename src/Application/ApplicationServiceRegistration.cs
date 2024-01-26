@@ -10,6 +10,7 @@ using Core.Application.Pipelines.Validation;
 using Core.Application.Transaction;
 using FluentValidation;
 using Microsoft.Extensions.DependencyInjection;
+using MongoDB.Bson;
 using System.Reflection;
 
 
@@ -19,6 +20,7 @@ public static class ApplicationServiceRegistration
 {
     public static IServiceCollection AddApplicationServices(this IServiceCollection services)
     {
+
         services.AddAutoMapper(Assembly.GetExecutingAssembly());
         services.AddMediatR(configuration =>
         {

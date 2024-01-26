@@ -1,8 +1,12 @@
-﻿namespace Application.Feature.AbilityFeatures.AbilityCategory.Queries.GetListByActive;
+﻿using Domain.Enums;
+
+namespace Application.Feature.AbilityFeatures.AbilityCategory.Queries.GetListByActive;
 
 public class GetListByActiveAbilityCategoryQueryResponse
 {
-    public Guid Id { get; set; }
+    public string Id { get; set; }
+    public string AbilityCategoryId { get; set; }
+    public LanguageCode LanguageCode { get; set; }
     public string Name { get; set; }
     public string Description { get; set; }
     public bool Status { get; set; }

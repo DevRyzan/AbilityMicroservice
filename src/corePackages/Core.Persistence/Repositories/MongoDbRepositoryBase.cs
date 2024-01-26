@@ -3,6 +3,7 @@ using Core.Persistence.Repositories.ReadRepositories;
 using Core.Persistence.Repositories.Settings;
 using Core.Persistence.Repositories.WriteRepositories;
 using Microsoft.Extensions.Options;
+using MongoDB.Bson;
 using MongoDB.Driver;
 using System.Linq.Expressions;
 
@@ -66,9 +67,12 @@ public abstract class MongoDbRepositoryBase<TEntity, TIdType> : IReadRepository<
         throw new NotImplementedException();
     }
 
-    public IQueryable<TEntity> GetList(Expression<Func<TEntity, bool>> predicate = null)
+    public async Task<List<TEntity>> GetList(Expression<Func<TEntity, bool>> predicate = null, int index = 0, int size = 10)
     {
-        return predicate == null ? _collection.AsQueryable() : _collection.AsQueryable().Where(predicate);
+        var query = predicate == null ? _collection.Find(new BsonDocument()) : _collection.Find(predicate);
+        var result = await query.Skip(index * size).Limit(size).ToListAsync();
+
+        return result;
     }
 
     public async Task<TEntity> GetAsync(Expression<Func<TEntity, bool>> predicate)
@@ -80,4 +84,6 @@ public abstract class MongoDbRepositoryBase<TEntity, TIdType> : IReadRepository<
     {
         return await _collection.Find(x => x.Id.Equals(id)).FirstOrDefaultAsync();
     }
+
+
 }

@@ -12,5 +12,5 @@ public interface IAbilityCategoryDetailEngService
 
     Task<AbilityCategoryDetailEng> GetByAbilityId(Guid abilityId);
 
-    Task<IPaginate<AbilityCategoryDetailEng>> GetListByActive(int index = 0, int size = 10);
+    Task<List<AbilityCategoryDetailEng>> GetListByActive(int index = 0, int size = 10);
 }

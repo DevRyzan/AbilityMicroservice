@@ -33,7 +33,7 @@ public class AbilityCategoryDetailEngManager : IAbilityCategoryDetailEngService
         throw new NotImplementedException();
     }
 
-    public async Task<IQueryable<AbilityCategoryDetailEng>> GetListByActive(int index = 0, int size = 10)
+    public async Task<List<AbilityCategoryDetailEng>> GetListByActive(int index = 0, int size = 10)
     {
         return await _abilityCategoryDetailEngRepository.GetList(x => x.Status.Equals(true));
     }
@@ -47,10 +47,5 @@ public class AbilityCategoryDetailEngManager : IAbilityCategoryDetailEngService
     {
 
         return await _abilityCategoryDetailEngRepository.UpdateAsync(abilityCategoryDetailEng.Id, abilityCategoryDetailEng);
-    }
-
-    Task<IPaginate<AbilityCategoryDetailEng>> IAbilityCategoryDetailEngService.GetListByActive(int index, int size)
-    {
-        throw new NotImplementedException();
     }
 }

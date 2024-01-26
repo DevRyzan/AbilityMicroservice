@@ -1,12 +1,13 @@
 ﻿using Application.Feature.AbilityFeatures.AbilityCategory.Rules;
 using Application.Service.AbilityServices.AbilityCategoryDetailEngService;
 using AutoMapper;
-using Core.Persistence.Paging;
+using Domain.Abilities;
 using MediatR;
+using System.Collections.Generic;
 
 namespace Application.Feature.AbilityFeatures.AbilityCategory.Queries.GetListByActive;
 
-public class GetListByActiveAbilityCategoryQueryHandler : IRequestHandler<GetListByActiveAbilityCategoryQueryRequest, GetListResponse<GetListByActiveAbilityCategoryQueryResponse>>
+public class GetListByActiveAbilityCategoryQueryHandler : IRequestHandler<GetListByActiveAbilityCategoryQueryRequest, List<GetListByActiveAbilityCategoryQueryResponse>>
 {
     private readonly IAbilityCategoryDetailEngService _abilityCategoryDetailEngService;
     private readonly IMapper _mapper;
@@ -19,9 +20,12 @@ public class GetListByActiveAbilityCategoryQueryHandler : IRequestHandler<GetLis
         _abilityCategoryBusinessRules = abilityCategoryBusinessRules;
     }
 
-    public async Task<GetListResponse<GetListByActiveAbilityCategoryQueryResponse>> Handle(GetListByActiveAbilityCategoryQueryRequest request, CancellationToken cancellationToken)
+    public async Task<List<GetListByActiveAbilityCategoryQueryResponse>> Handle(GetListByActiveAbilityCategoryQueryRequest request, CancellationToken cancellationToken)
     {
+        List<AbilityCategoryDetailEng> paginate = await _abilityCategoryDetailEngService.GetListByActive(index: request.PageRequest.Page, size: request.PageRequest.PageSize);
 
-        throw new NotImplementedException();
+        List<GetListByActiveAbilityCategoryQueryResponse> mappedResponse = _mapper.Map<List<GetListByActiveAbilityCategoryQueryResponse>>(paginate);
+
+        return mappedResponse;
     }
 }
