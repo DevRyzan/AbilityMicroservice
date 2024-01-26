@@ -10,7 +10,7 @@ public class Entity<TIdType>
     public TIdType Id { get; set; }
     public string? Code { get; set; }
     public bool Status { get; set; }
-    public bool? IsDeleted { get; set; }
+    public bool IsDeleted { get; set; }
 
     [BsonRepresentation(BsonType.DateTime)]
     public DateTime CreatedDate { get; set; }

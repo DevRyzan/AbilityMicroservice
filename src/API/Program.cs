@@ -1,3 +1,4 @@
+using API.Extensions;
 using Application;
 using Persistence;
 
@@ -13,11 +14,16 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddPersistenceServices(builder.Configuration);
 builder.Services.AddApplicationServices();
 
+
+
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
+    app.ConfigureExceptionHandler<Program>(app.Services.GetRequiredService<ILogger<Program>>());
     app.UseSwagger();
     app.UseSwaggerUI();
 }

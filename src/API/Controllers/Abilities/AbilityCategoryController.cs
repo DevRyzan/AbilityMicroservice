@@ -4,6 +4,7 @@ using Application.Feature.AbilityFeatures.AbilityCategory.Commands.Delete;
 using Application.Feature.AbilityFeatures.AbilityCategory.Commands.Remove;
 using Application.Feature.AbilityFeatures.AbilityCategory.Commands.Update;
 using Application.Feature.AbilityFeatures.AbilityCategory.Queries.GetById;
+using Application.Feature.AbilityFeatures.AbilityCategory.Queries.GetListByActive;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers.Abilities;
@@ -51,6 +52,13 @@ public class AbilityCategoryController : BaseController
     public async Task<IActionResult> GetById([FromQuery] GetByIdAbilityCategoryQueryRequest request)
     {
         GetByIdAbilityCategoryQueryResponse result = await Mediator.Send(request);
+        return Ok(result);
+    }
+
+    [HttpGet("GetByActiveList")]
+    public async Task<IActionResult> GetByActiveList([FromQuery] GetListByActiveAbilityCategoryQueryRequest request)
+    {
+        List<GetListByActiveAbilityCategoryQueryResponse> result = await Mediator.Send(request);
         return Ok(result);
     }
 

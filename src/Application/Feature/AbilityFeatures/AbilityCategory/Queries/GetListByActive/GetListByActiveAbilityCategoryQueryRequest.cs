@@ -4,7 +4,7 @@ using MediatR;
 
 namespace Application.Feature.AbilityFeatures.AbilityCategory.Queries.GetListByActive;
 
-public class GetListByActiveAbilityCategoryQueryRequest : IRequest<GetListResponse<GetListByActiveAbilityCategoryQueryResponse>>
+public class GetListByActiveAbilityCategoryQueryRequest : IRequest<List<GetListByActiveAbilityCategoryQueryResponse>>
 {
     public PageRequest PageRequest { get; set; }
 
