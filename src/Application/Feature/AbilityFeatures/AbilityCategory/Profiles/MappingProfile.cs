@@ -4,7 +4,9 @@ using Application.Feature.AbilityFeatures.AbilityCategory.Commands.Delete;
 using Application.Feature.AbilityFeatures.AbilityCategory.Commands.Remove;
 using Application.Feature.AbilityFeatures.AbilityCategory.Commands.Update;
 using Application.Feature.AbilityFeatures.AbilityCategory.Queries.GetById;
+using Application.Feature.AbilityFeatures.AbilityCategory.Queries.GetListByActive;
 using AutoMapper;
+using Domain.Abilities;
 
 namespace Application.Feature.AbilityFeatures.AbilityCategory.Profiles;
 
@@ -15,11 +17,15 @@ public class MappingProfile : Profile
         CreateMap<Domain.Abilities.AbilityCategory, CreateAbilityCategoryCommandRequest>().ReverseMap();
         CreateMap<Domain.Abilities.AbilityCategory, CreatedAbilityCategoryCommandResponse>().ReverseMap();
 
-        CreateMap<Domain.Abilities.AbilityCategoryDetailEng, CreateAbilityCategoryCommandRequest>().ReverseMap();
+        CreateMap<AbilityCategoryDetailEng, CreateAbilityCategoryCommandRequest>().ReverseMap();
         CreateMap<Domain.Abilities.AbilityCategory, ChangeStatusAbilityCategoryCommandResponse>().ReverseMap();
         CreateMap<Domain.Abilities.AbilityCategory, DeletedAbilityCategoryCommandResponse>().ReverseMap();
-        CreateMap<Domain.Abilities.AbilityCategoryDetailEng, RemovedAbilityCategoryCommandResponse>().ReverseMap();
-        CreateMap<Domain.Abilities.AbilityCategoryDetailEng, UpdatedAbilityCategoryCommandResponse>().ReverseMap();
-        CreateMap<Domain.Abilities.AbilityCategoryDetailEng, GetByIdAbilityCategoryQueryResponse>().ReverseMap();
+        CreateMap<AbilityCategoryDetailEng, RemovedAbilityCategoryCommandResponse>().ReverseMap();
+        CreateMap<AbilityCategoryDetailEng, UpdatedAbilityCategoryCommandResponse>().ReverseMap();
+        CreateMap<AbilityCategoryDetailEng, GetByIdAbilityCategoryQueryResponse>().ReverseMap();
+
+
+        CreateMap<AbilityCategoryDetailEng, GetListByActiveAbilityCategoryQueryResponse>().ReverseMap();
+        //CreateMap<List<AbilityCategoryDetailEng>, List<GetListByActiveAbilityCategoryQueryResponse>>().ReverseMap();
     }
 }

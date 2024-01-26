@@ -3,7 +3,6 @@ using Application.Service.AbilityServices.AbilityCategoryDetailEngService;
 using AutoMapper;
 using Domain.Abilities;
 using MediatR;
-using System.Collections.Generic;
 
 namespace Application.Feature.AbilityFeatures.AbilityCategory.Queries.GetListByActive;
 
