@@ -1,4 +1,6 @@
-﻿using Application.Service.AbilitiyServices.AbilityCategoryService;
+﻿using Application.Service.AbilityServices.AbilityCategoryDetailEngService;
+using Application.Service.AbilityServices.AbilityCategoryService;
+using Application.Service.AbilityServices.AbilityService;
 using Core.Application;
 using Core.Application.Caching;
 using Core.Application.Generator;
@@ -41,6 +43,8 @@ public static class ApplicationServiceRegistration
 
 
         services.AddScoped<IAbilityCategoryService, AbilityCategoryManager>();
+        services.AddScoped<IAbilityService, AbilityManager>();
+        services.AddScoped<IAbilityCategoryDetailEngService, AbilityCategoryDetailEngManager>();
 
 
 
