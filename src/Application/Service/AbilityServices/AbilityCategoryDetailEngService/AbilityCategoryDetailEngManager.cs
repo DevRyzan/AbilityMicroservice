@@ -35,7 +35,7 @@ public class AbilityCategoryDetailEngManager : IAbilityCategoryDetailEngService
 
     public async Task<List<AbilityCategoryDetailEng>> GetListByActive(int index = 0, int size = 10)
     {
-        return await _abilityCategoryDetailEngRepository.GetList(x => x.Status.Equals(true));
+        return await _abilityCategoryDetailEngRepository.GetList(x => x.Status.Equals(true), index: index, size: size);
     }
 
     public async Task<AbilityCategoryDetailEng> Remove(AbilityCategoryDetailEng abilityCategoryDetailEng)
