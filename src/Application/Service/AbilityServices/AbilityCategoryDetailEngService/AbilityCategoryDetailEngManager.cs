@@ -1,5 +1,4 @@
 ﻿using Application.Service.Repositories;
-using Core.Persistence.Paging;
 using Domain.Abilities;
 
 namespace Application.Service.AbilityServices.AbilityCategoryDetailEngService;
@@ -28,14 +27,14 @@ public class AbilityCategoryDetailEngManager : IAbilityCategoryDetailEngService
         return await _abilityCategoryDetailEngRepository.GetAsync(x => x.AbilityCategoryId.Equals(abilityCategoryId));
     }
 
-    public Task<AbilityCategory> GetById(Guid id)
-    {
-        throw new NotImplementedException();
-    }
-
     public async Task<List<AbilityCategoryDetailEng>> GetListByActive(int index = 0, int size = 10)
     {
         return await _abilityCategoryDetailEngRepository.GetList(x => x.Status.Equals(true), index: index, size: size);
+    }
+
+    public async Task<List<AbilityCategoryDetailEng>> GetListByInActive(int index = 0, int size = 10)
+    {
+        return await _abilityCategoryDetailEngRepository.GetList(x => x.Status.Equals(false), index: index, size: size);
     }
 
     public async Task<AbilityCategoryDetailEng> Remove(AbilityCategoryDetailEng abilityCategoryDetailEng)

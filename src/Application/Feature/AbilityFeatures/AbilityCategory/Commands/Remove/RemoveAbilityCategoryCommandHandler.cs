@@ -23,19 +23,29 @@ public class RemoveAbilityCategoryCommandHandler : IRequestHandler<RemoveAbility
 
     public async Task<RemovedAbilityCategoryCommandResponse> Handle(RemoveAbilityCategoryCommandRequest request, CancellationToken cancellationToken)
     {
-        await _abilityCategoryBusinessRule.IdShouldBeExist(id: request.Id);
-        await _abilityCategoryBusinessRule.RemoveCondition(request.Id);
+        // Check if the specified ID exists in the business rules for AbilityCategory removal.
+        await _abilityCategoryBusinessRule.IdShouldBeExist(id: request.AbilityCategoryRemoveDto.Id);
 
-        Domain.Abilities.AbilityCategory abilityCategory = await _abilityCategoryService.GetById(request.Id);
+        // Remove any additional conditions related to the AbilityCategory removal.
+        await _abilityCategoryBusinessRule.RemoveCondition(request.AbilityCategoryRemoveDto.Id);
 
-        Domain.Abilities.AbilityCategoryDetailEng abilityCategoryDetailEng = await _abilityCategoryDetailEng.GetByAbilityId(abilityId:request.Id);
+        // Retrieve the AbilityCategory using the provided ID.
+        Domain.Abilities.AbilityCategory abilityCategory = await _abilityCategoryService.GetById(request.AbilityCategoryRemoveDto.Id);
 
+        // Retrieve the corresponding AbilityCategoryDetailEng using the AbilityCategory's ID.
+        Domain.Abilities.AbilityCategoryDetailEng abilityCategoryDetailEng = await _abilityCategoryDetailEng.GetByAbilityId(abilityId: request.AbilityCategoryRemoveDto.Id);
 
+        // Remove the AbilityCategoryDetailEng from the database.
         await _abilityCategoryDetailEng.Remove(abilityCategoryDetailEng);
+
+        // Remove the AbilityCategory from the database.
         await _abilityCategoryService.Remove(abilityCategory);
 
+        // Map the removed AbilityCategoryDetailEng to a response object.
         RemovedAbilityCategoryCommandResponse mappedResponse = _mapper.Map<RemovedAbilityCategoryCommandResponse>(abilityCategoryDetailEng);
 
+        // Return the mapped response.
         return mappedResponse;
+
     }
 }

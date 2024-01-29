@@ -1,11 +1,11 @@
 ﻿using Amazon.Runtime.Internal;
+using Application.Feature.AbilityFeatures.AbilityCategory.Dto;
 using MediatR;
 
 namespace Application.Feature.AbilityFeatures.AbilityCategory.Commands.Create;
 
 public class CreateAbilityCategoryCommandRequest : IRequest<CreatedAbilityCategoryCommandResponse>
 {
-    public string Name { get; set; }
-    public string Description { get; set; }
+    public AbilityCategoryCreateDto AbilityCategoryCreateDto { get; set; }
 
 }

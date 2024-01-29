@@ -23,20 +23,24 @@ public class UpdateAbilityCategoryCommandHandler : IRequestHandler<UpdateAbility
 
     public async Task<UpdatedAbilityCategoryCommandResponse> Handle(UpdateAbilityCategoryCommandRequest request, CancellationToken cancellationToken)
     {
-        await _abilityCategoryBusinessRule.IdShouldBeExist(request.Id);
+        // Check if the specified ID exists in the business rules for AbilityCategory update.
+        await _abilityCategoryBusinessRule.IdShouldBeExist(request.AbilityCategoryUpdateDto.Id);
 
-        // Retrieve the Ability Category object by its ID.
-        Domain.Abilities.AbilityCategoryDetailEng abilityCategoryDetailEng = await _abilityCategoryDetailEng.GetByAbilityId(abilityId:request.Id);
+        // Retrieve the AbilityCategoryDetailEng using the provided ID.
+        Domain.Abilities.AbilityCategoryDetailEng abilityCategoryDetailEng = await _abilityCategoryDetailEng.GetByAbilityId(abilityId: request.AbilityCategoryUpdateDto.Id);
 
-        abilityCategoryDetailEng.Name = request.Name;
-        abilityCategoryDetailEng.Description = request.Description;
+        // Update the Name, Description, and UpdatedDate properties of the AbilityCategoryDetailEng.
+        abilityCategoryDetailEng.Name = request.AbilityCategoryUpdateDto.Name;
+        abilityCategoryDetailEng.Description = request.AbilityCategoryUpdateDto.Description;
         abilityCategoryDetailEng.UpdatedDate = DateTime.Now;
 
-         await _abilityCategoryDetailEng.Update(abilityCategoryDetailEng);
+        // Update the AbilityCategoryDetailEng in the database.
+        await _abilityCategoryDetailEng.Update(abilityCategoryDetailEng);
 
+        // Map the updated AbilityCategoryDetailEng to a response object.
         UpdatedAbilityCategoryCommandResponse mappedResponse = _mapper.Map<UpdatedAbilityCategoryCommandResponse>(abilityCategoryDetailEng);
 
-        // Return the mapped response object.
+        // Return the mapped response.
         return mappedResponse;
 
     }
