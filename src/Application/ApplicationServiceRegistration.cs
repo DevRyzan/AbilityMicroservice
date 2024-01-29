@@ -1,5 +1,6 @@
 ﻿using Application.Service.AbilityServices.AbilityCategoryDetailEngService;
 using Application.Service.AbilityServices.AbilityCategoryService;
+using Application.Service.AbilityServices.AbilityComboService;
 using Application.Service.AbilityServices.AbilityService;
 using Core.Application;
 using Core.Application.Caching;
@@ -10,7 +11,6 @@ using Core.Application.Pipelines.Validation;
 using Core.Application.Transaction;
 using FluentValidation;
 using Microsoft.Extensions.DependencyInjection;
-using MongoDB.Bson;
 using System.Reflection;
 
 
@@ -47,6 +47,7 @@ public static class ApplicationServiceRegistration
         services.AddScoped<IAbilityCategoryService, AbilityCategoryManager>();
         services.AddScoped<IAbilityService, AbilityManager>();
         services.AddScoped<IAbilityCategoryDetailEngService, AbilityCategoryDetailEngManager>();
+        services.AddScoped<IAbilityComboService, AbilityComboManager>();
 
 
 

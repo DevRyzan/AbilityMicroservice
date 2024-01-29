@@ -20,6 +20,7 @@ public static class PersistenceServiceRegistration
             .AddTransient<BaseDbContext>()
             .AddScoped<IAbilityCategoryRepository, AbilityCategoryRepository>()
             .AddScoped<IAbilityRepository, AbilityRepository>()
-            .AddScoped<IAbilityCategoryDetailEngRepository, AbilityCategoryDetailEngRepository>();
+            .AddScoped<IAbilityCategoryDetailEngRepository, AbilityCategoryDetailEngRepository>()
+            .AddScoped<IAbilityComboRepository, AbilityComboRepository>();
     }
 }
