@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace Domain.Enums;
 
-namespace Domain.Enums
+public enum ComboNumber
 {
-    public enum ComboNumber
-    {
-        ComboOne = 0,
-        ComboTwo = 1,
-    }
-
+    ComboOne = 0,
+    ComboTwo = 1,
+    ComboThree = 2,
+    ComboFour = 3,
+    ComboFive = 4,
 }

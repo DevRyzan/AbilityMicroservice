@@ -52,8 +52,4 @@ public class AbilityCategoryManager : IAbilityCategoryService
         return await _abilityCategoryRepository.UpdateAsync(id: abilityCategory.Id, entity: abilityCategory);
     }
 
-    Task<IPaginate<AbilityCategory>> IAbilityCategoryService.GetListByActive(int index, int size)
-    {
-        throw new NotImplementedException();
-    }
 }
