@@ -20,14 +20,21 @@ public class GetByIdAbilityCategoryQueryHandler : IRequestHandler<GetByIdAbility
 
     public async Task<GetByIdAbilityCategoryQueryResponse> Handle(GetByIdAbilityCategoryQueryRequest request, CancellationToken cancellationToken)
     {
-        await _abilityCategoryBusinessRules.IdShouldBeExist(request.Id);
+        // Check if the specified ID exists in the business rules for AbilityCategory retrieval.
+        await _abilityCategoryBusinessRules.IdShouldBeExist(request.AbilityCategoryGetByIdDto.Id);
 
-        Domain.Abilities.AbilityCategoryDetailEng abilityCategoryDetailEng = await _abilityCategoryDetailEngService.GetByAbilityId(request.Id);
+        // Retrieve the AbilityCategoryDetailEng using the provided ID.
+        Domain.Abilities.AbilityCategoryDetailEng abilityCategoryDetailEng = await _abilityCategoryDetailEngService.GetByAbilityId(request.AbilityCategoryGetByIdDto.Id);
 
+        // Map the AbilityCategoryDetailEng to a response object.
         GetByIdAbilityCategoryQueryResponse mappedResponse = _mapper.Map<GetByIdAbilityCategoryQueryResponse>(abilityCategoryDetailEng);
+
+        // Set additional properties in the response object.
         mappedResponse.Id = abilityCategoryDetailEng.AbilityCategoryId;
         mappedResponse.AbilityCategoryDetailEngId = abilityCategoryDetailEng.Id;
 
+        // Return the mapped response.
         return mappedResponse;
+
     }
 }

@@ -21,10 +21,16 @@ public class GetListByActiveAbilityCategoryQueryHandler : IRequestHandler<GetLis
 
     public async Task<List<GetListByActiveAbilityCategoryQueryResponse>> Handle(GetListByActiveAbilityCategoryQueryRequest request, CancellationToken cancellationToken)
     {
+        await _abilityCategoryBusinessRules.PageRequestShouldBeValid(index: request.PageRequest.Page, size: request.PageRequest.PageSize); 
+
+        // Retrieve a paginated list of active AbilityCategoryDetailEng based on the provided index and page size.
         List<AbilityCategoryDetailEng> paginate = await _abilityCategoryDetailEngService.GetListByActive(index: request.PageRequest.Page, size: request.PageRequest.PageSize);
 
+        // Map the list of AbilityCategoryDetailEng to a list of response objects.
         List<GetListByActiveAbilityCategoryQueryResponse> mappedResponse = _mapper.Map<List<GetListByActiveAbilityCategoryQueryResponse>>(paginate);
 
+        // Return the mapped response.
         return mappedResponse;
+
     }
 }

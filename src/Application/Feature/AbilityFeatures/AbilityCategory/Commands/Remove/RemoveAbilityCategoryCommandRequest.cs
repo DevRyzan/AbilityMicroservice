@@ -1,8 +1,9 @@
-﻿using MediatR;
+﻿using Application.Feature.AbilityFeatures.AbilityCategory.Dto;
+using MediatR;
 
 namespace Application.Feature.AbilityFeatures.AbilityCategory.Commands.Remove;
 
 public class RemoveAbilityCategoryCommandRequest : IRequest<RemovedAbilityCategoryCommandResponse>
 {
-    public Guid Id { get; set; }
+    public AbilityCategoryRemoveDto AbilityCategoryRemoveDto { get; set; }
 }
