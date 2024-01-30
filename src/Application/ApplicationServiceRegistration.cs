@@ -1,6 +1,7 @@
 ﻿using Application.Service.AbilityServices.AbilityCategoryDetailEngService;
 using Application.Service.AbilityServices.AbilityCategoryService;
 using Application.Service.AbilityServices.AbilityComboService;
+using Application.Service.AbilityServices.AbilityLevelService;
 using Application.Service.AbilityServices.AbilityService;
 using Core.Application;
 using Core.Application.Caching;
@@ -48,6 +49,7 @@ public static class ApplicationServiceRegistration
         services.AddScoped<IAbilityService, AbilityManager>();
         services.AddScoped<IAbilityCategoryDetailEngService, AbilityCategoryDetailEngManager>();
         services.AddScoped<IAbilityComboService, AbilityComboManager>();
+        services.AddScoped<IAbilityLevelService, AbilityLevelManager>();
 
 
 

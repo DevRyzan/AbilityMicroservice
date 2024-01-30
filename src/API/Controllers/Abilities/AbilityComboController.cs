@@ -109,8 +109,4 @@ public class AbilityComboController : BaseController
         List<GetListByInActiveAbilityComboQueryResponse> result = await Mediator.Send(request);
         return Ok(result);
     }
-
-
-
-
 }
