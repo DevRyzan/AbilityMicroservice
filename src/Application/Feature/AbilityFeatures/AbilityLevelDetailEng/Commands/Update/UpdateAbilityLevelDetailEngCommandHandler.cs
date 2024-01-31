@@ -22,7 +22,7 @@ public class UpdateAbilityLevelDetailEngCommandHandler : IRequestHandler<UpdateA
     {
 
         await _abilityLevelDetailEngBusinessRules.IdShouldBeExist(id: request.UpdateAbilityLevelDetailEngDto.Id);
-        await _abilityLevelDetailEngBusinessRules.AbilityLevelIdAlreadyHaveDetail(abilityLevelId: request.UpdateAbilityLevelDetailEngDto.AbilityLevelId,Id:request.UpdateAbilityLevelDetailEngDto.Id);
+        await _abilityLevelDetailEngBusinessRules.AbilityLevelIdAlreadyHaveDetailForUpdate(abilityLevelId: request.UpdateAbilityLevelDetailEngDto.AbilityLevelId,Id:request.UpdateAbilityLevelDetailEngDto.Id);
         await _abilityLevelDetailEngBusinessRules.AbilityLevelShouldBeExist(request.UpdateAbilityLevelDetailEngDto.AbilityLevelId);
 
         Domain.Abilities.AbilityLevelDetailEng abilityLevelDetailEng = await _abilityLevelDetailEngService.GetById(id: request.UpdateAbilityLevelDetailEngDto.Id);

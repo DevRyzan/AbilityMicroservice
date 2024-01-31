@@ -31,21 +31,27 @@ public class AbilityLevelDetailEngBusinessRules : BaseBusinessRules
         if (abilityLevelDetailEng.Status == true && abilityLevelDetailEng.IsDeleted == false) throw new BusinessException(AbilityLevelDetailEngMessages.RemoveCondition);
     }
 
-    public async Task AbilityLevelIdAlreadyHaveDetail(Guid abilityLevelId,Guid Id)
+
+    public async Task AbilityLevelIdAlreadyHaveDetailForCreate(Guid abilityLevelId)
     {
-        Domain.Abilities.AbilityLevelDetailEng abilityLevelDetailEng = await _abilityLevelDetailEngRepository.GetAsync(x => !x.Id.Equals(Id) && x.AbilityLevelId.Equals(abilityLevelId));
+        Domain.Abilities.AbilityLevelDetailEng abilityLevelDetailEng = await _abilityLevelDetailEngRepository.GetAsync(x => x.AbilityLevelId.Equals(abilityLevelId));
         if (abilityLevelDetailEng != null) throw new BusinessException(AbilityLevelDetailEngMessages.AbilityIdDontAsign);
     }
 
     public async Task AbilityLevelIdShouldBeExist(Guid abilityLevelId)
     {
         Domain.Abilities.AbilityLevelDetailEng abilityLevelDetailEng = await _abilityLevelDetailEngRepository.GetAsync(x => x.AbilityLevelId.Equals(abilityLevelId));
-        if (abilityLevelDetailEng == null) throw new BusinessException(AbilityLevelDetailEngMessages.AbilityLevelIdAlreadyHaveDetail);
+        if (abilityLevelDetailEng == null) throw new BusinessException(AbilityLevelDetailEngMessages.AbilityLevelShouldBeExist);
     }
 
     public async Task AbilityLevelShouldBeExist(Guid abilityLevelId)
     {
         Domain.Abilities.AbilityLevel abilityLevel = await _abilityLevelRepository.GetAsync(x => x.Id.Equals(abilityLevelId));
         if (abilityLevel == null) throw new BusinessException(AbilityLevelDetailEngMessages.AbilityLevelShouldBeExist);
+    }
+    public async Task AbilityLevelIdAlreadyHaveDetailForUpdate(Guid abilityLevelId,Guid Id)
+    {
+        Domain.Abilities.AbilityLevelDetailEng abilityLevelDetailEng = await _abilityLevelDetailEngRepository.GetAsync(x => x.AbilityLevelId.Equals(abilityLevelId) && !x.Id.Equals(Id));
+        if (abilityLevelDetailEng != null) throw new BusinessException(AbilityLevelDetailEngMessages.AbilityIdDontAsign);
     }
 }

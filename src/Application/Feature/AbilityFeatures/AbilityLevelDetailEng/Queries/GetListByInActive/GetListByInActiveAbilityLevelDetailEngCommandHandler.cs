@@ -24,8 +24,9 @@ public class GetListByInActiveAbilityLevelDetailEngCommandHandler : IRequestHand
 
     public async Task<List<GetListByInActiveAbilityLevelDetailEngCommandResponse>> Handle(GetListByInActiveAbilityLevelDetailEngCommandRequest request, CancellationToken cancellationToken)
     {
-        List<Domain.Abilities.AbilityLevelDetailEng> abilityLevelDetailEngs = await _abilityLevelDetailEngService.GetListByActive(index: request.PageRequest.PageSize, size: request.PageRequest.PageSize);
+        await _abilityLevelDetailEngBusinessRules.PageRequestShouldBeValid(index: request.PageRequest.Page, size: request.PageRequest.PageSize);
 
+        List<Domain.Abilities.AbilityLevelDetailEng> abilityLevelDetailEngs = await _abilityLevelDetailEngService.GetListByActive(index: request.PageRequest.Page, size: request.PageRequest.PageSize);
 
         List<GetListByInActiveAbilityLevelDetailEngCommandResponse> mappedResponse = _mapper.Map<List<GetListByInActiveAbilityLevelDetailEngCommandResponse>>(abilityLevelDetailEngs);
 

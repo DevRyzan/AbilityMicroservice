@@ -21,8 +21,8 @@ public class CreateAbilityLevelDetailEngCommandHandler : IRequestHandler<CreateA
 
     public async Task<CreateAbilityLevelDetailEngCommandResponse> Handle(CreateAbilityLevelDetailEngCommandRequest request, CancellationToken cancellationToken)
     {
-
-        // await _abilityLevelDetailEngBusinessRules.AbilityLevelIdAlreadyHaveDetail(abilityLevelId: request.CreateAbilityLevelDetailEng.AbilityLevelId,Id:request.CreateAbilityLevelDetailEng.id);
+        await _abilityLevelDetailEngBusinessRules.AbilityLevelShouldBeExist(abilityLevelId: request.CreateAbilityLevelDetailEng.AbilityLevelId);
+        await _abilityLevelDetailEngBusinessRules.AbilityLevelIdAlreadyHaveDetailForCreate(abilityLevelId: request.CreateAbilityLevelDetailEng.AbilityLevelId);
 
         RandomCodeGenerator code = new RandomCodeGenerator();
         Domain.Abilities.AbilityLevelDetailEng abilityLevelDetailEng = _mapper.Map<Domain.Abilities.AbilityLevelDetailEng>(request.CreateAbilityLevelDetailEng);
