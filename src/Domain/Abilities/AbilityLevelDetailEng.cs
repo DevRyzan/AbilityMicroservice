@@ -7,8 +7,8 @@ namespace Domain.Abilities;
 
 public class AbilityLevelDetailEng : Entity<Guid>
 {
-    [BsonRepresentation(BsonType.ObjectId)]
-    public AbilityLevel AbilityLevelId { get; set; }
+    [BsonRepresentation(BsonType.String)]
+    public Guid AbilityLevelId { get; set; }
     public LanguageCode LanguageCode { get; set; }
     public string Description { get; set; }
 
