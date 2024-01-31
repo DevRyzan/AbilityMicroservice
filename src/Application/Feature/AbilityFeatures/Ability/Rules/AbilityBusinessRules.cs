@@ -1,4 +1,6 @@
 ﻿using Application.Feature.AbilityFeatures.Ability.Constants;
+using Application.Feature.AbilityFeatures.AbilityCategory.Constants;
+using Application.Feature.AbilityFeatures.AbilityLevel.Constants;
 using Application.Service.Repositories;
 using Core.Application;
 using Core.CrossCuttingConcerns.Exceptions;
@@ -14,9 +16,19 @@ public class AbilityBusinessRules: BaseBusinessRules
         _abilityRepository = abilityRepository;
     }
 
-    public async Task AbilityIdShouldBeExist(Guid id)
+    public async Task IdShouldBeExist(Guid id)
     {
         var ability = await _abilityRepository.GetAsync(x => x.Id.Equals(id));
         if (ability == null) throw new BusinessException(AbilityMessages.AbilityIdDontExist);
+    }
+
+    public async Task PageRequestShouldBeValid(int index, int size)
+    {
+        if (index < 0 || size <= 0) throw new BusinessException(AbilityCategoryMessages.PageRequestShouldBeValid);
+    }
+    public async Task RemoveCondition(Guid id)
+    {
+        Domain.Abilities.Ability ability = await _abilityRepository.GetAsync(x => x.Id.Equals(id));
+        if (ability.Status == true && ability.IsDeleted == false) throw new BusinessException(AbilityLevelMessages.RemoveCondition);
     }
 }

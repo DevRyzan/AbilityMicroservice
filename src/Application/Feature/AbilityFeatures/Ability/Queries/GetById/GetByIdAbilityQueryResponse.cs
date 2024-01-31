@@ -1,9 +1,10 @@
-﻿namespace Application.Feature.AbilityFeatures.Ability.Commands.ChangeStatus;
+﻿namespace Application.Feature.AbilityFeatures.Ability.Queries.GetById;
 
-public class ChangeStatusAbilityCommandResponse
+public class GetByIdAbilityQueryResponse
 {
     public Guid Id { get; set; }
     public Guid HeroId { get; set; }
+    public Guid AbilityComboId { get; set; }
     public bool Status { get; set; }
     public bool IsDeleted { get; set; }
     public DateTime CreatedDate { get; set; }

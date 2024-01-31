@@ -21,10 +21,10 @@ public class ChangeStatusAbilityCommandHandler : IRequestHandler<ChangeStatusAbi
     public async Task<ChangeStatusAbilityCommandResponse> Handle(ChangeStatusAbilityCommandRequest request, CancellationToken cancellationToken)
     {
         // Check if the ability with the specified ID exists in the business rules.
-        await _abilityBusinessRules.AbilityIdShouldBeExist(request.Id);
+        await _abilityBusinessRules.IdShouldBeExist(request.ChangeStatusAbilityDto.Id);
 
         // Retrieve the ability entity from the service based on the provided ID.
-        Domain.Abilities.Ability ability = await _abilityService.GetById(request.Id);
+        Domain.Abilities.Ability ability = await _abilityService.GetById(request.ChangeStatusAbilityDto.Id);
 
         // Toggle the status of the ability (if it's true, set it to false; if it's false, set it to true).
         ability.Status = ability.Status == true ? false : true;
