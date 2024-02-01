@@ -6,8 +6,8 @@ namespace Domain.Abilities;
 
 public class AbilityTargetType : Entity<Guid>
 {
-    [BsonRepresentation(BsonType.ObjectId)]
-    public Guid AbilityTId { get; set; }
+    [BsonRepresentation(BsonType.String)]
+    public Guid AbilityId { get; set; }
     public bool IsSingleTarget { get; set; }
     public bool IsAreaTarget { get; set; }
     public double Radius { get; set; }

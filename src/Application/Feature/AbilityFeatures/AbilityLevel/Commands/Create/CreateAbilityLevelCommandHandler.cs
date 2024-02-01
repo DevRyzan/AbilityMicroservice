@@ -1,5 +1,6 @@
 ﻿using Application.Service.AbilityServices.AbilityLevelService;
 using AutoMapper;
+using Core.Application.Generator;
 using MediatR;
 
 namespace Application.Feature.AbilityFeatures.AbilityLevel.Commands.Create;
@@ -20,10 +21,13 @@ public class CreateAbilityLevelCommandHandler : IRequestHandler<CreateAbilityLev
         // Map the data from the request's CreateAbilityLevelDto to a new AbilityLevel instance.
         Domain.Abilities.AbilityLevel abilityLevel = _mapper.Map<Domain.Abilities.AbilityLevel>(request.CreateAbilityLevelDto);
 
+        RandomCodeGenerator code = new RandomCodeGenerator();
+
         // Set default values for the new AbilityLevel.
         abilityLevel.Status = true;
         abilityLevel.IsDeleted = false;
         abilityLevel.CreatedDate = DateTime.Now;
+        abilityLevel.Code = code.GenerateUniqueCode();
 
         // Create the new AbilityLevel in the database.
         await _abilityLevelService.Create(abilityLevel);
