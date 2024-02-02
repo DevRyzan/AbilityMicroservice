@@ -2,6 +2,7 @@
 using Application.Service.Repositories;
 using Core.Application;
 using Core.CrossCuttingConcerns.Exceptions;
+using Domain.Abilities;
 
 namespace Application.Feature.AbilityFeatures.AbilityLevelDetailEng.Rules;
 
@@ -28,7 +29,7 @@ public class AbilityLevelDetailEngBusinessRules : BaseBusinessRules
     public async Task RemoveCondition(Guid id)
     {
         Domain.Abilities.AbilityLevelDetailEng abilityLevelDetailEng = await _abilityLevelDetailEngRepository.GetAsync(x => x.Id.Equals(id));
-        if (abilityLevelDetailEng.Status == true && abilityLevelDetailEng.IsDeleted == false) throw new BusinessException(AbilityLevelDetailEngMessages.RemoveCondition);
+        if (abilityLevelDetailEng.Status == true || abilityLevelDetailEng.IsDeleted == false) throw new BusinessException(AbilityLevelDetailEngMessages.RemoveCondition);
     }
 
 

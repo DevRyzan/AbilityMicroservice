@@ -2,6 +2,7 @@
 using Application.Service.Repositories;
 using Core.Application;
 using Core.CrossCuttingConcerns.Exceptions;
+using Domain.Abilities;
 
 namespace Application.Feature.AbilityFeatures.AbilityCategory.Rules;
 
@@ -35,6 +36,6 @@ public class AbilityCategoryBusinessRules : BaseBusinessRules
     public async Task RemoveCondition(Guid id)
     {
         Domain.Abilities.AbilityCategory abilityCategory = await _abilityCategoryRepository.GetAsync(x => x.Id.Equals(id));
-        if (abilityCategory.Status == true && abilityCategory.IsDeleted == false) throw new BusinessException(AbilityCategoryMessages.RemoveCondition);
+        if (abilityCategory.Status == true || abilityCategory.IsDeleted == false) throw new BusinessException(AbilityCategoryMessages.RemoveCondition);
     }
 }
