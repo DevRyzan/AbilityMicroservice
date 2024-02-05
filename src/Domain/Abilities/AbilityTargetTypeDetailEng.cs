@@ -7,7 +7,7 @@ namespace Domain.Abilities;
 
 public class AbilityTargetTypeDetailEng : Entity<Guid>
 {
-    [BsonRepresentation(BsonType.ObjectId)]
+    [BsonRepresentation(BsonType.String)]
     public Guid AbilityTargetTypeId { get; set; } 
     public LanguageCode LanguageCode { get; set; }
     public string Name { get; set; }

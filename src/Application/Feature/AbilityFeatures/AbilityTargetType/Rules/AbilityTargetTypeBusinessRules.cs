@@ -2,6 +2,7 @@
 using Application.Service.Repositories;
 using Core.Application;
 using Core.CrossCuttingConcerns.Exceptions;
+using Domain.Abilities;
 
 namespace Application.Feature.AbilityFeatures.AbilityTargetType.Rules;
 
@@ -28,9 +29,8 @@ public class AbilityTargetTypeBusinessRules : BaseBusinessRules
     public async Task RemoveCondition(Guid id)
     {
         Domain.Abilities.AbilityTargetType abilityTargetType = await _abilityTargetTypeRepository.GetAsync(x => x.Id.Equals(id));
-        if (abilityTargetType.Status == true && abilityTargetType.IsDeleted == false) throw new BusinessException(AbilityTargetTypeMessages.RemoveCondition);
+        if (abilityTargetType.Status == true || abilityTargetType.IsDeleted == false) throw new BusinessException(AbilityTargetTypeMessages.RemoveCondition);
     }
-
     public async Task AbilityShouldBeAvailableForCreate(Guid abilityId) 
     {
         Domain.Abilities.AbilityTargetType abilityTargetType = await _abilityTargetTypeRepository.GetAsync(x => x.AbilityId.Equals(abilityId));
