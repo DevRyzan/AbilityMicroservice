@@ -40,5 +40,6 @@ public class DeleteAbilityTargetTypeCommandHandler : IRequestHandler<DeleteAbili
         // Return the mapped response
         return mappedResponse;
 
+
     }
 }

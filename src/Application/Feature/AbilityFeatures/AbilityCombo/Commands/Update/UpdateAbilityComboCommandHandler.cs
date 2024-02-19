@@ -20,25 +20,28 @@ public class UpdateAbilityComboCommandHandler : IRequestHandler<UpdateAbilityCom
 
     public async Task<UpdateAbilityComboCommandResponse> Handle(UpdateAbilityComboCommandRequest request, CancellationToken cancellationToken)
     {
-        // Check if the specified ID exists in the business rules for AbilityCombo update.
-        await _abilityComboBusinessRules.IdShouldBeExist(id: request.UpdateAbilityComboDto.Id);
+        //// Check if the specified ID exists in the business rules for AbilityCombo update.
+        //await _abilityComboBusinessRules.IdShouldBeExist(id: request.UpdateAbilityComboDto.Id);
 
-        // Retrieve the AbilityCombo using the provided ID.
-        Domain.Abilities.AbilityCombo abilityCombo = await _abilityComboService.GetById(request.UpdateAbilityComboDto.Id);
+        //// Retrieve the AbilityCombo using the provided ID.
+        //Domain.Abilities.AbilityCombo abilityCombo = await _abilityComboService.GetById(request.UpdateAbilityComboDto.Id);
 
-        // Update the IconUrl, ComboNumber, and UpdatedDate properties of the AbilityCombo.
-        abilityCombo.IconUrl = request.UpdateAbilityComboDto.IconUrl;
-        abilityCombo.ComboNumber = request.UpdateAbilityComboDto.ComboNumber;
-        abilityCombo.UpdatedDate = DateTime.Now;
+        //// Update the IconUrl, ComboNumber, and UpdatedDate properties of the AbilityCombo.
+        //abilityCombo.IconUrl = request.UpdateAbilityComboDto.IconUrl;
+        //abilityCombo.ComboNumber = request.UpdateAbilityComboDto.ComboNumber;
+        //abilityCombo.UpdatedDate = DateTime.Now;
 
-        // Update the AbilityCombo in the database.
-        await _abilityComboService.Update(abilityCombo);
+        //// Update the AbilityCombo in the database.
+        //await _abilityComboService.Update(abilityCombo);
 
-        // Map the updated AbilityCombo to a response object.
-        UpdateAbilityComboCommandResponse mappedResponse = _mapper.Map<UpdateAbilityComboCommandResponse>(abilityCombo);
+        //// Map the updated AbilityCombo to a response object.
+        //UpdateAbilityComboCommandResponse mappedResponse = _mapper.Map<UpdateAbilityComboCommandResponse>(abilityCombo);
 
-        // Return the mapped response.
-        return mappedResponse;
+        //// Return the mapped response.
+        //return mappedResponse;
+
+        throw new NotImplementedException();
+
 
     }
 }

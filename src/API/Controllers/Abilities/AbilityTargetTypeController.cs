@@ -1,5 +1,4 @@
-﻿using Application.Feature.AbilityFeatures.AbilityCategory.Queries.GetListByInActive;
-using Application.Feature.AbilityFeatures.AbilityTargetType.Commands.ChangeStatus;
+﻿using Application.Feature.AbilityFeatures.AbilityTargetType.Commands.ChangeStatus;
 using Application.Feature.AbilityFeatures.AbilityTargetType.Commands.Create;
 using Application.Feature.AbilityFeatures.AbilityTargetType.Commands.Delete;
 using Application.Feature.AbilityFeatures.AbilityTargetType.Commands.Remove;

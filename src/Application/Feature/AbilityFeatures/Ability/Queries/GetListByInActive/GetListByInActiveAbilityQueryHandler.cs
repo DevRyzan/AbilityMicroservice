@@ -20,17 +20,21 @@ public class GetListByInActiveAbilityQueryHandler : IRequestHandler<GetListByInA
 
     public async Task<List<GetListByInActiveAbilityQueryResponse>> Handle(GetListByInActiveAbilityQueryRequest request, CancellationToken cancellationToken)
     {
-        // Check if the specified page request is valid, applying business rules
-        await _abilityBusinessRules.PageRequestShouldBeValid(index: request.PageRequest.Page, size: request.PageRequest.PageSize);
+        //// Check if the specified page request is valid, applying business rules
+        //await _abilityBusinessRules.PageRequestShouldBeValid(index: request.PageRequest.Page, size: request.PageRequest.PageSize);
 
-        // Retrieve a list of inactive Abilities using the specified page index and size
-        List<Domain.Abilities.Ability> abilities = await _abilityService.GetInActiveList(index: request.PageRequest.Page, size: request.PageRequest.PageSize);
+        //// Retrieve a list of inactive Abilities using the specified page index and size
+        //List<Domain.Abilities.Ability> abilities = await _abilityService.GetInActiveList(index: request.PageRequest.Page, size: request.PageRequest.PageSize);
 
-        // Map the list of inactive Abilities to a list of GetListByInActiveAbilityQueryResponse using the mapper
-        List<GetListByInActiveAbilityQueryResponse> mappedResponse = _mapper.Map<List<GetListByInActiveAbilityQueryResponse>>(abilities);
+        //// Map the list of inactive Abilities to a list of GetListByInActiveAbilityQueryResponse using the mapper
+        //List<GetListByInActiveAbilityQueryResponse> mappedResponse = _mapper.Map<List<GetListByInActiveAbilityQueryResponse>>(abilities);
 
-        // Return the mapped response
-        return mappedResponse;
+        //// Return the mapped response
+        //return mappedResponse;
+
+
+        throw new NotImplementedException();
+
 
     }
 }

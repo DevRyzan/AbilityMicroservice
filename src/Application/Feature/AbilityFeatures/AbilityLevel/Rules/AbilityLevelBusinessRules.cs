@@ -1,9 +1,9 @@
-﻿using Application.Feature.AbilityFeatures.AbilityCategory.Constants;
-using Application.Feature.AbilityFeatures.AbilityLevel.Constants;
+﻿using Application.Feature.AbilityFeatures.AbilityLevel.Constants;
 using Application.Service.Repositories;
 using Core.Application;
 using Core.CrossCuttingConcerns.Exceptions;
 using Domain.Abilities;
+
 
 namespace Application.Feature.AbilityFeatures.AbilityLevel.Rules;
 
@@ -18,7 +18,7 @@ public class AbilityLevelBusinessRules : BaseBusinessRules
 
     public async Task PageRequestShouldBeValid(int index, int size)
     {
-        if (index < 0 || size <= 0) throw new BusinessException(AbilityCategoryMessages.PageRequestShouldBeValid);
+        if (index < 0 || size <= 0) throw new BusinessException(AbilityLevelMessages.PageRequestShouldBeValid);
     }
     public async Task IdShouldBeExist(Guid id)
     {
