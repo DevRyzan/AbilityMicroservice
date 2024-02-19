@@ -1,9 +1,11 @@
 ﻿using Core.Persistence.Repositories;
 
+
 namespace Domain.Abilities;
 
-public class AbilityType : Entity<Guid>
+public class AbilityAffectUnit : Entity<Guid>
 {
     public string Name { get; set; }
-    public string Description { get; set; }
+
+
 }
