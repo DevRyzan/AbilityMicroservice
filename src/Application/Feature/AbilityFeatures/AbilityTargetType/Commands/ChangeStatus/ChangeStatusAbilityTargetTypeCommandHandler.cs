@@ -21,25 +21,28 @@ public class ChangeStatusAbilityTargetTypeCommandHandler : IRequestHandler<Chang
 
     public async Task<ChangeStatusAbilityTargetTypeCommandResponse> Handle(ChangeStatusAbilityTargetTypeCommandRequest request, CancellationToken cancellationToken)
     {
-        // Check if the specified ability target type ID exists, applying business rules
-        await _abilityTargetTypeBusinessRules.IdShouldBeExist(id: request.ChangeStatusAbilityTargetTypeDto.Id);
+        //// Check if the specified ability target type ID exists, applying business rules
+        //await _abilityTargetTypeBusinessRules.IdShouldBeExist(id: request.ChangeStatusAbilityTargetTypeDto.Id);
 
-        // Retrieve an AbilityTargetType using the specified ID
-        Domain.Abilities.AbilityTargetType abilityTargetType = await _abilityTargetTypeService.GetById(request.ChangeStatusAbilityTargetTypeDto.Id);
+        //// Retrieve an AbilityTargetType using the specified ID
+        //Domain.Abilities.AbilityTargetType abilityTargetType = await _abilityTargetTypeService.GetById(request.ChangeStatusAbilityTargetTypeDto.Id);
 
-        // Toggle the Status property of the AbilityTargetType
-        abilityTargetType.Status = abilityTargetType.Status == true ? false : true;
+        //// Toggle the Status property of the AbilityTargetType
+        //abilityTargetType.Status = abilityTargetType.Status == true ? false : true;
 
-        // Update the UpdatedDate property to the current date and time
-        abilityTargetType.UpdatedDate = DateTime.Now;
+        //// Update the UpdatedDate property to the current date and time
+        //abilityTargetType.UpdatedDate = DateTime.Now;
 
-        // Call the Update method of _abilityTargetTypeService to persist the changes
-        await _abilityTargetTypeService.Update(abilityTargetType);
+        //// Call the Update method of _abilityTargetTypeService to persist the changes
+        //await _abilityTargetTypeService.Update(abilityTargetType);
 
-        // Map the updated AbilityTargetType to a ChangeStatusAbilityTargetTypeCommandResponse using the mapper
-        ChangeStatusAbilityTargetTypeCommandResponse mappedResponse = _mapper.Map<ChangeStatusAbilityTargetTypeCommandResponse>(abilityTargetType);
+        //// Map the updated AbilityTargetType to a ChangeStatusAbilityTargetTypeCommandResponse using the mapper
+        //ChangeStatusAbilityTargetTypeCommandResponse mappedResponse = _mapper.Map<ChangeStatusAbilityTargetTypeCommandResponse>(abilityTargetType);
 
-        // Return the mapped response
-        return mappedResponse;
+        //// Return the mapped response
+        //return mappedResponse;
+
+        throw new NotImplementedException();
+
     }
 }

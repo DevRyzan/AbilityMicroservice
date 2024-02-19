@@ -21,31 +21,34 @@ public class CreateAbilityTargetTypeCommandHandler : IRequestHandler<CreateAbili
 
     public async Task<CreateAbilityTargetTypeCommandResponse> Handle(CreateAbilityTargetTypeCommandRequest request, CancellationToken cancellationToken)
     {
-        await _abilityTargetTypeBusinessRules.AbilityShouldBeExist(abilityId: request.CreateAbilityTargetTypeDto.AbilityId);
+        //await _abilityTargetTypeBusinessRules.AbilityShouldBeExist(abilityId: request.CreateAbilityTargetTypeDto.AbilityId);
 
-        // Check if the specified ability ID is available for creating an AbilityTargetType, applying business rules
-        await _abilityTargetTypeBusinessRules.AbilityShouldBeAvailableForCreate(abilityId: request.CreateAbilityTargetTypeDto.AbilityId);
+        //// Check if the specified ability ID is available for creating an AbilityTargetType, applying business rules
+        //await _abilityTargetTypeBusinessRules.AbilityShouldBeAvailableForCreate(abilityId: request.CreateAbilityTargetTypeDto.AbilityId);
 
-        // Map the data from the request DTO to an instance of AbilityTargetType
-        Domain.Abilities.AbilityTargetType abilityTargetType = _mapper.Map<Domain.Abilities.AbilityTargetType>(request.CreateAbilityTargetTypeDto);
+        //// Map the data from the request DTO to an instance of AbilityTargetType
+        //Domain.Abilities.AbilityTargetType abilityTargetType = _mapper.Map<Domain.Abilities.AbilityTargetType>(request.CreateAbilityTargetTypeDto);
 
-        // Create an instance of RandomCodeGenerator for generating unique codes
-        RandomCodeGenerator code = new RandomCodeGenerator();
+        //// Create an instance of RandomCodeGenerator for generating unique codes
+        //RandomCodeGenerator code = new RandomCodeGenerator();
 
-        // Set properties for the AbilityTargetType
-        abilityTargetType.Status = true;
-        abilityTargetType.IsDeleted = false;
-        abilityTargetType.Code = code.GenerateUniqueCode(); // Generate a unique code
-        abilityTargetType.CreatedDate = DateTime.Now; // Set the creation date to the current local time
+        //// Set properties for the AbilityTargetType
+        //abilityTargetType.Status = true;
+        //abilityTargetType.IsDeleted = false;
+        //abilityTargetType.Code = code.GenerateUniqueCode(); // Generate a unique code
+        //abilityTargetType.CreatedDate = DateTime.Now; // Set the creation date to the current local time
 
-        // Call the Create method of _abilityTargetTypeService to create the AbilityTargetType
-        await _abilityTargetTypeService.Create(abilityTargetType);
+        //// Call the Create method of _abilityTargetTypeService to create the AbilityTargetType
+        //await _abilityTargetTypeService.Create(abilityTargetType);
 
-        // Map the created AbilityTargetType to a CreateAbilityTargetTypeCommandResponse using the mapper
-        CreateAbilityTargetTypeCommandResponse mappedResponse = _mapper.Map<CreateAbilityTargetTypeCommandResponse>(abilityTargetType);
+        //// Map the created AbilityTargetType to a CreateAbilityTargetTypeCommandResponse using the mapper
+        //CreateAbilityTargetTypeCommandResponse mappedResponse = _mapper.Map<CreateAbilityTargetTypeCommandResponse>(abilityTargetType);
 
-        // Return the mapped response
-        return mappedResponse;
+        //// Return the mapped response
+        //return mappedResponse;
+
+        throw new NotImplementedException();
+
 
     }
 }

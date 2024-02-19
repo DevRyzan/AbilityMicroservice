@@ -1,10 +1,6 @@
-﻿using Application.Service.AbilityServices.AbilityCategoryDetailEngService;
-using Application.Service.AbilityServices.AbilityCategoryService;
-using Application.Service.AbilityServices.AbilityComboService;
-using Application.Service.AbilityServices.AbilityLevelDetailEngService;
+﻿using Application.Service.AbilityServices.AbilityComboService;
 using Application.Service.AbilityServices.AbilityLevelService;
 using Application.Service.AbilityServices.AbilityService;
-using Application.Service.AbilityServices.AbilityTargetTypeDetailEngService;
 using Application.Service.AbilityServices.AbilityTargetTypeService;
 using Core.Application;
 using Core.Application.Caching;
@@ -48,14 +44,10 @@ public static class ApplicationServiceRegistration
         services.AddSingleton<IRandomCodeGenerator, RandomCodeGenerator>();
 
 
-        services.AddScoped<IAbilityCategoryService, AbilityCategoryManager>();
         services.AddScoped<IAbilityService, AbilityManager>();
-        services.AddScoped<IAbilityCategoryDetailEngService, AbilityCategoryDetailEngManager>();
         services.AddScoped<IAbilityComboService, AbilityComboManager>();
         services.AddScoped<IAbilityLevelService, AbilityLevelManager>();
-        services.AddScoped<IAbilityLevelDetailEngService, AbilityLevelDetailEngManager>();
         services.AddScoped<IAbilityTargetTypeService, AbilityTargetTypeManager>();
-        services.AddScoped<IAbilityTargetTypeDetailEngService, AbilityTargetTypeDetailEngManager>();
 
 
 

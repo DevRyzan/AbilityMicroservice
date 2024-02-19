@@ -1,19 +1,24 @@
 ﻿using Core.Persistence.Repositories;
-using Domain.Enums;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 
+
 namespace Domain.Abilities;
 
-public class AbilityEffectStat : Entity<Guid>
+internal class AbilityEffectStat : Entity<Guid>
 {
     [BsonRepresentation(BsonType.ObjectId)]
-    public Guid AbilityId { get; set; }
-    public double StatValue { get; set; }
-    public double CoolDown { get; set; }
-    public double Cost { get; set; }
-    public CostType CostType { get; set; }
-
-    [BsonIgnore]
-    public Ability Ability { get; set; }
+    public string AbilityEffectId { get; set; }
+    public int CrowdControlDuration { get; set; }
+    public int CrowdControlRange { get; set; }
+    public int CrowdControlResistance { get; set; }
+    public int DamageReductionPercentage { get; set; }
+    public int DisengageAbilityRange { get; set; }
+    public int EngageAbilityRange { get; set; }
+    public int ExperienceGainMultiplier { get; set; }
+    public int GoldIncomeMultiplier { get; set; }
+    public int HealAmount { get; set; }
+    public int PeelAbilityRange { get; set; }
+    public int ShieldAmount { get; set; }
+    public int VisionRadiusBonus { get; set; }
 }

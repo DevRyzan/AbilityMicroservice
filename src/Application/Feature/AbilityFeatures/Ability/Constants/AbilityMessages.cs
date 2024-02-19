@@ -22,5 +22,11 @@ public static class AbilityMessages
 
     public const string EffectTypeShouldExist = "Effect Type Should Exist";
 
+    public const string PageRequestShouldBeValid = "Page Request Should Be Valid";
+
+    public const string RemoveCondition = "Ability status false and deleted should be true ";
+
+
+
 
 }

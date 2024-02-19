@@ -1,9 +1,4 @@
-﻿using Application.Feature.AbilityFeatures.AbilityCategory.Commands.Update;
-using Application.Feature.AbilityFeatures.AbilityCategory.Dto;
-using Application.Feature.AbilityFeatures.AbilityCategory.Queries.GetById;
-using Application.Feature.AbilityFeatures.AbilityCategory.Queries.GetListByActive;
-using Application.Feature.AbilityFeatures.AbilityCategory.Queries.GetListByInActive;
-using Application.Feature.AbilityFeatures.AbilityCombo.Commands.ChangeStatus;
+﻿using Application.Feature.AbilityFeatures.AbilityCombo.Commands.ChangeStatus;
 using Application.Feature.AbilityFeatures.AbilityCombo.Commands.Create;
 using Application.Feature.AbilityFeatures.AbilityCombo.Commands.Delete;
 using Application.Feature.AbilityFeatures.AbilityCombo.Commands.Remove;

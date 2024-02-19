@@ -21,28 +21,31 @@ public class CreateAbilityComboCommandHandler : IRequestHandler<CreateAbilityCom
 
     public async Task<CreateAbilityComboCommandResponse> Handle(CreateAbilityComboCommandRequest request, CancellationToken cancellationToken)
     {
-        // Generate a unique random code for the AbilityCombo.
-        RandomCodeGenerator code = new RandomCodeGenerator();
+        //// Generate a unique random code for the AbilityCombo.
+        //RandomCodeGenerator code = new RandomCodeGenerator();
 
-        // Create a new AbilityCombo instance with properties from the request and some default values.
-        Domain.Abilities.AbilityCombo abilityCombo = new Domain.Abilities.AbilityCombo
-        {
-            ComboNumber = request.CreateAbilityComboDto.ComboNumber,
-            IconUrl = request.CreateAbilityComboDto.IconUrl,
-            Status = true,
-            IsDeleted = false,
-            CreatedDate = DateTime.Now,
-            Code = code.GenerateUniqueCode()
-        };
+        //// Create a new AbilityCombo instance with properties from the request and some default values.
+        //Domain.Abilities.AbilityCombo abilityCombo = new Domain.Abilities.AbilityCombo
+        //{
+        //    ComboNumber = request.CreateAbilityComboDto.ComboNumber,
+        //    IconUrl = request.CreateAbilityComboDto.IconUrl,
+        //    Status = true,
+        //    IsDeleted = false,
+        //    CreatedDate = DateTime.Now,
+        //    Code = code.GenerateUniqueCode()
+        //};
 
-        // Create the AbilityCombo in the database.
-        await _abilityComboService.Create(abilityCombo);
+        //// Create the AbilityCombo in the database.
+        //await _abilityComboService.Create(abilityCombo);
 
-        // Map the created AbilityCombo to a response object.
-        CreateAbilityComboCommandResponse mappedResponse = _mapper.Map<CreateAbilityComboCommandResponse>(abilityCombo);
+        //// Map the created AbilityCombo to a response object.
+        //CreateAbilityComboCommandResponse mappedResponse = _mapper.Map<CreateAbilityComboCommandResponse>(abilityCombo);
 
-        // Return the mapped response.
-        return mappedResponse;
+        //// Return the mapped response.
+        //return mappedResponse;
+
+        throw new NotImplementedException();
+
 
     }
 }
