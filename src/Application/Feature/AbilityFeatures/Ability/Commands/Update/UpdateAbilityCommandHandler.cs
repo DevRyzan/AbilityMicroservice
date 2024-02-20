@@ -1,4 +1,5 @@
-﻿using Application.Feature.AbilityFeatures.Ability.Rules;
+﻿using Application.Feature.AbilityFeatures.Ability.Dtos;
+using Application.Feature.AbilityFeatures.Ability.Rules;
 using Application.Service.AbilityServices.AbilityService;
 using AutoMapper;
 using MediatR;
@@ -27,21 +28,14 @@ public class UpdateAbilityCommandHandler : IRequestHandler<UpdateAbilityCommandR
         Domain.Abilities.Ability ability = await _abilityService.GetById(request.UpdateAbilityDto.Id);
 
         // Update the properties of the existing Ability with the new data from the request
-        ability.Name = request.UpdateAbilityDto.Name;
-        ability.Description = request.UpdateAbilityDto.Description;
-        ability.CastTimeTypeValue = request.UpdateAbilityDto.CastTimeTypeValue;
-        ability.Cooldown = request.UpdateAbilityDto.Cooldown;
-        ability.Radius = request.UpdateAbilityDto.Radius;
-        ability.Damage = request.UpdateAbilityDto.Damage;
-        ability.IsCondition = request.UpdateAbilityDto.IsCondition;
-        ability.IsTrigger = request.UpdateAbilityDto.IsTrigger;
-        ability.IsHaveCombo = request.UpdateAbilityDto.IsHaveCombo;
-        ability.Cost = request.UpdateAbilityDto.Cost;
-        ability.IsTargeted = request.UpdateAbilityDto.IsTargeted;
-        ability.IsBlockable = request.UpdateAbilityDto.IsBlockable;
-        ability.IsCharging = request.UpdateAbilityDto.IsCharging;
-        ability.IsHaveDisable = request.UpdateAbilityDto.IsHaveDisable;
-        ability.AbilityLevelUpgradeFrequency = request.UpdateAbilityDto.AbilityLevelUpgradeFrequency;
+        var config = new MapperConfiguration(cfg => {
+            cfg.CreateMap<UpdateAbilityDto, Domain.Abilities.Ability>();
+        });
+
+        var mapper = config.CreateMapper();
+
+        // request.UpdateAbilityDto özelliklerini ability nesnesine eşleştir
+        mapper.Map(request.UpdateAbilityDto, ability);
 
         // Update the 'UpdatedDate' property with the current date and time
         ability.UpdatedDate = DateTime.Now;
