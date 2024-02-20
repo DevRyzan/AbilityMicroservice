@@ -30,7 +30,7 @@ public class ChangeStatusAbilityComboCommandHandler : IRequestHandler<ChangeStat
         abilityCombo.Status = abilityCombo.Status == true ? false : true;
 
         // Update the UpdatedDate property of the AbilityCombo to the current UTC time.
-        abilityCombo.UpdatedDate = DateTime.UtcNow;
+        abilityCombo.UpdatedDate = DateTime.Now;
 
         // Update the AbilityCombo in the database.
         await _abilityComboService.Update(abilityCombo);

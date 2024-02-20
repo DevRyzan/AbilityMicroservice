@@ -7,7 +7,9 @@ public class UpdateAbilityComboValidator : AbstractValidator<UpdateAbilityComboC
 {
     public UpdateAbilityComboValidator()
     {
-        RuleFor(x => x.UpdateAbilityComboDto.ComboNumber).Must(BeAValidComboNumberValue);
+        RuleFor(x => x.UpdateAbilityComboDto.Name)
+                .NotNull().WithMessage("Name, should not be null.")
+                .MinimumLength(2);
     }
     private bool BeAValidComboNumberValue(ComboNumber comboNumber)
     {
