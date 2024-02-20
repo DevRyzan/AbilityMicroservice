@@ -1,4 +1,5 @@
-﻿using Application.Feature.AbilityFeatures.AbilityCombo.Rules;
+﻿using Application.Feature.AbilityFeatures.AbilityCombo.Dto;
+using Application.Feature.AbilityFeatures.AbilityCombo.Rules;
 using Application.Service.AbilityServices.AbilityComboService;
 using AutoMapper;
 using MediatR;
@@ -20,25 +21,29 @@ public class UpdateAbilityComboCommandHandler : IRequestHandler<UpdateAbilityCom
 
     public async Task<UpdateAbilityComboCommandResponse> Handle(UpdateAbilityComboCommandRequest request, CancellationToken cancellationToken)
     {
-        //// Check if the specified ID exists in the business rules for AbilityCombo update.
-        //await _abilityComboBusinessRules.IdShouldBeExist(id: request.UpdateAbilityComboDto.Id);
+        // Check if the specified ID exists in the business rules for AbilityCombo update.
+        await _abilityComboBusinessRules.IdShouldBeExist(id: request.UpdateAbilityComboDto.Id);
 
-        //// Retrieve the AbilityCombo using the provided ID.
-        //Domain.Abilities.AbilityCombo abilityCombo = await _abilityComboService.GetById(request.UpdateAbilityComboDto.Id);
+        // Retrieve the AbilityCombo using the provided ID.
+        Domain.Abilities.AbilityCombo abilityCombo = await _abilityComboService.GetById(request.UpdateAbilityComboDto.Id);
 
-        //// Update the IconUrl, ComboNumber, and UpdatedDate properties of the AbilityCombo.
-        //abilityCombo.IconUrl = request.UpdateAbilityComboDto.IconUrl;
-        //abilityCombo.ComboNumber = request.UpdateAbilityComboDto.ComboNumber;
-        //abilityCombo.UpdatedDate = DateTime.Now;
+        // Update the properties of the existing Ability with the new data from the request
+        var config = new MapperConfiguration(cfg => {
+            cfg.CreateMap<UpdateAbilityComboDto, Domain.Abilities.AbilityCombo>();
+        });
 
-        //// Update the AbilityCombo in the database.
-        //await _abilityComboService.Update(abilityCombo);
+        var mapper = config.CreateMapper();
+        mapper.Map(request.UpdateAbilityComboDto, abilityCombo);
 
-        //// Map the updated AbilityCombo to a response object.
-        //UpdateAbilityComboCommandResponse mappedResponse = _mapper.Map<UpdateAbilityComboCommandResponse>(abilityCombo);
+        abilityCombo.UpdatedDate = DateTime.Now;
+        // Update the AbilityCombo in the database.
+        await _abilityComboService.Update(abilityCombo);
 
-        //// Return the mapped response.
-        //return mappedResponse;
+        // Map the updated AbilityCombo to a response object.
+        UpdateAbilityComboCommandResponse mappedResponse = _mapper.Map<UpdateAbilityComboCommandResponse>(abilityCombo);
+
+        // Return the mapped response.
+        return mappedResponse;
 
         throw new NotImplementedException();
 

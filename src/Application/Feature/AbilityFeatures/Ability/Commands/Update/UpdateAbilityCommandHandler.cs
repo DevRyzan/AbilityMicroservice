@@ -33,8 +33,6 @@ public class UpdateAbilityCommandHandler : IRequestHandler<UpdateAbilityCommandR
         });
 
         var mapper = config.CreateMapper();
-
-        // request.UpdateAbilityDto özelliklerini ability nesnesine eşleştir
         mapper.Map(request.UpdateAbilityDto, ability);
 
         // Update the 'UpdatedDate' property with the current date and time

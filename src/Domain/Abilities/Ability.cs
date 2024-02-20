@@ -33,11 +33,11 @@ public class Ability : Entity<Guid>
     public bool IsCondition { get; set; }
     public bool IsTrigger { get; set; }
     public bool IsHaveCombo { get; set; }
-    public int Cost { get; set; }
     public bool IsTargeted { get; set; }
     public bool IsBlockable { get; set; }
     public bool IsCharging { get; set; }
     public bool IsHaveDisable { get; set; }
     public int? AbilityLevelUpgradeFrequency { get; set; }
+    public int Cost { get; set; }
 
 }

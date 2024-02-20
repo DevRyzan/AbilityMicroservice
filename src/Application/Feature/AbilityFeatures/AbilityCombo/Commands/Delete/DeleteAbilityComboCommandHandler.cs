@@ -20,28 +20,25 @@ public class DeleteAbilityComboCommandHandler : IRequestHandler<DeleteAbilityCom
 
     public async Task<DeleteAbilityComboCommandResponse> Handle(DeleteAbilityComboCommandRequest request, CancellationToken cancellationToken)
     {
-        //// Check if the specified ID exists in the business rules for AbilityCombo deletion.
-        //await _abilityComboBusinessRules.IdShouldBeExist(id: request.DeleteAbilityComboDto.Id);
+        // Check if the specified ID exists in the business rules for AbilityCombo deletion.
+        await _abilityComboBusinessRules.IdShouldBeExist(id: request.DeleteAbilityComboDto.Id);
 
-        //// Retrieve the AbilityCombo using the provided ID.
-        //Domain.Abilities.AbilityCombo abilityCombo = await _abilityComboService.GetById(id: request.DeleteAbilityComboDto.Id);
+        // Retrieve the AbilityCombo using the provided ID.
+        Domain.Abilities.AbilityCombo abilityCombo = await _abilityComboService.GetById(id: request.DeleteAbilityComboDto.Id);
 
-        //// Set the Status to false, mark the AbilityCombo as deleted, and record the deletion date.
-        //abilityCombo.Status = false;
-        //abilityCombo.IsDeleted = true;
-        //abilityCombo.DeletedDate = DateTime.Now;
+        // Set the Status to false, mark the AbilityCombo as deleted, and record the deletion date.
+        abilityCombo.Status = false;
+        abilityCombo.IsDeleted = true;
+        abilityCombo.DeletedDate = DateTime.Now;
 
-        //// Update the AbilityCombo in the database.
-        //await _abilityComboService.Update(abilityCombo);
+        // Update the AbilityCombo in the database.
+        await _abilityComboService.Update(abilityCombo);
 
-        //// Map the deleted AbilityCombo to a response object.
-        //DeleteAbilityComboCommandResponse mappedResponse = _mapper.Map<DeleteAbilityComboCommandResponse>(abilityCombo);
+        // Map the deleted AbilityCombo to a response object.
+        DeleteAbilityComboCommandResponse mappedResponse = _mapper.Map<DeleteAbilityComboCommandResponse>(abilityCombo);
 
-        //// Return the mapped response.
-        //return mappedResponse;
-
-        throw new NotImplementedException();
-
-
+        // Return the mapped response.
+        return mappedResponse;
+    
     }
 }

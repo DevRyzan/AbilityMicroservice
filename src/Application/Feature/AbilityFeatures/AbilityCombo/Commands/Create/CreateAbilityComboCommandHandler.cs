@@ -21,31 +21,19 @@ public class CreateAbilityComboCommandHandler : IRequestHandler<CreateAbilityCom
 
     public async Task<CreateAbilityComboCommandResponse> Handle(CreateAbilityComboCommandRequest request, CancellationToken cancellationToken)
     {
-        //// Generate a unique random code for the AbilityCombo.
-        //RandomCodeGenerator code = new RandomCodeGenerator();
+        RandomCodeGenerator code = new RandomCodeGenerator();
 
-        //// Create a new AbilityCombo instance with properties from the request and some default values.
-        //Domain.Abilities.AbilityCombo abilityCombo = new Domain.Abilities.AbilityCombo
-        //{
-        //    ComboNumber = request.CreateAbilityComboDto.ComboNumber,
-        //    IconUrl = request.CreateAbilityComboDto.IconUrl,
-        //    Status = true,
-        //    IsDeleted = false,
-        //    CreatedDate = DateTime.Now,
-        //    Code = code.GenerateUniqueCode()
-        //};
+        Domain.Abilities.AbilityCombo abilityCombo = _mapper.Map<Domain.Abilities.AbilityCombo>(request.CreateAbilityComboDto);
 
-        //// Create the AbilityCombo in the database.
-        //await _abilityComboService.Create(abilityCombo);
+        abilityCombo.Status = true;
+        abilityCombo.IsDeleted = false;
+        abilityCombo.Code = code.GenerateUniqueCode();
+        abilityCombo.CreatedDate = DateTime.Now;
 
-        //// Map the created AbilityCombo to a response object.
-        //CreateAbilityComboCommandResponse mappedResponse = _mapper.Map<CreateAbilityComboCommandResponse>(abilityCombo);
+        await _abilityComboService.Create(abilityCombo);
 
-        //// Return the mapped response.
-        //return mappedResponse;
+        CreateAbilityComboCommandResponse mappedResponse = _mapper.Map<CreateAbilityComboCommandResponse>(abilityCombo);
 
-        throw new NotImplementedException();
-
-
+        return mappedResponse;
     }
 }

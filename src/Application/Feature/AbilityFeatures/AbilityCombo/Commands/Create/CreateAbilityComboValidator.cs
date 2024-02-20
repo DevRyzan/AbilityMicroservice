@@ -7,7 +7,13 @@ public class CreateAbilityComboValidator : AbstractValidator<CreateAbilityComboC
 {
     public CreateAbilityComboValidator()
     {
-        RuleFor(x => x.CreateAbilityComboDto.ComboNumber).Must(BeAValidComboNumberValue);
+        RuleFor(x => x.CreateAbilityComboDto.Name)
+                .NotNull().WithMessage("Name, should not be null.")
+                .MinimumLength(2);
+
+        RuleFor(x => x.CreateAbilityComboDto.Description)
+                .NotNull().WithMessage("Description, should not be null.")
+                .MinimumLength(2);
     }
     private bool BeAValidComboNumberValue(ComboNumber comboNumber)
     {
