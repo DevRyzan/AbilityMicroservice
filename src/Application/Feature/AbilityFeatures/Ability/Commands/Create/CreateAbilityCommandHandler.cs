@@ -30,9 +30,9 @@ public class CreateAbilityCommandHandler : IRequestHandler<CreateAbilityCommandR
         Domain.Abilities.Ability ability = _mapper.Map<Domain.Abilities.Ability>(request.CreateAbilityDto);
 
         ability.Code = codeGenerator.GenerateUniqueCode();
-        ability.CreatedDate = DateTime.Now;
         ability.Status = true;
         ability.IsDeleted = false;
+        ability.CreatedDate = DateTime.Now;
 
         await _abilityService.Create(ability);
 
