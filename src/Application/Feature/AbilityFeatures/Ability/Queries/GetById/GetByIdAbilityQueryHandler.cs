@@ -20,20 +20,17 @@ public class GetByIdAbilityQueryHandler : IRequestHandler<GetByIdAbilityQueryReq
 
     public async Task<GetByIdAbilityQueryResponse> Handle(GetByIdAbilityQueryRequest request, CancellationToken cancellationToken)
     {
-        //// Check if the specified ability ID exists, applying business rules
-        //await _abilityBusinessRules.IdShouldBeExist(id: request.GetByIdAbilityDto.Id);
+        // Check if the specified ability ID exists, applying business rules
+        await _abilityBusinessRules.IdShouldBeExist(id: request.GetByIdAbilityDto.Id);
 
-        //// Retrieve an Ability using the specified ID
-        //Domain.Abilities.Ability ability = await _abilityService.GetById(id: request.GetByIdAbilityDto.Id);
+        // Retrieve an Ability using the specified ID
+        Domain.Abilities.Ability ability = await _abilityService.GetById(id: request.GetByIdAbilityDto.Id);
 
-        //// Map the retrieved Ability to a GetByIdAbilityQueryResponse using the mapper
-        //GetByIdAbilityQueryResponse mappedResponse = _mapper.Map<GetByIdAbilityQueryResponse>(ability);
+        // Map the retrieved Ability to a GetByIdAbilityQueryResponse using the mapper
+        GetByIdAbilityQueryResponse mappedResponse = _mapper.Map<GetByIdAbilityQueryResponse>(ability);
 
-        //// Return the mapped response
-        //return mappedResponse;
-
-        throw new NotImplementedException();
-
+        // Return the mapped response
+        return mappedResponse;
 
     }
 }

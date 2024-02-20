@@ -2,6 +2,7 @@
 using Application.Feature.AbilityFeatures.Ability.Commands.Create;
 using Application.Feature.AbilityFeatures.Ability.Commands.Delete;
 using Application.Feature.AbilityFeatures.Ability.Commands.Remove;
+using Application.Feature.AbilityFeatures.Ability.Commands.Update;
 using Application.Feature.AbilityFeatures.Ability.Dtos;
 using Application.Feature.AbilityFeatures.Ability.Queries.GetById;
 using Application.Feature.AbilityFeatures.Ability.Queries.GetListByActive;
@@ -17,11 +18,21 @@ public class MappingProfiles : Profile
 
         CreateMap<Domain.Abilities.Ability, CreateAbilityCommandResponse>().ReverseMap();
         CreateMap<Domain.Abilities.Ability, CreateAbilityDto>().ReverseMap();
+
+        CreateMap<Domain.Abilities.Ability, UpdateAbilityCommandResponse>().ReverseMap();
+        CreateMap<Domain.Abilities.Ability, UpdateAbilityDto>().ReverseMap();
+
         CreateMap<Domain.Abilities.Ability, ChangeStatusAbilityCommandResponse>().ReverseMap();
+
         CreateMap<Domain.Abilities.Ability, DeleteAbilityCommandResponse>().ReverseMap();
+
         CreateMap<Domain.Abilities.Ability, RemoveAbilityCommandResponse>().ReverseMap();
+        
         CreateMap<Domain.Abilities.Ability, GetByIdAbilityQueryResponse>().ReverseMap();
+        
         CreateMap<Domain.Abilities.Ability, GetListByActiveAbilityQueryResponse>().ReverseMap();
+        
         CreateMap<Domain.Abilities.Ability, GetListByInActiveAbilityQueryResponse>().ReverseMap();
     }
 }
+  

@@ -30,7 +30,7 @@ public class ChangeStatusAbilityCommandHandler : IRequestHandler<ChangeStatusAbi
         ability.Status = ability.Status == true ? false : true;
 
         // Update the 'UpdatedDate' property of the ability to the current UTC time.
-        ability.UpdatedDate = DateTime.UtcNow;
+        ability.UpdatedDate = DateTime.Now;
 
         // Update the ability entity in the database using the ability service.
         await _abilityService.Update(ability);
