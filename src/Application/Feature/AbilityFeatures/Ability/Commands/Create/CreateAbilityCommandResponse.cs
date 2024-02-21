@@ -1,18 +1,18 @@
-﻿namespace Application.Feature.AbilityFeatures.Ability.Commands.Create;
+﻿using MongoDB.Bson;
+
+namespace Application.Feature.AbilityFeatures.Ability.Commands.Create;
 
 public class CreateAbilityCommandResponse
 {
-    public Guid Id { get; set; }
-    public Guid HeroId { get; set; }
-
+    public ObjectId Id { get; set; }
+    public ObjectId HeroId { get; set; }
     public string Name { get; set; }
     public string Description { get; set; }
-    public string AbilityTypeId { get; set; }
-    public string TargetTypeId { get; set; }
-    public string DamageTypeId { get; set; }
-    public string AffectUnıtId { get; set; }
-    public string CastTimeTypeId { get; set; }
-
+    public ObjectId AbilityTypeId { get; set; }
+    public ObjectId TargetTypeId { get; set; }
+    public ObjectId DamageTypeId { get; set; }
+    public ObjectId AffectUnıtId { get; set; }
+    public ObjectId CastTimeTypeId { get; set; }
     public double? CastTimeTypeValue { get; set; }
     public double Cooldown { get; set; }
     public double Radius { get; set; }
@@ -26,7 +26,10 @@ public class CreateAbilityCommandResponse
     public bool IsCharging { get; set; }
     public bool IsHaveDisable { get; set; }
     public int? AbilityLevelUpgradeFrequency { get; set; }
-
+    public string Code { get; set; }
     public bool Status { get; set; }
     public bool IsDeleted { get; set; }
+    public DateTime CreatedDate { get; set; }
+    public DateTime UpdatedDate { get; set; }
+    public DateTime DeletedDate { get; set; }
 }

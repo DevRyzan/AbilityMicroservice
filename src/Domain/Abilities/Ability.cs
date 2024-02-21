@@ -4,9 +4,8 @@ using MongoDB.Bson.Serialization.Attributes;
 
 namespace Domain.Abilities;
 
-public class Ability : Entity<Guid>
+public class Ability : Entity<ObjectId>
 {
-    [BsonRepresentation(BsonType.ObjectId)]
     public string HeroId { get; set; }
     public string Name { get; set; }
     public string Description { get; set; }
@@ -21,7 +20,7 @@ public class Ability : Entity<Guid>
     public string DamageTypeId { get; set; }
 
     [BsonRepresentation(BsonType.ObjectId)]
-    public string AffectUnıtId { get; set; }
+    public string AffectUnitId { get; set; }
 
     [BsonRepresentation(BsonType.ObjectId)]
     public string CastTimeTypeId { get; set; }
@@ -39,5 +38,10 @@ public class Ability : Entity<Guid>
     public bool IsHaveDisable { get; set; }
     public int? AbilityLevelUpgradeFrequency { get; set; }
     public int Cost { get; set; }
+
+    public AbilityType AbilityType { get; set; }
+    public AbilityTargetType AbilityTargetType { get; set; }
+    public AbilityDamageType AbilityDamageType { get; set; }
+    public AbilityAffectUnit AbilityAffectUnit { get; set; }
 
 }

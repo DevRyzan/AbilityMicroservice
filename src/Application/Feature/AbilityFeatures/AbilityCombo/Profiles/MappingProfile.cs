@@ -22,7 +22,9 @@ public class MappingProfile : Profile
         
         CreateMap<Domain.Abilities.AbilityCombo, DeleteAbilityComboCommandResponse>().ReverseMap();
         CreateMap<Domain.Abilities.AbilityCombo, RemoveAbilityComboCommandResponse>().ReverseMap();
-        CreateMap<Domain.Abilities.AbilityCombo, UpdateAbilityComboCommandResponse>().ReverseMap();
+
+        CreateMap<Domain.Abilities.AbilityCombo, UpdateAbilityComboCommandResponse>();
+        CreateMap<UpdateAbilityComboDto, Domain.Abilities.AbilityCombo>();
 
         CreateMap<Domain.Abilities.AbilityCombo, GetByIdAbilityComboQueryResponse>().ReverseMap();
         CreateMap<Domain.Abilities.AbilityCombo, GetListByActiveAbilityComboQueryResponse>().ReverseMap();

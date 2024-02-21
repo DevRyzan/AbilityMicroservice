@@ -22,6 +22,8 @@ public class MappingProfile : Profile
         CreateMap<Domain.Abilities.AbilityLevel, RemoveAbilityLevelCommandResponse>().ReverseMap();
         CreateMap<Domain.Abilities.AbilityLevel, UpdateAbilityLevelCommandResponse>().ReverseMap();
 
+        CreateMap<UpdateAbilityLevelDto, Domain.Abilities.AbilityLevel>();
+
         CreateMap<Domain.Abilities.AbilityLevel, GetByIdAbilityLevelCommandResponse>().ReverseMap();
         CreateMap<Domain.Abilities.AbilityLevel, GetListByActiveAbilityLevelCommandResponse>().ReverseMap();
         CreateMap<Domain.Abilities.AbilityLevel, GetListByInActiveAbilityLevelCommandResponse>().ReverseMap();

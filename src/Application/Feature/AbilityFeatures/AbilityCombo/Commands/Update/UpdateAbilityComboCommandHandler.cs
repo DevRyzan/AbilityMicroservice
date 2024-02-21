@@ -27,13 +27,7 @@ public class UpdateAbilityComboCommandHandler : IRequestHandler<UpdateAbilityCom
         // Retrieve the AbilityCombo using the provided ID.
         Domain.Abilities.AbilityCombo abilityCombo = await _abilityComboService.GetById(request.UpdateAbilityComboDto.Id);
 
-        // Update the properties of the existing Ability with the new data from the request
-        var config = new MapperConfiguration(cfg => {
-            cfg.CreateMap<UpdateAbilityComboDto, Domain.Abilities.AbilityCombo>();
-        });
-
-        var mapper = config.CreateMapper();
-        mapper.Map(request.UpdateAbilityComboDto, abilityCombo);
+        _mapper.Map(request.UpdateAbilityComboDto, abilityCombo);
 
         abilityCombo.UpdatedDate = DateTime.Now;
         // Update the AbilityCombo in the database.
