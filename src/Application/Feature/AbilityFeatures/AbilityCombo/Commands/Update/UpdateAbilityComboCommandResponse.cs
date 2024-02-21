@@ -3,7 +3,7 @@ namespace Application.Feature.AbilityFeatures.AbilityCombo.Commands.Update;
 
 public class UpdateAbilityComboCommandResponse
 {
-    public Guid Id { get; set; }
+    public string Id { get; set; }
     public string AbilityId { get; set; }
     public string Name { get; set; }
     public string Description { get; set; }

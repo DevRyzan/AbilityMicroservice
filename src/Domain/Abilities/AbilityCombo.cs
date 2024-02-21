@@ -6,9 +6,9 @@ using MongoDB.Bson;
 
 namespace Domain.Abilities;
 
-public class AbilityCombo : Entity<Guid>
+public class AbilityCombo : Entity<string>
 {
-    [BsonRepresentation(BsonType.String)]
+    [BsonRepresentation(BsonType.ObjectId)]
     public string AbilityId { get; set; }
     public string Name { get; set; }
     public string Description { get; set; }

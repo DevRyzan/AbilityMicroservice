@@ -4,7 +4,7 @@ namespace Application.Feature.AbilityFeatures.AbilityLevel.Commands.ChangeStatus
 
 public class ChangeStatusAbilityLevelCommandResponse
 {
-    public Guid Id { get; set; }
+    public string Id { get; set; }
     public string AbilityId { get; set; }
     public int LevelNumber { get; set; }
     public int Cost { get; set; }

@@ -4,15 +4,15 @@ namespace Application.Feature.AbilityFeatures.Ability.Commands.Create;
 
 public class CreateAbilityCommandResponse
 {
-    public ObjectId Id { get; set; }
-    public ObjectId HeroId { get; set; }
+    public string Id { get; set; }
+    public string HeroId { get; set; }
     public string Name { get; set; }
     public string Description { get; set; }
-    public ObjectId AbilityTypeId { get; set; }
-    public ObjectId TargetTypeId { get; set; }
-    public ObjectId DamageTypeId { get; set; }
-    public ObjectId AffectUnıtId { get; set; }
-    public ObjectId CastTimeTypeId { get; set; }
+    public string AbilityTypeId { get; set; }
+    public string TargetTypeId { get; set; }
+    public string DamageTypeId { get; set; }
+    public string AffectUnıtId { get; set; }
+    public string CastTimeTypeId { get; set; }
     public double? CastTimeTypeValue { get; set; }
     public double Cooldown { get; set; }
     public double Radius { get; set; }

@@ -1,6 +1,8 @@
-﻿namespace Application.Feature.AbilityFeatures.Ability.Dtos;
+﻿using MongoDB.Bson;
+
+namespace Application.Feature.AbilityFeatures.Ability.Dtos;
 
 public class DeleteAbilityDto
 {
-    public Guid Id { get; set; }
+    public string Id { get; set; }
 }

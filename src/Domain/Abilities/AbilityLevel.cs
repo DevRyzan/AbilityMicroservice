@@ -5,7 +5,7 @@ using MongoDB.Bson;
 
 namespace Domain.Abilities;
 
-public class AbilityLevel : Entity<Guid>
+public class AbilityLevel : Entity<string>
 {
     [BsonRepresentation(BsonType.ObjectId)]
     public string AbilityId { get; set; }

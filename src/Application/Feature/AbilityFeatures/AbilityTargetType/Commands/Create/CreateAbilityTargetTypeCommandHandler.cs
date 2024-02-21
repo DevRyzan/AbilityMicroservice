@@ -3,6 +3,7 @@ using Application.Service.AbilityServices.AbilityTargetTypeService;
 using AutoMapper;
 using Core.Application.Generator;
 using MediatR;
+using MongoDB.Bson;
 
 namespace Application.Feature.AbilityFeatures.AbilityTargetType.Commands.Create;
 
@@ -21,10 +22,6 @@ public class CreateAbilityTargetTypeCommandHandler : IRequestHandler<CreateAbili
 
     public async Task<CreateAbilityTargetTypeCommandResponse> Handle(CreateAbilityTargetTypeCommandRequest request, CancellationToken cancellationToken)
     {
-        await _abilityTargetTypeBusinessRules.AbilityShouldBeExist(abilityId: request.CreateAbilityTargetTypeDto.AbilityId);
-
-        // Check if the specified ability ID is available for creating an AbilityTargetType, applying business rules
-        await _abilityTargetTypeBusinessRules.AbilityShouldBeAvailableForCreate(abilityId: request.CreateAbilityTargetTypeDto.AbilityId);
 
         // Map the data from the request DTO to an instance of AbilityTargetType
         Domain.Abilities.AbilityTargetType abilityTargetType = _mapper.Map<Domain.Abilities.AbilityTargetType>(request.CreateAbilityTargetTypeDto);
@@ -33,6 +30,7 @@ public class CreateAbilityTargetTypeCommandHandler : IRequestHandler<CreateAbili
         RandomCodeGenerator code = new RandomCodeGenerator();
 
         // Set properties for the AbilityTargetType
+        abilityTargetType.Id = ObjectId.GenerateNewId().ToString();
         abilityTargetType.Status = true;
         abilityTargetType.IsDeleted = false;
         abilityTargetType.Code = code.GenerateUniqueCode(); // Generate a unique code

@@ -22,7 +22,7 @@ public class AbilityLevelManager : IAbilityLevelService
         return await _abilityLevelRepository.UpdateAsync(abilityLevel.Id,abilityLevel);
     }
 
-    public async Task<AbilityLevel> GetById(Guid id)
+    public async Task<AbilityLevel> GetById(string id)
     {
         return await _abilityLevelRepository.GetAsync(x => x.Id.Equals(id));
     }

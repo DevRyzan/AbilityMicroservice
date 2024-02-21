@@ -2,5 +2,5 @@
 
 public class DeleteAbilityComboDto
 {
-    public Guid Id { get; set; }
+    public string Id { get; set; }
 }

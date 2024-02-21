@@ -1,8 +1,10 @@
-﻿namespace Application.Feature.AbilityFeatures.Ability.Dtos;
+﻿using MongoDB.Bson;
+
+namespace Application.Feature.AbilityFeatures.Ability.Dtos;
 
 public class UpdateAbilityDto
 {
-    public Guid Id { get; set; }
+    public string Id { get; set; }
     public string HeroId { get; set; }
     public string Name { get; set; }
     public string Description { get; set; }

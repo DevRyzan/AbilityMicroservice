@@ -1,5 +1,6 @@
 ﻿using Application.Service.Repositories;
 using Domain.Abilities;
+using MongoDB.Bson;
 
 namespace Application.Service.AbilityServices.AbilityService;
 
@@ -27,12 +28,12 @@ public class AbilityManager : IAbilityService
         return await _abilityRepository.GetList(x => x.Status.Equals(true), index: index, size: size);
     }
 
-    public async Task<Ability> GetByHeroId(Guid heroId)
+    public async Task<Ability> GetByHeroId(string heroId)
     {
         return await _abilityRepository.GetAsync(x => x.HeroId.Equals(heroId));
     }
 
-    public async Task<Ability> GetById(Guid id)
+    public async Task<Ability> GetById(string id)
     {
         return await _abilityRepository.GetAsync(x => x.Id.Equals(id));
     }

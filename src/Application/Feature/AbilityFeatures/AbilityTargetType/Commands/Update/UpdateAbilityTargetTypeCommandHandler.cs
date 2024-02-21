@@ -20,17 +20,18 @@ public class UpdateAbilityTargetTypeCommandHandler : IRequestHandler<UpdateAbili
 
     public async Task<UpdateAbilityTargetTypeCommandResponse> Handle(UpdateAbilityTargetTypeCommandRequest request, CancellationToken cancellationToken)
     {
-        await _abilityTargetTypeBusinessRules.IdShouldBeExist(id: request.UpdateAbilityTargetTypeDto.Id);      
+        await _abilityTargetTypeBusinessRules.IdShouldBeExist(id: request.UpdateAbilityTargetTypeDto.Id);
 
-        Domain.Abilities.AbilityTargetType abilityTargetType = await _abilityTargetTypeService.GetById(id: request.UpdateAbilityTargetTypeDto.Id);      
-        
+        Domain.Abilities.AbilityTargetType abilityTargetType = await _abilityTargetTypeService.GetById(id: request.UpdateAbilityTargetTypeDto.Id);
+
         abilityTargetType.Name = request.UpdateAbilityTargetTypeDto.Name;
         abilityTargetType.Description = request.UpdateAbilityTargetTypeDto.Description;
- 
-        await _abilityTargetTypeService.Update(abilityTargetType);        
+        abilityTargetType.UpdatedDate = DateTime.Now;
 
-        UpdateAbilityTargetTypeCommandResponse mappedResponse = _mapper.Map<UpdateAbilityTargetTypeCommandResponse>(abilityTargetType);      
-        
+        await _abilityTargetTypeService.Update(abilityTargetType);
+
+        UpdateAbilityTargetTypeCommandResponse mappedResponse = _mapper.Map<UpdateAbilityTargetTypeCommandResponse>(abilityTargetType);
+
         return mappedResponse;
 
     }

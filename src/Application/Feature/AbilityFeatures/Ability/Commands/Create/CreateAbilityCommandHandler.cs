@@ -4,7 +4,7 @@ using Application.Service.AbilityServices.AbilityService;
 using AutoMapper;
 using Core.Application.Generator;
 using MediatR;
-
+using MongoDB.Bson;
 
 namespace Application.Feature.AbilityFeatures.Ability.Commands.Create;
 
@@ -30,6 +30,7 @@ public class CreateAbilityCommandHandler : IRequestHandler<CreateAbilityCommandR
 
         // Map data from the incoming request DTO to a new Ability object
         Domain.Abilities.Ability ability = _mapper.Map<Domain.Abilities.Ability>(request.CreateAbilityDto);
+        ability.Id = ObjectId.GenerateNewId().ToString();
 
         // Generate a unique code using the code generator
         ability.Code = codeGenerator.GenerateUniqueCode();

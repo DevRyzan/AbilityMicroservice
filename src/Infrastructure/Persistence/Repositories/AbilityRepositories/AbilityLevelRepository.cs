@@ -6,7 +6,7 @@ using Microsoft.Extensions.Options;
 
 namespace Persistence.Repositories.AbilityRepositories;
 
-public class AbilityLevelRepository : MongoDbRepositoryBase<AbilityLevel, Guid>, IAbilityLevelRepository
+public class AbilityLevelRepository : MongoDbRepositoryBase<AbilityLevel, string>, IAbilityLevelRepository
 {
     public AbilityLevelRepository(IOptions<MongoDbSettings> options) : base(options)
     {

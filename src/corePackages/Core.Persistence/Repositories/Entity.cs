@@ -6,7 +6,6 @@ namespace Core.Persistence.Repositories;
 public class Entity<TIdType>
 {
     [BsonId]
-    [BsonRepresentation(BsonType.String)]
     public TIdType Id { get; set; }
     public string? Code { get; set; }
     public bool Status { get; set; }

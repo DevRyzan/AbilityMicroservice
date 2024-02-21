@@ -4,7 +4,7 @@ using MongoDB.Bson.Serialization.Attributes;
 
 namespace Domain.Abilities;
 
-public class Ability : Entity<ObjectId>
+public class Ability : Entity<string>
 {
     public string HeroId { get; set; }
     public string Name { get; set; }
@@ -39,9 +39,13 @@ public class Ability : Entity<ObjectId>
     public int? AbilityLevelUpgradeFrequency { get; set; }
     public int Cost { get; set; }
 
+    [BsonIgnore]
     public AbilityType AbilityType { get; set; }
+    [BsonIgnore]
     public AbilityTargetType AbilityTargetType { get; set; }
+    [BsonIgnore]
     public AbilityDamageType AbilityDamageType { get; set; }
+    [BsonIgnore]
     public AbilityAffectUnit AbilityAffectUnit { get; set; }
 
 }

@@ -4,7 +4,7 @@ namespace Application.Feature.AbilityFeatures.AbilityCombo.Queries.GetListByInAc
 
 public class GetListByInActiveAbilityComboQueryResponse
 {
-    public Guid Id { get; set; }
+    public string Id { get; set; }
     public string AbilityId { get; set; }
     public string Name { get; set; }
     public string Description { get; set; }

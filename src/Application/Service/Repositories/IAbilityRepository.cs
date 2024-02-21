@@ -5,6 +5,6 @@ using MongoDB.Bson;
 
 namespace Application.Service.Repositories;
 
-public interface IAbilityRepository : IReadRepository<Ability, ObjectId>, IWriteRepository<Ability, ObjectId>
+public interface IAbilityRepository : IReadRepository<Ability, string>, IWriteRepository<Ability, string>
 {
 }

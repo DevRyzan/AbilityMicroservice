@@ -4,6 +4,6 @@ using Domain.Abilities;
 
 namespace Application.Service.Repositories;
 
-public interface IAbilityLevelRepository : IReadRepository<AbilityLevel, Guid>, IWriteRepository<AbilityLevel, Guid>
+public interface IAbilityLevelRepository : IReadRepository<AbilityLevel, string>, IWriteRepository<AbilityLevel, string>
 {
 }
