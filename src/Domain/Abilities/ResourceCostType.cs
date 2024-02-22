@@ -2,7 +2,7 @@
 
 namespace Domain.Abilities;
 
-public class ResourceCostType : Entity<Guid>
+public class ResourceCostType : Entity<string>
 {
     public string Name { get; set; }
 

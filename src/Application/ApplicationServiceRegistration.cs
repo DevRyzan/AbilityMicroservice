@@ -2,6 +2,7 @@
 using Application.Service.AbilityServices.AbilityLevelService;
 using Application.Service.AbilityServices.AbilityService;
 using Application.Service.AbilityServices.AbilityTargetTypeService;
+using Application.Service.AbilityServices.ResourceCostTypeService;
 using Core.Application;
 using Core.Application.Caching;
 using Core.Application.Generator;
@@ -48,6 +49,7 @@ public static class ApplicationServiceRegistration
         services.AddScoped<IAbilityComboService, AbilityComboManager>();
         services.AddScoped<IAbilityLevelService, AbilityLevelManager>();
         services.AddScoped<IAbilityTargetTypeService, AbilityTargetTypeManager>();
+        services.AddScoped<IResourceCostTypeService, ResourceCostTypeManager>();
 
 
 
