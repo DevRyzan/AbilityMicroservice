@@ -9,7 +9,7 @@ public interface IAbilityTargetTypeService
     Task<AbilityTargetType> Delete(AbilityTargetType abilityTargetType);
     Task<AbilityTargetType> Remove(AbilityTargetType abilityTargetType);
 
-    Task<AbilityTargetType> GetById(Guid id);
+    Task<AbilityTargetType> GetById(string id);
     Task<List<AbilityTargetType>> GetActiveList(int index = 0, int size = 10);
     Task<List<AbilityTargetType>> GetInActiveList(int index = 0, int size = 10);
 }

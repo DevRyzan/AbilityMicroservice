@@ -21,12 +21,12 @@ public class AbilityComboBusinessRules : BaseBusinessRules
         if (index < 0 || size <= 0) throw new BusinessException(AbilityComboMessages.PageRequestShouldBeValid);
     }
 
-    public async Task IdShouldBeExist(Guid id)
+    public async Task IdShouldBeExist(string id)
     {
         Domain.Abilities.AbilityCombo abilityCombo = await _abilityComboRepository.GetAsync(x => x.Id.Equals(id));
         if (abilityCombo == null) throw new BusinessException(AbilityComboMessages.IdShouldBeExist);
     }
-    public async Task RemoveCondition(Guid id)
+    public async Task RemoveCondition(string id)
     {
         Domain.Abilities.AbilityCombo abilityCombo = await _abilityComboRepository.GetAsync(x => x.Id.Equals(id));
         if (abilityCombo.Status == true || abilityCombo.IsDeleted == false) throw new BusinessException(AbilityComboMessages.RemoveCondition);

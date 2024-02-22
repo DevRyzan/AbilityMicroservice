@@ -22,7 +22,7 @@ public class AbilityComboManager : IAbilityComboService
         return await _abilityComboRepository.UpdateAsync(abilityCombo.Id,abilityCombo);
     }
 
-    public async Task<AbilityCombo> GetById(Guid id)
+    public async Task<AbilityCombo> GetById(string id)
     {
         return await _abilityComboRepository.GetAsync(x => x.Id.Equals(id));
     }

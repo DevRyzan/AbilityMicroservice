@@ -4,6 +4,6 @@ using Domain.Abilities;
 
 namespace Application.Service.Repositories;
 
-public interface IAbilityComboRepository :  IReadRepository<AbilityCombo, Guid>, IWriteRepository<AbilityCombo, Guid>
+public interface IAbilityComboRepository :  IReadRepository<AbilityCombo, string>, IWriteRepository<AbilityCombo, string>
 {
 }

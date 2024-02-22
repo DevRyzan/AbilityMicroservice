@@ -1,5 +1,4 @@
-﻿using Core.Persistence.Paging;
-using Core.Persistence.Repositories.ReadRepositories;
+﻿using Core.Persistence.Repositories.ReadRepositories;
 using Core.Persistence.Repositories.Settings;
 using Core.Persistence.Repositories.WriteRepositories;
 using Microsoft.Extensions.Options;

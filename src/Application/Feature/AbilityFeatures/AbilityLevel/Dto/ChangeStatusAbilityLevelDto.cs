@@ -4,5 +4,5 @@ namespace Application.Feature.AbilityFeatures.AbilityLevel.Dto;
 
 public class ChangeStatusAbilityLevelDto
 {
-    public Guid Id { get; set; }
+    public string Id { get; set; }
 }

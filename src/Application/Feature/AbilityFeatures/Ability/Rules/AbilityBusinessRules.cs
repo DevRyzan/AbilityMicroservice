@@ -2,7 +2,7 @@
 using Application.Service.Repositories;
 using Core.Application;
 using Core.CrossCuttingConcerns.Exceptions;
-
+using MongoDB.Bson;
 
 namespace Application.Feature.AbilityFeatures.Ability.Rules;
 
@@ -15,7 +15,7 @@ public class AbilityBusinessRules: BaseBusinessRules
         _abilityRepository = abilityRepository;
     }
 
-    public async Task IdShouldBeExist(Guid id)
+    public async Task IdShouldBeExist(string id)
     {
         var ability = await _abilityRepository.GetAsync(x => x.Id.Equals(id));
         if (ability == null) throw new BusinessException(AbilityMessages.AbilityIdDontExist);
@@ -25,7 +25,7 @@ public class AbilityBusinessRules: BaseBusinessRules
     {
         if (index < 0 || size <= 0) throw new BusinessException(AbilityMessages.PageRequestShouldBeValid);
     }
-    public async Task RemoveCondition(Guid id)
+    public async Task RemoveCondition(string id)
     {
         Domain.Abilities.Ability ability = await _abilityRepository.GetAsync(x => x.Id.Equals(id));
         if (ability.Status == true || ability.IsDeleted == false) throw new BusinessException(AbilityMessages.RemoveCondition);

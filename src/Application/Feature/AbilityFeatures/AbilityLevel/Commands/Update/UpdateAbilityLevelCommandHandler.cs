@@ -20,28 +20,22 @@ public class UpdateAbilityLevelCommandHandler : IRequestHandler<UpdateAbilityLev
 
     public async Task<UpdateAbilityLevelCommandResponse> Handle(UpdateAbilityLevelCommandRequest request, CancellationToken cancellationToken)
     {
-        //// Check if the specified ID exists in the business rules for AbilityLevel update.
-        //await _abilityLevelBusinessRules.IdShouldBeExist(id: request.UpdateAbilityLevelDto.Id);
+       // Check if the specified ID exists in the business rules for AbilityLevel update.
+        await _abilityLevelBusinessRules.IdShouldBeExist(id: request.UpdateAbilityLevelDto.Id);
 
-        //// Retrieve the AbilityLevel using the provided ID.
-        //Domain.Abilities.AbilityLevel abilityLevel = await _abilityLevelService.GetById(id: request.UpdateAbilityLevelDto.Id);
+        // Retrieve the AbilityLevel using the provided ID.
+        Domain.Abilities.AbilityLevel abilityLevel = await _abilityLevelService.GetById(id: request.UpdateAbilityLevelDto.Id);
 
-        //// Update the properties of the AbilityLevel with values from the request's UpdateAbilityLevelDto.
-        //abilityLevel.LevelNumber = request.UpdateAbilityLevelDto.LevelNumber;
-        //abilityLevel.Duration = request.UpdateAbilityLevelDto.Duration;
-        //abilityLevel.Range = request.UpdateAbilityLevelDto.Range;
-        //abilityLevel.EnergyCost = request.UpdateAbilityLevelDto.EnergyCost;
-        //abilityLevel.IconUrl = request.UpdateAbilityLevelDto.IconUrl;
-        //abilityLevel.UpdatedDate = DateTime.Now;
+        _mapper.Map(request.UpdateAbilityLevelDto, abilityLevel);
 
-        //// Update the AbilityLevel in the database.
-        //await _abilityLevelService.Update(abilityLevel);
+        // Update the AbilityLevel in the database.
+        await _abilityLevelService.Update(abilityLevel);
 
-        //// Map the updated AbilityLevel to a response object.
-        //UpdateAbilityLevelCommandResponse mappedResponse = _mapper.Map<UpdateAbilityLevelCommandResponse>(abilityLevel);
+        // Map the updated AbilityLevel to a response object.
+        UpdateAbilityLevelCommandResponse mappedResponse = _mapper.Map<UpdateAbilityLevelCommandResponse>(abilityLevel);
 
-        //// Return the mapped response.
-        //return mappedResponse;
+        // Return the mapped response.
+        return mappedResponse;
 
         throw new NotImplementedException();
 

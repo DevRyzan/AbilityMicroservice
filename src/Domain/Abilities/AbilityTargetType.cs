@@ -2,7 +2,7 @@
 
 namespace Domain.Abilities;
 
-public class AbilityTargetType : Entity<Guid>
+public class AbilityTargetType : Entity<string>
 {
     public string Name { get; set; }
     public string Description { get; set; }

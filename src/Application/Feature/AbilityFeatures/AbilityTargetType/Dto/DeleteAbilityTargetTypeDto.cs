@@ -2,5 +2,5 @@
 
 public class DeleteAbilityTargetTypeDto
 {
-    public Guid Id { get; set; }
+    public string Id { get; set; }
 }

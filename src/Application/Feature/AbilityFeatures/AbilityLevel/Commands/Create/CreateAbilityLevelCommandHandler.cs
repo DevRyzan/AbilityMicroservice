@@ -2,6 +2,7 @@
 using AutoMapper;
 using Core.Application.Generator;
 using MediatR;
+using MongoDB.Bson;
 
 namespace Application.Feature.AbilityFeatures.AbilityLevel.Commands.Create;
 
@@ -24,6 +25,7 @@ public class CreateAbilityLevelCommandHandler : IRequestHandler<CreateAbilityLev
         RandomCodeGenerator code = new RandomCodeGenerator();
 
         // Set default values for the new AbilityLevel.
+        abilityLevel.Id = ObjectId.GenerateNewId().ToString();
         abilityLevel.Status = true;
         abilityLevel.IsDeleted = false;
         abilityLevel.CreatedDate = DateTime.Now;

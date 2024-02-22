@@ -27,7 +27,7 @@ public class AbilityTargetTypeManager : IAbilityTargetTypeService
         return await _abilityTargetTypeRepository.GetList(x => x.Status.Equals(true),index:index,size:size);
     }
 
-    public async Task<AbilityTargetType> GetById(Guid id)
+    public async Task<AbilityTargetType> GetById(string id)
     {
         return await _abilityTargetTypeRepository.GetAsync(x => x.Id.Equals(id));
     }

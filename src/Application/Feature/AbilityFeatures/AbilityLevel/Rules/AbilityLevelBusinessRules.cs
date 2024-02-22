@@ -20,12 +20,12 @@ public class AbilityLevelBusinessRules : BaseBusinessRules
     {
         if (index < 0 || size <= 0) throw new BusinessException(AbilityLevelMessages.PageRequestShouldBeValid);
     }
-    public async Task IdShouldBeExist(Guid id)
+    public async Task IdShouldBeExist(string id)
     {
         Domain.Abilities.AbilityLevel abilityCategory = await _abilityLevelRepository.GetAsync(x => x.Id.Equals(id));
         if (abilityCategory == null) throw new BusinessException(AbilityLevelMessages.IdShouldBeExist);
     }
-    public async Task RemoveCondition(Guid id)
+    public async Task RemoveCondition(string id)
     {
         Domain.Abilities.AbilityLevel abilityLevel = await _abilityLevelRepository.GetAsync(x => x.Id.Equals(id));
         if (abilityLevel.Status == true || abilityLevel.IsDeleted == false) throw new BusinessException(AbilityLevelMessages.RemoveCondition);

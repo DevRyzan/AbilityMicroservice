@@ -2,11 +2,8 @@
 
 public class UpdateAbilityTargetTypeDto
 {
-    public Guid Id { get; set; }
-    public Guid AbilityId { get; set; }
-    public bool IsSingleTarget { get; set; }
-    public bool IsAreaTarget { get; set; }
-    public double Radius { get; set; }
-    public string IconUrl { get; set; }
-}
+    public string Id { get; set; }
+    public string Name { get; set; }
+    public string Description { get; set; }
 
+}

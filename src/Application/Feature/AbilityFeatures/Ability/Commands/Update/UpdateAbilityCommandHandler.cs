@@ -1,5 +1,4 @@
-﻿using Application.Feature.AbilityFeatures.Ability.Dtos;
-using Application.Feature.AbilityFeatures.Ability.Rules;
+﻿using Application.Feature.AbilityFeatures.Ability.Rules;
 using Application.Service.AbilityServices.AbilityService;
 using AutoMapper;
 using MediatR;
@@ -27,17 +26,7 @@ public class UpdateAbilityCommandHandler : IRequestHandler<UpdateAbilityCommandR
         // Fetch the existing Ability from the service based on the provided ID
         Domain.Abilities.Ability ability = await _abilityService.GetById(request.UpdateAbilityDto.Id);
 
-        // Update the properties of the existing Ability with the new data from the request
-        var config = new MapperConfiguration(cfg => {
-            cfg.CreateMap<UpdateAbilityDto, Domain.Abilities.Ability>();
-        });
-
-        var mapper = config.CreateMapper();
-        mapper.Map(request.UpdateAbilityDto, ability);
-
-        // Update the 'UpdatedDate' property with the current date and time
-        ability.UpdatedDate = DateTime.Now;
-
+        _mapper.Map(request.UpdateAbilityDto, ability);
         // Perform the update operation in the _abilityService
         await _abilityService.Update(ability);
 

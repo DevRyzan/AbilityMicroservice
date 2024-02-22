@@ -3,6 +3,7 @@ using Application.Service.AbilityServices.AbilityComboService;
 using AutoMapper;
 using Core.Application.Generator;
 using MediatR;
+using MongoDB.Bson;
 
 namespace Application.Feature.AbilityFeatures.AbilityCombo.Commands.Create;
 
@@ -25,12 +26,13 @@ public class CreateAbilityComboCommandHandler : IRequestHandler<CreateAbilityCom
 
         Domain.Abilities.AbilityCombo abilityCombo = _mapper.Map<Domain.Abilities.AbilityCombo>(request.CreateAbilityComboDto);
 
+        abilityCombo.Id = ObjectId.GenerateNewId().ToString();
         abilityCombo.Status = true;
         abilityCombo.IsDeleted = false;
         abilityCombo.Code = code.GenerateUniqueCode();
         abilityCombo.CreatedDate = DateTime.Now;
 
-        await _abilityComboService.Create(abilityCombo);
+        var t = await _abilityComboService.Create(abilityCombo);
 
         CreateAbilityComboCommandResponse mappedResponse = _mapper.Map<CreateAbilityComboCommandResponse>(abilityCombo);
 

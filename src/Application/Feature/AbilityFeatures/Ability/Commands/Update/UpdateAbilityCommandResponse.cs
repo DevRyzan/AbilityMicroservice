@@ -2,9 +2,8 @@
 
 public class UpdateAbilityCommandResponse
 {
-    public Guid Id { get; set; }
-    public Guid HeroId { get; set; }
-
+    public string Id { get; set; }
+    public string HeroId { get; set; }
     public string Name { get; set; }
     public string Description { get; set; }
     public string AbilityTypeId { get; set; }
@@ -12,7 +11,6 @@ public class UpdateAbilityCommandResponse
     public string DamageTypeId { get; set; }
     public string AffectUnıtId { get; set; }
     public string CastTimeTypeId { get; set; }
-
     public double? CastTimeTypeValue { get; set; }
     public double Cooldown { get; set; }
     public double Radius { get; set; }
@@ -26,8 +24,11 @@ public class UpdateAbilityCommandResponse
     public bool IsCharging { get; set; }
     public bool IsHaveDisable { get; set; }
     public int? AbilityLevelUpgradeFrequency { get; set; }
-
+    public string Code { get; set; }
     public bool Status { get; set; }
     public bool IsDeleted { get; set; }
+    public DateTime CreatedDate { get; set; }
+    public DateTime UpdatedDate { get; set; }
+    public DateTime DeletedDate { get; set; }
 
 }
