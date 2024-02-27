@@ -25,7 +25,7 @@ public class AbilityBusinessRules: BaseBusinessRules
     {
         if (index < 0 || size <= 0) throw new BusinessException(AbilityMessages.PageRequestShouldBeValid);
     }
-    public async Task RemoveCondition(string id)
+    public virtual async Task RemoveCondition(string id)
     {
         Domain.Abilities.Ability ability = await _abilityRepository.GetAsync(x => x.Id.Equals(id));
         if (ability.Status == true || ability.IsDeleted == false) throw new BusinessException(AbilityMessages.RemoveCondition);
