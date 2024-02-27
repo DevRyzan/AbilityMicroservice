@@ -36,7 +36,7 @@ public class ChangeStatusAbilityCommandHandler : IRequestHandler<ChangeStatusAbi
         await _abilityService.Update(ability);
 
         // Return a new object containing the updated ability ID and status.
-        ChangeStatusAbilityCommandResponse mappedResponse = _mapper.Map<ChangeStatusAbilityCommandResponse>(ability);
+        ChangeStatusAbilityCommandResponse mappedResponse = _mapper.Map<ChangeStatusAbilityCommandResponse>(ability); 
 
         return mappedResponse;
     }

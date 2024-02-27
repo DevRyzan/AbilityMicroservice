@@ -6,23 +6,24 @@ namespace Domain.Abilities;
 
 public class Ability : Entity<string>
 {
+    [BsonRepresentation(BsonType.ObjectId)]
     public string HeroId { get; set; }
     public string Name { get; set; }
     public string Description { get; set; }
 
-    [BsonRepresentation(BsonType.ObjectId)]
+    [BsonRepresentation(BsonType.String)]
     public string AbilityTypeId { get; set; }
 
-    [BsonRepresentation(BsonType.ObjectId)]
+    [BsonRepresentation(BsonType.String)]
     public string TargetTypeId { get; set; }
 
-    [BsonRepresentation(BsonType.ObjectId)]
+    [BsonRepresentation(BsonType.String)]
     public string DamageTypeId { get; set; }
 
     [BsonRepresentation(BsonType.ObjectId)]
-    public string AffectUnitId { get; set; }
+    public string AffectUnıtId { get; set; }
 
-    [BsonRepresentation(BsonType.ObjectId)]
+    [BsonRepresentation(BsonType.String)]
     public string CastTimeTypeId { get; set; }
 
     public double? CastTimeTypeValue { get; set; }
