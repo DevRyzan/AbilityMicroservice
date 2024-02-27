@@ -15,7 +15,7 @@ public class AbilityBusinessRules: BaseBusinessRules
         _abilityRepository = abilityRepository;
     }
 
-    public async Task IdShouldBeExist(string id)
+    public virtual async Task IdShouldBeExist(string id)
     {
         var ability = await _abilityRepository.GetAsync(x => x.Id.Equals(id));
         if (ability == null) throw new BusinessException(AbilityMessages.AbilityIdDontExist);
