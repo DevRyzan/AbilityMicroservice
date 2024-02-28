@@ -15,13 +15,18 @@ public class AbilityBusinessRules: BaseBusinessRules
         _abilityRepository = abilityRepository;
     }
 
+    public AbilityBusinessRules()
+    {
+        
+    }
+
     public virtual async Task IdShouldBeExist(string id)
     {
         var ability = await _abilityRepository.GetAsync(x => x.Id.Equals(id));
         if (ability == null) throw new BusinessException(AbilityMessages.AbilityIdDontExist);
     }
 
-    public async Task PageRequestShouldBeValid(int index, int size)
+    public virtual async Task PageRequestShouldBeValid(int index, int size)
     {
         if (index < 0 || size <= 0) throw new BusinessException(AbilityMessages.PageRequestShouldBeValid);
     }

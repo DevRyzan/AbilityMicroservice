@@ -17,7 +17,7 @@ public class UpdateAbilityTest
 {
     #region UpdateAbility
     [Fact]
-    public async Task Should_Success_When_UpdateAbility()
+    public async Task Should_Success_When_Update_Ability()
     {
         // Arrange
         var abilityService = new Mock<IAbilityService>();

@@ -32,7 +32,8 @@ public class MappingProfiles : Profile
         CreateMap<Domain.Abilities.Ability, RemoveAbilityCommandResponse>().ReverseMap();
         
         CreateMap<Domain.Abilities.Ability, GetByIdAbilityQueryResponse>().ReverseMap();
-        
+        CreateMap<Domain.Abilities.Ability, GetByIdAbilityDto>().ReverseMap();
+
         CreateMap<Domain.Abilities.Ability, GetListByActiveAbilityQueryResponse>().ReverseMap();
         
         CreateMap<Domain.Abilities.Ability, GetListByInActiveAbilityQueryResponse>().ReverseMap();

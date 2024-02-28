@@ -16,7 +16,7 @@ public class RemoveAbilityTest
 {
     #region RemoveAbility
     [Fact]
-    public async Task Should_Success_When_DeleteAbility()
+    public async Task Should_Success_When_Delete_Ability()
     {
         // Arrange
         var abilityService = new Mock<IAbilityService>();
