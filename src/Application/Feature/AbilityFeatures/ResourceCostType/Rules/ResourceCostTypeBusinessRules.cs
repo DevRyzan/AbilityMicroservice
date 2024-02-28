@@ -7,6 +7,10 @@ namespace Application.Feature.AbilityFeatures.ResourceCostType.Rules;
 
 public class ResourceCostTypeBusinessRules : BaseBusinessRules
 {
+    public ResourceCostTypeBusinessRules()
+    {
+        
+    }
     private readonly IResourceCostTypeRepository _resourceCostTypeRepository;
 
     public ResourceCostTypeBusinessRules(IResourceCostTypeRepository resourceCostTypeRepository)
