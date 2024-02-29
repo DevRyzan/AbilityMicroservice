@@ -2,6 +2,8 @@
 
 namespace Application.Feature.AbilityFeatures.AbilityTypes.Dtos;
 
-internal class ChangeStatusAbilityTypeDto
+public class ChangeStatusAbilityTypeDto
 {
+    public string Id { get; set; }
+
 }

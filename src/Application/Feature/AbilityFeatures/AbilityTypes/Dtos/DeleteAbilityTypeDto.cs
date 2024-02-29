@@ -2,6 +2,8 @@
 
 namespace Application.Feature.AbilityFeatures.AbilityTypes.Dtos;
 
-internal class DeleteAbilityTypeDto
+public class DeleteAbilityTypeDto
 {
+    public string Id { get; set; }
+
 }

@@ -2,6 +2,8 @@
 
 namespace Application.Feature.AbilityFeatures.AbilityTypes.Dtos;
 
-internal class GetByIdAbilityTypeDto
+public class GetByIdAbilityTypeDto
 {
+    public string Id { get; set; }
+
 }
