@@ -37,7 +37,7 @@ public class CreateAbilityTest
         ability.AbilityTypeId = Guid.NewGuid().ToString();
         ability.TargetTypeId = Guid.NewGuid().ToString();
         ability.DamageTypeId = Guid.NewGuid().ToString();
-        ability.AffectUnıtId = Guid.NewGuid().ToString();
+        ability.AffectUnitId = Guid.NewGuid().ToString();
         ability.CastTimeTypeId = Guid.NewGuid().ToString();
 
         abilityService.Setup(s => s.Create(It.IsAny<Domain.Abilities.Ability>()))
