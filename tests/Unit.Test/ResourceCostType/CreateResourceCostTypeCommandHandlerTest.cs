@@ -4,7 +4,6 @@ using Application.Feature.AbilityFeatures.ResourceCostType.Rules;
 using Application.Service.AbilityServices.ResourceCostTypeService;
 using AutoMapper;
 using Moq;
-using System.Xml.Linq;
 using Xunit;
 
 namespace Unit.Test.ResourceCostType;
@@ -189,7 +188,6 @@ public class CreateResourceCostTypeCommandHandlerTest
 
 
     }
-
 
 
     [Theory]
