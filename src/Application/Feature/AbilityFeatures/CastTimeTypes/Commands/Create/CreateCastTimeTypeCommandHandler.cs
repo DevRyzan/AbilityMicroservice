@@ -24,19 +24,29 @@ public class CreateCastTimeTypeCommandHandler : IRequestHandler<CreateCastTimeTy
 
     public async Task<CreateCastTimeTypeCommandResponse> Handle(CreateCastTimeTypeCommandRequest request, CancellationToken cancellationToken)
     {
+        // Create a new instance of the RandomCodeGenerator for generating unique codes
         RandomCodeGenerator randomCodeGenerator = new();
 
+        // Map data from the incoming request DTO to a new CastTimeType object
         CastTimeType castTimeType = _mapper.Map<CastTimeType>(request.CreateCastTimeTypeDto);
-        castTimeType.Id = ObjectId.GenerateNewId().ToString();
-        castTimeType.Status = true;
-        castTimeType.IsDeleted = false;
-        castTimeType.Code = randomCodeGenerator.GenerateUniqueCode();
-        castTimeType.CreatedDate = DateTime.Now;
 
+        // Generate a new unique identifier for the CastTimeType
+        castTimeType.Id = ObjectId.GenerateNewId().ToString();
+
+        // Set default values for the new CastTimeType
+        castTimeType.Status = true;          // Assuming 'Status' is a boolean property
+        castTimeType.IsDeleted = false;      // Assuming 'IsDeleted' is a boolean property
+        castTimeType.Code = randomCodeGenerator.GenerateUniqueCode();
+        castTimeType.CreatedDate = DateTime.Now;  // Set the creation date to the current date and time
+
+        // Create the new CastTimeType by calling the _castTimeTypeService
         await _castTimeTypeService.Create(castTimeType);
 
+        // Map the created CastTimeType to the response DTO
         CreateCastTimeTypeCommandResponse mappedResponse = _mapper.Map<CreateCastTimeTypeCommandResponse>(castTimeType);
 
+        // Return the mapped response to the calling code
         return mappedResponse;
+
     }
 }

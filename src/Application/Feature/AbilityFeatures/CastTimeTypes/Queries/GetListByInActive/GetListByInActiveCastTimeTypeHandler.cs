@@ -22,11 +22,17 @@ public class GetListByInActiveCastTimeTypeHandler : IRequestHandler<GetListByInA
 
     public async Task<List<GetListByInActiveCastTimeTypeResponse>> Handle(GetListByInActiveCastTimeTypeRequest request, CancellationToken cancellationToken)
     {
+        // Ensure that the specified page request is valid before attempting to retrieve data
         await _castTimeTypeBusinessRules.PageRequestShouldBeValid(request.PageRequest.Page, request.PageRequest.PageSize);
 
+        // Retrieve a list of inactive CastTimeTypes based on the provided page and page size
         List<CastTimeType> listOfCastTimeTypes = await _castTimeTypeService.GetInActiveList(index: request.PageRequest.Page, size: request.PageRequest.PageSize);
 
+        // Map the list of inactive CastTimeTypes to the response DTO list
         List<GetListByInActiveCastTimeTypeResponse> mappedResponse = _mapper.Map<List<GetListByInActiveCastTimeTypeResponse>>(listOfCastTimeTypes);
+
+        // Return the mapped response list to the calling code
         return mappedResponse;
+
     }
 }

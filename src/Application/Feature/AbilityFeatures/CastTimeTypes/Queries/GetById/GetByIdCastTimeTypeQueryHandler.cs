@@ -22,11 +22,16 @@ public class GetByIdCastTimeTypeQueryHandler : IRequestHandler<GetByIdCastTimeTy
 
     public async Task<GetByIdCastTimeTypeQueryResponse> Handle(GetByIdCastTimeTypeQueryRequest request, CancellationToken cancellationToken)
     {
+        // Ensure that the specified CastTimeType ID exists before attempting to retrieve
         await _castTimeTypeBusinessRules.IdShouldBeExist(request.GetByIdCastTimeTypeDto.Id);
 
+        // Retrieve the CastTimeType with the specified ID using CastTimeTypeService
         CastTimeType castTimeType = await _castTimeTypeService.GetById(request.GetByIdCastTimeTypeDto.Id);
 
+        // Map the retrieved CastTimeType to the response DTO
         GetByIdCastTimeTypeQueryResponse mappedResponse = _mapper.Map<GetByIdCastTimeTypeQueryResponse>(castTimeType);
+
+        // Return the mapped response to the calling code
         return mappedResponse;
 
     }

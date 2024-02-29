@@ -21,16 +21,26 @@ public class UndoDeleteCastTimeTypeCommandHandler : IRequestHandler<UndoDeleteCa
 
     public async Task<UndoDeleteCastTimeTypeCommandResponse> Handle(UndoDeleteCastTimeTypeCommandRequest request, CancellationToken cancellationToken)
     {
+        // Ensure that the specified CastTimeType ID exists before attempting to undo the deletion
         await _castTimeTypeBusinessRules.IdShouldBeExist(request.UndoDeleteCastTimeTypeDto.Id);
 
+        // Retrieve the CastTimeType with the specified ID using CastTimeTypeService
         CastTimeType castTimeType = await _castTimeTypeService.GetById(request.UndoDeleteCastTimeTypeDto.Id);
 
+        // Undo the deletion by setting IsDeleted to false
         castTimeType.IsDeleted = false;
+
+        // Set the updated date of the CastTimeType to the current date and time
         castTimeType.UpdatedDate = DateTime.Now;
 
+        // Update the CastTimeType by calling the _castTimeTypeService
         await _castTimeTypeService.Update(castTimeType);
 
+        // Map the updated CastTimeType to the response DTO
         UndoDeleteCastTimeTypeCommandResponse mappedResponse = _mapper.Map<UndoDeleteCastTimeTypeCommandResponse>(castTimeType);
+
+        // Return the mapped response to the calling code
         return mappedResponse;
+
     }
 }
