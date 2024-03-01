@@ -2,6 +2,9 @@
 
 namespace Application.Feature.AbilityFeatures.AbilityTypes.Dtos;
 
-internal class UpdateAbilityTypeDto
+public class UpdateAbilityTypeDto
 {
+    public string Id { get; set; }
+    public string Name { get; set; }
+    public string Description { get; set; }
 }
