@@ -6,5 +6,5 @@ namespace Application.Feature.AbilityFeatures.AbilityTypes.Commands.UndoDelete;
 
 public class UndoDeleteAbilityTypeCommandRequest : IRequest<UndoDeleteAbilityTypeCommandResponse>
 {
-    public UndoDeleteAbilityTypeDto UndoDeleteAbilityTypeDto { get; set; }
+    public UndoDeleteAbilityEffectTypeDto UndoDeleteAbilityTypeDto { get; set; }
 }

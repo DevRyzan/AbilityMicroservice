@@ -6,5 +6,5 @@ namespace Application.Feature.AbilityFeatures.AbilityTypes.Commands.Remove;
 
 public class RemoveAbilityTypeCommandRequest : IRequest<RemoveAbilityTypeCommandResponse>
 {
-    public RemoveAbilityTypeDto RemoveAbilityTypeDto { get; set; }
+    public RemoveAbilityEffectTypeDto RemoveAbilityTypeDto { get; set; }
 }

@@ -7,5 +7,5 @@ namespace Application.Feature.AbilityFeatures.AbilityTypes.Queries.GetById;
 
 public class GetByIdAbilityTypeQueryRequest : IRequest<GetByIdAbilityTypeQueryResponse>
 {
-    public GetByIdAbilityTypeDto GetByIdAbilityTypeDto { get; set; }
+    public GetByIdAbilityEffectTypeDto GetByIdAbilityTypeDto { get; set; }
 }
