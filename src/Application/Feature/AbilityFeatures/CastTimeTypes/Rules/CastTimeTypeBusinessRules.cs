@@ -1,5 +1,4 @@
 ﻿using Application.Feature.AbilityFeatures.CastTimeTypes.Constants;
-using Application.Feature.AbilityFeatures.ResourceCostType.Constants;
 using Application.Service.Repositories;
 using Core.Application;
 using Core.CrossCuttingConcerns.Exceptions;
@@ -19,7 +18,7 @@ public class CastTimeTypeBusinessRules : BaseBusinessRules
 
     public async Task PageRequestShouldBeValid(int index, int size)
     {
-        if (index < 0 || size <= 0) throw new BusinessException(ResourceCostTypeMessages.PageRequestShouldBeValid);
+        if (index < 0 || size <= 0) throw new BusinessException(CastTimeTypesMessages.PageRequestShouldBeValid);
     }
     public async Task IdShouldBeExist(string id)
     {

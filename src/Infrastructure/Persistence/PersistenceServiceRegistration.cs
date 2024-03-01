@@ -23,6 +23,7 @@ public static class PersistenceServiceRegistration
             .AddScoped<IAbilityLevelRepository, AbilityLevelRepository>()
             .AddScoped<IAbilityTargetTypeRepository, AbilityTargetTypeRepository>()
             .AddScoped<IResourceCostTypeRepository, ResourceCostTypeRepository>()
-            .AddScoped<ICastTimeTypeRepository, CastTimeTypeRepository>();
+            .AddScoped<ICastTimeTypeRepository, CastTimeTypeRepository>()
+            .AddScoped<IAbilityTypeRepository, AbilityTypeRepository>();
     }
 }
