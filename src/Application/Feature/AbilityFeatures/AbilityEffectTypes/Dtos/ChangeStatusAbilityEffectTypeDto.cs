@@ -1,5 +1,4 @@
 ﻿
-
 namespace Application.Feature.AbilityFeatures.AbilityEffectTypes.Dtos;
 
 public class ChangeStatusAbilityEffectTypeDto
