@@ -27,7 +27,7 @@ public class ChangeStatusResourceCostTypeCommandHandlerTest
 
 
     [Theory]
-    [InlineData("65e5adb4343b90742ee1bdd3")]
+    [InlineData("65e6071da3101fa3c673ef32")]
     public async Task ResourceCostTypeHandler_ValidRequest_ReturnsResponse(string id)
     {
         var businessRuleMock = new Mock<ResourceCostTypeBusinessRules>(_resourceCostTypeRepositoryMock.Object);
@@ -49,8 +49,10 @@ public class ChangeStatusResourceCostTypeCommandHandlerTest
         var expectedResourceCostType = new Domain.Abilities.ResourceCostType
         {
             Id = id,
+            Name = "xxxxxxxxxx",
+            Code = "19805-GBIT-272",
             Status = true,
-            IsDeleted = false,
+            IsDeleted = false
         };
 
         var expectedResponse = new ChangeStatusResourceCostTypeCommandResponse
@@ -75,7 +77,7 @@ public class ChangeStatusResourceCostTypeCommandHandlerTest
 
         var response = await handler.Handle(request, new CancellationToken());
 
-        Assert.NotEqual(expectedResponse.Status, response.Status);
+        Assert.Equal(expectedResponse.Status, response.Status);
 
         _resourceCostTypeServiceMock.Verify(m => m.Update(expectedResourceCostType), Times.Once);
     }
