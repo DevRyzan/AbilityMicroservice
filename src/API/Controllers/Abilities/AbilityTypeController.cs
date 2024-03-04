@@ -40,7 +40,7 @@ public class AbilityTypeController : BaseController
     }
 
     [HttpPut("Update")]
-    public async Task<IActionResult> Update([FromBody] UpdateAbilityEffectTypeDto updateAbilityTypeDto)
+    public async Task<IActionResult> Update([FromBody] UpdateAbilityTypeDto updateAbilityTypeDto)
     {
         UpdateAbilityTypeCommandRequest request = new()
         {
@@ -51,7 +51,7 @@ public class AbilityTypeController : BaseController
     }
 
     [HttpPatch("Delete")]
-    public async Task<IActionResult> Delete([FromBody] DeleteAbilityEffectTypeDto deleteAbilityTypeDto)
+    public async Task<IActionResult> Delete([FromBody] DeleteAbilityTypeDto deleteAbilityTypeDto)
     {
         DeleteAbilityTypeCommandRequest request = new()
         {
@@ -63,7 +63,7 @@ public class AbilityTypeController : BaseController
     }
 
     [HttpPatch("UndoDelete")]
-    public async Task<IActionResult> UndoDelete([FromBody] UndoDeleteAbilityEffectTypeDto undoDeleteAbilityTypeDto)
+    public async Task<IActionResult> UndoDelete([FromBody] UndoDeleteAbilityTypeDto undoDeleteAbilityTypeDto)
     {
         UndoDeleteAbilityTypeCommandRequest request = new()
         {
@@ -86,7 +86,7 @@ public class AbilityTypeController : BaseController
     }
 
     [HttpDelete("Remove")]
-    public async Task<IActionResult> Remove([FromBody] RemoveAbilityEffectTypeDto removeAbilityTypeDto)
+    public async Task<IActionResult> Remove([FromBody] RemoveAbilityTypeDto removeAbilityTypeDto)
     {
         RemoveAbilityTypeCommandRequest request = new()
         {
@@ -97,7 +97,7 @@ public class AbilityTypeController : BaseController
     }
 
     [HttpGet("GetById")]
-    public async Task<IActionResult> GetById([FromQuery] GetByIdAbilityEffectTypeDto getByIdAbilityTypeDto)
+    public async Task<IActionResult> GetById([FromQuery] GetByIdAbilityTypeDto getByIdAbilityTypeDto)
     {
         GetByIdAbilityTypeQueryRequest request = new()
         {

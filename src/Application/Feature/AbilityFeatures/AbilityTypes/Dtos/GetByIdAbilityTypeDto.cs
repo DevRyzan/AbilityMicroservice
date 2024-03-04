@@ -2,7 +2,7 @@
 
 namespace Application.Feature.AbilityFeatures.AbilityTypes.Dtos;
 
-public class GetByIdAbilityEffectTypeDto
+public class GetByIdAbilityTypeDto
 {
     public string Id { get; set; }
 

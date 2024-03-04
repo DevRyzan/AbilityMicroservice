@@ -2,7 +2,7 @@
 
 namespace Application.Feature.AbilityFeatures.AbilityTypes.Dtos;
 
-public class DeleteAbilityEffectTypeDto
+public class DeleteAbilityTypeDto
 {
     public string Id { get; set; }
 

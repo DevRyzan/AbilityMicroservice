@@ -2,7 +2,7 @@
 
 namespace Application.Feature.AbilityFeatures.AbilityTypes.Dtos;
 
-public class UpdateAbilityEffectTypeDto
+public class UpdateAbilityTypeDto
 {
     public string Id { get; set; }
     public string Name { get; set; }

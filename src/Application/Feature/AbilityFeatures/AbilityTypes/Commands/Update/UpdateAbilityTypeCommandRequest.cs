@@ -6,5 +6,5 @@ namespace Application.Feature.AbilityFeatures.AbilityTypes.Commands.Update;
 
 public class UpdateAbilityTypeCommandRequest : IRequest<UpdateAbilityTypeCommandResponse>
 {
-    public UpdateAbilityEffectTypeDto UpdateAbilityTypeDto { get; set; }
+    public UpdateAbilityTypeDto UpdateAbilityTypeDto { get; set; }
 }
