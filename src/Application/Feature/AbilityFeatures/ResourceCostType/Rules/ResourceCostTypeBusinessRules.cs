@@ -22,7 +22,7 @@ public class ResourceCostTypeBusinessRules : BaseBusinessRules
     {
         if (index < 0 || size <= 0) throw new BusinessException(ResourceCostTypeMessages.PageRequestShouldBeValid);
     }
-    public async Task IdShouldBeExist(string id)
+    public virtual async Task IdShouldBeExist(string id)
     {
         Domain.Abilities.ResourceCostType resourceCostType = await _resourceCostTypeRepository.GetAsync(x => x.Id.Equals(id));
         if (resourceCostType == null) throw new BusinessException(ResourceCostTypeMessages.IdShouldBeExist);
