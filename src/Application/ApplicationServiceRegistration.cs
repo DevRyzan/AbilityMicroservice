@@ -1,4 +1,5 @@
 ﻿using Application.Service.AbilityServices.AbilityComboService;
+using Application.Service.AbilityServices.AbilityEffectTypeService;
 using Application.Service.AbilityServices.AbilityLevelService;
 using Application.Service.AbilityServices.AbilityService;
 using Application.Service.AbilityServices.AbilityTargetTypeService;
@@ -54,7 +55,7 @@ public static class ApplicationServiceRegistration
         services.AddScoped<IResourceCostTypeService, ResourceCostTypeManager>();
         services.AddScoped<ICastTimeTypeService, CastTimeTypeManager>();
         services.AddScoped<IAbilityTypeService, AbilityTypeManager>();
-
+        services.AddScoped<IAbilityEffectTypeService, AbilityEffectTypeManager>();
 
 
 

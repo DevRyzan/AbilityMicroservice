@@ -11,7 +11,6 @@ public class AbilityLevelManager : IAbilityLevelService
         _abilityLevelRepository = abilityLevelRepository;
     }
 
-
     public async Task<AbilityLevel> Create(AbilityLevel abilityLevel)
     {
         return await _abilityLevelRepository.AddAsync(abilityLevel);
