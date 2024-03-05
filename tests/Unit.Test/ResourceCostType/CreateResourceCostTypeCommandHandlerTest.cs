@@ -72,14 +72,13 @@ public class CreateResourceCostTypeCommandHandlerTest
         _mapperMock.Setup(m => m.Map<CreateResourceCostTypeCommandResponse>(expectedResourceCostType))
             .Returns(expectedResponse);
 
+
         var response = await handler.Handle(request, new CancellationToken());
 
         Assert.Equal(expectedResponse, response);
 
         _resourceCostTypeServiceMock.Verify(m => m.Create(expectedResourceCostType), Times.Once);
     }
-
-
 
     [Theory]
     [InlineData("Hourly")]
@@ -133,7 +132,6 @@ public class CreateResourceCostTypeCommandHandlerTest
         Assert.True(ValidateNameLengthInRange(name));
 
     }
-
 
     [Theory]
     [InlineData("Ho")]
@@ -189,7 +187,6 @@ public class CreateResourceCostTypeCommandHandlerTest
 
     }
 
-
     [Theory]
     [InlineData("ThisIsAVeryLongNameThatExceedsTheMaxLengthLimit")]
 
@@ -240,7 +237,6 @@ public class CreateResourceCostTypeCommandHandlerTest
 
         Assert.False(ValidateNameLengthInRange(name));
     }
-
 
     private bool ValidateNameLengthInRange(string name)
     {
