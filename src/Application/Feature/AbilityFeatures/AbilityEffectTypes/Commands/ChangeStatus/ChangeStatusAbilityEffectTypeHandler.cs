@@ -5,7 +5,6 @@ using Domain.Abilities;
 using MediatR;
 
 
-
 namespace Application.Feature.AbilityFeatures.AbilityEffectTypes.Commands.ChangeStatus;
 
 public class ChangeStatusAbilityEffectTypeHandler : IRequestHandler<ChangeStatusAbilityEffectTypeRequest, ChangeStatusAbilityEffectTypeResponse>
