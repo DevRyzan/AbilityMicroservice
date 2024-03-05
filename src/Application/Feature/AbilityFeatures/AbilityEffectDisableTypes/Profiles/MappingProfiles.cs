@@ -32,13 +32,11 @@ public class MappingProfiles : Profile
 
         CreateMap<AbilityEffectDisableType, UpdateAbilityEffectDisableTypeResponse>().ReverseMap();
 
+
+
         CreateMap<AbilityEffectDisableType, GetByIdAbilityEffectDisableTypeResponse>().ReverseMap();
-
         CreateMap<AbilityEffectDisableType, GetListByActiveAbilityEffectDisableTypeResponse>().ReverseMap();
-        CreateMap<List<AbilityEffectDisableType>, List<GetListByActiveAbilityEffectDisableTypeResponse>>().ReverseMap();
-
         CreateMap<AbilityEffectDisableType, GetListByInActiveAbilityEffectDisableTypeResponse>().ReverseMap();
-        CreateMap<List<AbilityEffectDisableType>, List<GetListByInActiveAbilityEffectDisableTypeResponse>>().ReverseMap();
 
 
 

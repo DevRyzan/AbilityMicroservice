@@ -1,9 +1,8 @@
 ﻿
 
+namespace Application.Feature.AbilityFeatures.AbilityDamageTypes.Commands.Create;
 
-namespace Application.Feature.AbilityFeatures.AbilityEffectDisableTypes.Commands.Create;
-
-public class CreateAbilityEffectDisableTypeResponse
+public class CreateAbilityDamageTypeResponse
 {
     public string Id { get; set; }
     public string Name { get; set; }
