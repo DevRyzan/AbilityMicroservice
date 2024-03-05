@@ -5,6 +5,9 @@ using Application.Feature.AbilityFeatures.AbilityEffectDisableTypes.Commands.Rem
 using Application.Feature.AbilityFeatures.AbilityEffectDisableTypes.Commands.UndoDelete;
 using Application.Feature.AbilityFeatures.AbilityEffectDisableTypes.Commands.Update;
 using Application.Feature.AbilityFeatures.AbilityEffectDisableTypes.Dtos;
+using Application.Feature.AbilityFeatures.AbilityEffectDisableTypes.Queries.GetById;
+using Application.Feature.AbilityFeatures.AbilityEffectDisableTypes.Queries.GetListByActive;
+using Application.Feature.AbilityFeatures.AbilityEffectDisableTypes.Queries.GetListByInActive;
 using AutoMapper;
 using Domain.Abilities;
 
@@ -29,7 +32,13 @@ public class MappingProfiles : Profile
 
         CreateMap<AbilityEffectDisableType, UpdateAbilityEffectDisableTypeResponse>().ReverseMap();
 
+        CreateMap<AbilityEffectDisableType, GetByIdAbilityEffectDisableTypeResponse>().ReverseMap();
 
+        CreateMap<AbilityEffectDisableType, GetListByActiveAbilityEffectDisableTypeResponse>().ReverseMap();
+        CreateMap<List<AbilityEffectDisableType>, List<GetListByActiveAbilityEffectDisableTypeResponse>>().ReverseMap();
+
+        CreateMap<AbilityEffectDisableType, GetListByInActiveAbilityEffectDisableTypeResponse>().ReverseMap();
+        CreateMap<List<AbilityEffectDisableType>, List<GetListByInActiveAbilityEffectDisableTypeResponse>>().ReverseMap();
 
 
 
