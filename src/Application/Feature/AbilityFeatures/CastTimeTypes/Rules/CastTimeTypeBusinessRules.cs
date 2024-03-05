@@ -20,13 +20,13 @@ public class CastTimeTypeBusinessRules : BaseBusinessRules
     {
         if (index < 0 || size <= 0) throw new BusinessException(CastTimeTypesMessages.PageRequestShouldBeValid);
     }
-    public async Task IdShouldBeExist(string id)
+    public virtual async Task IdShouldBeExist(string id)
     {
         CastTimeType castTimeType = await _castTimeTypeRepository.GetAsync(x => x.Id.Equals(id));
         if (castTimeType == null) throw new BusinessException(CastTimeTypesMessages.IdShouldBeExist);
     }
 
-    public async Task RemoveCondition(string id)
+    public virtual async Task RemoveCondition(string id)
     {
         CastTimeType castTimeType = await _castTimeTypeRepository.GetAsync(x => x.Id.Equals(id));
         if (castTimeType.Status == true || castTimeType.IsDeleted == false) throw new BusinessException(CastTimeTypesMessages.RemoveCondition);
