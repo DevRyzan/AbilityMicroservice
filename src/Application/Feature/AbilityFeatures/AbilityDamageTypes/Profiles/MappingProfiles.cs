@@ -5,6 +5,9 @@ using Application.Feature.AbilityFeatures.AbilityDamageTypes.Commands.Remove;
 using Application.Feature.AbilityFeatures.AbilityDamageTypes.Commands.UndoDelete;
 using Application.Feature.AbilityFeatures.AbilityDamageTypes.Commands.Update;
 using Application.Feature.AbilityFeatures.AbilityDamageTypes.Dtos;
+using Application.Feature.AbilityFeatures.AbilityDamageTypes.Queries.GetById;
+using Application.Feature.AbilityFeatures.AbilityDamageTypes.Queries.GetListByActive;
+using Application.Feature.AbilityFeatures.AbilityDamageTypes.Queries.GetListByInActive;
 using AutoMapper;
 using Domain.Abilities;
 
@@ -28,9 +31,9 @@ public class MappingProfiles : Profile
 
         CreateMap<AbilityDamageType, UpdateAbilityDamageTypeResponse>().ReverseMap();
 
-
-
-
+        CreateMap<AbilityDamageType, GetByIdAbilityDamageTypeResponse>().ReverseMap();
+        CreateMap<AbilityDamageType, GetListByActiveAbilityDamageTypeResponse>().ReverseMap();
+        CreateMap<AbilityDamageType, GetListByInActiveAbilityDamageTypeResponse>().ReverseMap();
 
 
     }
