@@ -27,7 +27,7 @@ public class ResourceCostTypeBusinessRules : BaseBusinessRules
         Domain.Abilities.ResourceCostType resourceCostType = await _resourceCostTypeRepository.GetAsync(x => x.Id.Equals(id));
         if (resourceCostType == null) throw new BusinessException(ResourceCostTypeMessages.IdShouldBeExist);
     }
-    public async Task RemoveCondition(string id)
+    public virtual async Task RemoveCondition(string id)
     {
         Domain.Abilities.ResourceCostType resourceCostType = await _resourceCostTypeRepository.GetAsync(x => x.Id.Equals(id));
         if (resourceCostType.Status == true || resourceCostType.IsDeleted == false) throw new BusinessException(ResourceCostTypeMessages.RemoveCondition);
