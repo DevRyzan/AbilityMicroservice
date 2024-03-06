@@ -14,7 +14,7 @@ public class ChangeStatusAbilityTargetTypeCommandHandlerTest
     private readonly Mock<IMapper> _mapperMock;
     private readonly Mock<IAbilityTargetTypeService> _abilityTargetTypeServiceMock;
     private readonly Mock<IAbilityTargetTypeRepository> _abilityTargetTypeRepositoryMock;
-    private readonly Mock<IAbilityTypeRepository> _abilityTypeRepositoryMock;
+    private readonly Mock<IAbilityRepository> _abilityRepositoryMock;
     private readonly Mock<AbilityTargetTypeBusinessRules> _abilityTargetTypeBusinessRulesMock;
 
     public ChangeStatusAbilityTargetTypeCommandHandlerTest()
@@ -23,7 +23,7 @@ public class ChangeStatusAbilityTargetTypeCommandHandlerTest
         _abilityTargetTypeBusinessRulesMock = new Mock<AbilityTargetTypeBusinessRules>();
         _abilityTargetTypeServiceMock = new Mock<IAbilityTargetTypeService>();
         _abilityTargetTypeRepositoryMock = new Mock<IAbilityTargetTypeRepository>();
-        _abilityTypeRepositoryMock = new Mock<IAbilityTypeRepository>();
+        _abilityRepositoryMock = new Mock<IAbilityRepository>();
     }
 
 
@@ -32,17 +32,9 @@ public class ChangeStatusAbilityTargetTypeCommandHandlerTest
     [InlineData("65e6071da3101fa3c673ef32")]
     public async Task AbilityTargetTypeHandler_ValidRequest_ReturnsResponse(string id)
     {
-        var businessRuleMock = new Mock<AbilityTargetTypeBusinessRules>(_abilityTargetTypeRepositoryMock.Object);
+        var businessRuleMock = new Mock<AbilityTargetTypeBusinessRules>(_abilityTargetTypeRepositoryMock.Object, _abilityRepositoryMock.Object);
 
-        try
-        {
-            var handler = new ChangeStatusAbilityTargetTypeCommandHandler(_mapperMock.Object, businessRuleMock.Object, _abilityTargetTypeServiceMock.Object);
-        }
-        catch (Exception ex)
-        {
-            var t = ex.Message;
-            throw;
-        }
+        var handler = new ChangeStatusAbilityTargetTypeCommandHandler(_mapperMock.Object, businessRuleMock.Object, _abilityTargetTypeServiceMock.Object);
 
         var request = new ChangeStatusAbilityTargetTypeCommandRequest
         {
@@ -78,9 +70,9 @@ public class ChangeStatusAbilityTargetTypeCommandHandlerTest
         _mapperMock.Setup(m => m.Map<ChangeStatusAbilityTargetTypeCommandResponse>(abilityTargetType))
                    .Returns(expectedResponse);
 
-        //var response = await handler.Handle(request, new CancellationToken());
+        var response = await handler.Handle(request, new CancellationToken());
 
-        //Assert.Equal(expectedResponse.Status, response.Status);
+        Assert.Equal(expectedResponse.Status, response.Status);
 
         _abilityTargetTypeServiceMock.Verify(m => m.GetById(abilityTargetType.Id), Times.Once);
     }
