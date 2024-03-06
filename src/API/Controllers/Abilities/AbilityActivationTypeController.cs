@@ -5,6 +5,14 @@ using Application.Feature.AbilityFeatures.AbilityActivationTypes.Commands.Remove
 using Application.Feature.AbilityFeatures.AbilityActivationTypes.Commands.UndoDelete;
 using Application.Feature.AbilityFeatures.AbilityActivationTypes.Commands.Update;
 using Application.Feature.AbilityFeatures.AbilityActivationTypes.Dto;
+using Application.Feature.AbilityFeatures.AbilityActivationTypes.Queries.GetById;
+using Application.Feature.AbilityFeatures.AbilityActivationTypes.Queries.GetListByActive;
+using Application.Feature.AbilityFeatures.AbilityActivationTypes.Queries.GetListByInActive;
+using Application.Feature.AbilityFeatures.AbilityAffectUnits.Dto;
+using Application.Feature.AbilityFeatures.AbilityAffectUnits.Queries.GetById;
+using Application.Feature.AbilityFeatures.AbilityAffectUnits.Queries.GetListByActive;
+using Application.Feature.AbilityFeatures.AbilityAffectUnits.Queries.GetListByInActive;
+using Core.Application.Requests;
 using Microsoft.AspNetCore.Mvc;
 
 
@@ -79,6 +87,39 @@ public class AbilityActivationTypeController : BaseController
             RemoveAbilityActivationTypeDto = removeAbilityActivationTypeDto
         };
         RemoveAbilityActivationTypeResponse result = await Mediator.Send(request);
+        return Ok(result);
+    }
+
+    [HttpGet("GetById")]
+    public async Task<IActionResult> GetById([FromQuery] GetByIdAbilityActivationTypeDto getByIdAbilityActivationTypeDto)
+    {
+        GetByIdAbilityActivationTypeRequest request = new()
+        {
+            GetByIdAbilityActivationTypeDto = getByIdAbilityActivationTypeDto
+        };
+        GetByIdAbilityActivationTypeResponse result = await Mediator.Send(request);
+        return Ok(result);
+    }
+
+    [HttpGet("GetByActiveList")]
+    public async Task<IActionResult> GetByActiveList([FromQuery] PageRequest pageRequest)
+    {
+        GetListByActiveAbilityActivationTypeRequest request = new()
+        {
+            PageRequest = pageRequest
+        };
+        List<GetListByActiveAbilityActivationTypeResponse> result = await Mediator.Send(request);
+        return Ok(result);
+    }
+
+    [HttpGet("GetByInActiveList")]
+    public async Task<IActionResult> GetByInActiveList([FromQuery] PageRequest pageRequest)
+    {
+        GetListByInActiveAbilityActivationTypeRequest request = new()
+        {
+            PageRequest = pageRequest
+        };
+        List<GetListByInActiveAbilityActivationTypeResponse> result = await Mediator.Send(request);
         return Ok(result);
     }
 }
