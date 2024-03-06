@@ -8,12 +8,6 @@ using Application.Feature.AbilityFeatures.AbilityDamageTypes.Dtos;
 using Application.Feature.AbilityFeatures.AbilityDamageTypes.Queries.GetById;
 using Application.Feature.AbilityFeatures.AbilityDamageTypes.Queries.GetListByActive;
 using Application.Feature.AbilityFeatures.AbilityDamageTypes.Queries.GetListByInActive;
-using Application.Feature.AbilityFeatures.AbilityEffectDisableTypes.Commands.Remove;
-using Application.Feature.AbilityFeatures.AbilityEffectDisableTypes.Commands.UndoDelete;
-using Application.Feature.AbilityFeatures.AbilityEffectDisableTypes.Dtos;
-using Application.Feature.AbilityFeatures.AbilityEffectDisableTypes.Queries.GetById;
-using Application.Feature.AbilityFeatures.AbilityEffectDisableTypes.Queries.GetListByActive;
-using Application.Feature.AbilityFeatures.AbilityEffectDisableTypes.Queries.GetListByInActive;
 using Core.Application.Requests;
 using Microsoft.AspNetCore.Mvc;
 

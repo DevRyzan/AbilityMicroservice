@@ -3,7 +3,7 @@
 
 namespace Domain.Abilities;
 
-public class AbilityAffectUnit : Entity<Guid>
+public class AbilityAffectUnit : Entity<string>
 {
     public string Name { get; set; }
 
