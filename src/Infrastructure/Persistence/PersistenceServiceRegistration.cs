@@ -27,6 +27,7 @@ public static class PersistenceServiceRegistration
             .AddScoped<IAbilityTypeRepository, AbilityTypeRepository>()
             .AddScoped<IAbilityEffectTypeRepository, AbilityEffectTypeRepository>()
             .AddScoped<IAbilityEffectDisableTypeRepository, AbilityEffectDisableTypeRepository>()
-            .AddScoped<IAbilityDamageTypeRepository, AbilityDamageTypeRepository>();
+            .AddScoped<IAbilityDamageTypeRepository, AbilityDamageTypeRepository>()
+            .AddScoped<IAbilityAffectUnitRepository, AbilityAffectUnitRepository>();
     }
 }
