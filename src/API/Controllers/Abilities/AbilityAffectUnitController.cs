@@ -5,6 +5,10 @@ using Application.Feature.AbilityFeatures.AbilityAffectUnits.Commands.Remove;
 using Application.Feature.AbilityFeatures.AbilityAffectUnits.Commands.UndoDelete;
 using Application.Feature.AbilityFeatures.AbilityAffectUnits.Commands.Update;
 using Application.Feature.AbilityFeatures.AbilityAffectUnits.Dto;
+using Application.Feature.AbilityFeatures.AbilityAffectUnits.Queries.GetById;
+using Application.Feature.AbilityFeatures.AbilityAffectUnits.Queries.GetListByActive;
+using Application.Feature.AbilityFeatures.AbilityAffectUnits.Queries.GetListByInActive;
+using Core.Application.Requests;
 using Microsoft.AspNetCore.Mvc;
 
 
@@ -81,7 +85,37 @@ public class AbilityAffectUnitController : BaseController
         return Ok(result);
     }
 
+    [HttpGet("GetById")]
+    public async Task<IActionResult> GetById([FromQuery] GetByIdAbilityAffectUnitDto getByIdAbilityAffectUnitDto)
+    {
+        GetByIdAbilityAffectUnitRequest request = new()
+        {
+            GetByIdAbilityAffectUnitDto = getByIdAbilityAffectUnitDto
+        };
+        GetByIdAbilityAffectUnitResponse result = await Mediator.Send(request);
+        return Ok(result);
+    }
 
+    [HttpGet("GetByActiveList")]
+    public async Task<IActionResult> GetByActiveList([FromQuery] PageRequest pageRequest)
+    {
+        GetListByActiveAbilityAffectUnitRequest request = new()
+        {
+            PageRequest = pageRequest
+        };
+        List<GetListByActiveAbilityAffectUnitResponse> result = await Mediator.Send(request);
+        return Ok(result);
+    }
 
+    [HttpGet("GetByInActiveList")]
+    public async Task<IActionResult> GetByInActiveList([FromQuery] PageRequest pageRequest)
+    {
+        GetListByInActiveAbilityAffectUnitRequest request = new()
+        {
+            PageRequest = pageRequest
+        };
+        List<GetListByInActiveAbilityAffectUnitResponse> result = await Mediator.Send(request);
+        return Ok(result);
+    }
 
 }
