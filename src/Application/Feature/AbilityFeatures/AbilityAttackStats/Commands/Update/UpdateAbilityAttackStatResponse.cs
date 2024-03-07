@@ -1,8 +1,10 @@
-﻿
+﻿using System;
+using System.Collections.Generic;
 
-namespace Application.Feature.AbilityFeatures.AbilityAttackStats.Dto;
 
-public class UpdateAbilityAttackStatDto
+namespace Application.Feature.AbilityFeatures.AbilityAttackStats.Commands.Update;
+
+public class UpdateAbilityAttackStatResponse
 {
     public string Id { get; set; }
     public string AbilityLevelId { get; set; }
@@ -22,5 +24,4 @@ public class UpdateAbilityAttackStatDto
     public int BonusRangeOnKill { get; set; }
     public double CriticalStrikeChance { get; set; }
     public int MagicPenetration { get; set; }
-
 }

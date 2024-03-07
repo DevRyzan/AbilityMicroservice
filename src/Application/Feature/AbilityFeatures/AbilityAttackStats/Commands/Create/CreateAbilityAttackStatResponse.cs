@@ -1,8 +1,8 @@
 ﻿
 
-namespace Application.Feature.AbilityFeatures.AbilityAttackStats.Dto;
+namespace Application.Feature.AbilityFeatures.AbilityAttackStats.Commands.Create;
 
-public class UpdateAbilityAttackStatDto
+public class CreateAbilityAttackStatResponse
 {
     public string Id { get; set; }
     public string AbilityLevelId { get; set; }
@@ -22,5 +22,4 @@ public class UpdateAbilityAttackStatDto
     public int BonusRangeOnKill { get; set; }
     public double CriticalStrikeChance { get; set; }
     public int MagicPenetration { get; set; }
-
 }
