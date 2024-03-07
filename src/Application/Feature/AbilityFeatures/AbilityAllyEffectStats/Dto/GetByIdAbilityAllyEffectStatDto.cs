@@ -4,9 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Application.Feature.AbilityFeatures.AbilityAllyEffectStats.Commands
+namespace Application.Feature.AbilityFeatures.AbilityAllyEffectStats.Dto;
+
+public class GetByIdAbilityAllyEffectStatDto
 {
-    internal class Class1
-    {
-    }
 }
