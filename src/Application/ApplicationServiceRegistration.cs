@@ -1,5 +1,6 @@
 ﻿using Application.Service.AbilityServices.AbilityActivationTypeService;
 using Application.Service.AbilityServices.AbilityAffectUnitService;
+using Application.Service.AbilityServices.AbilityAllyEffectStatService;
 using Application.Service.AbilityServices.AbilityComboService;
 using Application.Service.AbilityServices.AbilityDamageTypeService;
 using Application.Service.AbilityServices.AbilityEffectDisableTypeService;
@@ -64,6 +65,7 @@ public static class ApplicationServiceRegistration
         services.AddScoped<IAbilityDamageTypeService, AbilityDamageTypeManager>();
         services.AddScoped<IAbilityAffectUnitService, AbilityAffectUnitManager>();
         services.AddScoped<IAbilityActivationTypeService, AbilityActivationTypeManager>();
+        services.AddScoped<IAbilityAllyEffectStatService, AbilityAllyEffectStatManager>();
 
 
 
