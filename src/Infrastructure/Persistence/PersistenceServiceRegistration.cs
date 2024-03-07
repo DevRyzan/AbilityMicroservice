@@ -30,6 +30,11 @@ public static class PersistenceServiceRegistration
             .AddScoped<IAbilityDamageTypeRepository, AbilityDamageTypeRepository>()
             .AddScoped<IAbilityAffectUnitRepository, AbilityAffectUnitRepository>()
             .AddScoped<IAbilityActivationTypeRepository, AbilityActivationTypeRepository>()
+            .AddScoped<IAbilityAttackStatRepository, AbilityAttackStatRepository>()
+            .AddScoped<IAbilityEffectRepository, AbilityEffectRepository>()
+            .AddScoped<IAbilityEffectStatRepository, AbilityEffectStatRepository>()
+            .AddScoped<IAbilityEnemyEffectStatRepository, AbilityEnemyEffectStatRepository>()
+            .AddScoped<IAbilitySelfEffectStatRepository, AbilitySelfEffectStatRepository>()
             .AddScoped<IAbilityAllyEffectStatRepository, AbilityAllyEffectStatRepository>();
 
     }

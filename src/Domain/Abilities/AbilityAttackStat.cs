@@ -4,7 +4,7 @@ using MongoDB.Bson.Serialization.Attributes;
 
 namespace Domain.Abilities;
 
-public class AbilityAttackStat : Entity<Guid>
+public class AbilityAttackStat : Entity<string>
 {
     [BsonRepresentation(BsonType.ObjectId)]
     public string AbilityLevelId { get; set; }

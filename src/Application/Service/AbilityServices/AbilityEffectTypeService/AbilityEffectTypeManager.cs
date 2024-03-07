@@ -19,7 +19,7 @@ public class AbilityEffectTypeManager : IAbilityEffectTypeService
     }
     public async Task<AbilityEffectType> Remove(AbilityEffectType abilityEffectType)
     {
-        return await _abilityEffectTypeRepository.UpdateAsync(abilityEffectType.Id, abilityEffectType);
+        return await _abilityEffectTypeRepository.DeleteAsync(abilityEffectType);
     }
 
     public async Task<AbilityEffectType> Update(AbilityEffectType abilityEffectType)

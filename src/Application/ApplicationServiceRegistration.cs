@@ -1,11 +1,16 @@
 ﻿using Application.Service.AbilityServices.AbilityActivationTypeService;
 using Application.Service.AbilityServices.AbilityAffectUnitService;
 using Application.Service.AbilityServices.AbilityAllyEffectStatService;
+using Application.Service.AbilityServices.AbilityAttackStatService;
 using Application.Service.AbilityServices.AbilityComboService;
 using Application.Service.AbilityServices.AbilityDamageTypeService;
 using Application.Service.AbilityServices.AbilityEffectDisableTypeService;
+using Application.Service.AbilityServices.AbilityEffectService;
+using Application.Service.AbilityServices.AbilityEffectStatService;
 using Application.Service.AbilityServices.AbilityEffectTypeService;
+using Application.Service.AbilityServices.AbilityEnemyEffectStatService;
 using Application.Service.AbilityServices.AbilityLevelService;
+using Application.Service.AbilityServices.AbilitySelfEffectStatService;
 using Application.Service.AbilityServices.AbilityService;
 using Application.Service.AbilityServices.AbilityTargetTypeService;
 using Application.Service.AbilityServices.AbilityTypeService;
@@ -66,6 +71,12 @@ public static class ApplicationServiceRegistration
         services.AddScoped<IAbilityAffectUnitService, AbilityAffectUnitManager>();
         services.AddScoped<IAbilityActivationTypeService, AbilityActivationTypeManager>();
         services.AddScoped<IAbilityAllyEffectStatService, AbilityAllyEffectStatManager>();
+        services.AddScoped<IAbilityAttackStatService, AbilityAttackStatManager>();
+        services.AddScoped<IAbilityEffectService, AbilityEffectManager>();
+        services.AddScoped<IAbilityEffectStatService, AbilityEffectStatManager>();
+        services.AddScoped<IAbilityEnemyEffectStatService, AbilityEnemyEffectStatManager>();
+        services.AddScoped<IAbilitySelfEffectStatService, AbilitySelfEffectStatManager>();
+
 
 
 
