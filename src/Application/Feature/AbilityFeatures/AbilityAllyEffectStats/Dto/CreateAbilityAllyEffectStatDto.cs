@@ -6,7 +6,7 @@ namespace Application.Feature.AbilityFeatures.AbilityAllyEffectStats.Dto;
 
 public class CreateAbilityAllyEffectStatDto
 {
-    public string AbilityEffectStatsId { get; set; }
+    public string? AbilityEffectStatsId { get; set; }
     public int AbilityCooldownReductionForAllies { get; set; }
     public int AllyArmorBonus { get; set; }
     public int AllyAttackSpeedBonus { get; set; }

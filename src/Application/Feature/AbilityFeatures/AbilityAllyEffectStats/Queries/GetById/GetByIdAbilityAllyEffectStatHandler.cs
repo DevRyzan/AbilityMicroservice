@@ -1,5 +1,4 @@
-﻿using Application.Feature.AbilityFeatures.AbilityAllyEffectStats.Commands.ChangeStatus;
-using Application.Feature.AbilityFeatures.AbilityAllyEffectStats.Rules;
+﻿using Application.Feature.AbilityFeatures.AbilityAllyEffectStats.Rules;
 using Application.Service.AbilityServices.AbilityAllyEffectStatService;
 using AutoMapper;
 using Domain.Abilities;
@@ -26,7 +25,7 @@ public class GetByIdAbilityAllyEffectStatHandler : IRequestHandler<GetByIdAbilit
 
         AbilityAllyEffectStat abilityAllyEffectStat = await _abilityAllyEffectStatService.GetById(request.GetByIdAbilityAllyEffectStatDto.Id);
 
-        ChangeStatusAbilityAllyEffectStatResponse mappedResponse = _mapper.Map<ChangeStatusAbilityAllyEffectStatResponse>(abilityAllyEffectStat);
+        GetByIdAbilityAllyEffectStatResponse mappedResponse = _mapper.Map<GetByIdAbilityAllyEffectStatResponse>(abilityAllyEffectStat);
         return mappedResponse;
     }
 }

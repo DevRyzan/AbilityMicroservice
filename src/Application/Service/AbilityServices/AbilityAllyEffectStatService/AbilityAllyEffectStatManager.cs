@@ -13,37 +13,38 @@ public class AbilityAllyEffectStatManager : IAbilityAllyEffectStatService
         _abilityAllyEffectStatRepository = abilityAllyEffectStatRepository;
     }
 
-    public Task<AbilityAllyEffectStat> Create(AbilityAllyEffectStat abilityAllyEffectStat)
+    public async Task<AbilityAllyEffectStat> Create(AbilityAllyEffectStat abilityAllyEffectStat)
     {
-        throw new NotImplementedException();
+        return await _abilityAllyEffectStatRepository.AddAsync(abilityAllyEffectStat);
     }
 
-    public Task<AbilityAllyEffectStat> Delete(AbilityAllyEffectStat abilityAllyEffectStat)
+    public async Task<AbilityAllyEffectStat> Delete(AbilityAllyEffectStat abilityAllyEffectStat)
     {
-        throw new NotImplementedException();
+        return await _abilityAllyEffectStatRepository.UpdateAsync(abilityAllyEffectStat.Id, abilityAllyEffectStat);
+
     }
-    public Task<AbilityAllyEffectStat> Remove(AbilityAllyEffectStat abilityAllyEffectStat)
+    public async Task<AbilityAllyEffectStat> Remove(AbilityAllyEffectStat abilityAllyEffectStat)
     {
-        throw new NotImplementedException();
+        return await _abilityAllyEffectStatRepository.DeleteAsync(abilityAllyEffectStat);
     }
 
-    public Task<AbilityAllyEffectStat> Update(AbilityAllyEffectStat abilityAllyEffectStat)
+    public async Task<AbilityAllyEffectStat> Update(AbilityAllyEffectStat abilityAllyEffectStat)
     {
-        throw new NotImplementedException();
+        return await _abilityAllyEffectStatRepository.UpdateAsync(abilityAllyEffectStat.Id, abilityAllyEffectStat);
     }
-    public Task<AbilityAllyEffectStat> GetById(string id)
+    public async Task<AbilityAllyEffectStat> GetById(string id)
     {
-        throw new NotImplementedException();
-    }
-
-    public Task<List<AbilityAllyEffectStat>> GetListByActive(int index = 0, int size = 10)
-    {
-        throw new NotImplementedException();
+        return await _abilityAllyEffectStatRepository.GetAsync(x => x.Id.Equals(id));
     }
 
-    public Task<List<AbilityAllyEffectStat>> GetListByInActive(int index = 0, int size = 10)
+    public async Task<List<AbilityAllyEffectStat>> GetListByActive(int index = 0, int size = 10)
     {
-        throw new NotImplementedException();
+        return await _abilityAllyEffectStatRepository.GetList(x => x.Status.Equals(true), index: index, size: size);
     }
-    
+
+    public async Task<List<AbilityAllyEffectStat>> GetListByInActive(int index = 0, int size = 10)
+    {
+        return await _abilityAllyEffectStatRepository.GetList(x => x.Status.Equals(false), index: index, size: size);
+    }
+
 }

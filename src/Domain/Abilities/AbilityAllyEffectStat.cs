@@ -7,7 +7,7 @@ namespace Domain.Abilities;
 public class AbilityAllyEffectStat : Entity<string>
 {
     [BsonRepresentation(BsonType.ObjectId)]
-    public string AbilityEffectStatsId { get; set; }
+    public string? AbilityEffectStatsId { get; set; }
     public int AbilityCooldownReductionForAllies { get; set; }
     public int AllyArmorBonus { get; set; }
     public int AllyAttackSpeedBonus { get; set; }

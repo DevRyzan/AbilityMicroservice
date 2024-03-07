@@ -23,7 +23,7 @@ public class AbilityDamageTypeManager : IAbilityDamageTypeService
     }
     public async Task<AbilityDamageType> Remove(AbilityDamageType abilityDamageType)
     {
-        return await _abilityDamageTypeRepository.UpdateAsync(abilityDamageType.Id, abilityDamageType);
+        return await _abilityDamageTypeRepository.DeleteAsync(abilityDamageType);
     }
 
     public async Task<AbilityDamageType> Update(AbilityDamageType abilityDamageType)
