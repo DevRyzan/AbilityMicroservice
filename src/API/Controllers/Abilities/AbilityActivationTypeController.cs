@@ -8,10 +8,6 @@ using Application.Feature.AbilityFeatures.AbilityActivationTypes.Dto;
 using Application.Feature.AbilityFeatures.AbilityActivationTypes.Queries.GetById;
 using Application.Feature.AbilityFeatures.AbilityActivationTypes.Queries.GetListByActive;
 using Application.Feature.AbilityFeatures.AbilityActivationTypes.Queries.GetListByInActive;
-using Application.Feature.AbilityFeatures.AbilityAffectUnits.Dto;
-using Application.Feature.AbilityFeatures.AbilityAffectUnits.Queries.GetById;
-using Application.Feature.AbilityFeatures.AbilityAffectUnits.Queries.GetListByActive;
-using Application.Feature.AbilityFeatures.AbilityAffectUnits.Queries.GetListByInActive;
 using Core.Application.Requests;
 using Microsoft.AspNetCore.Mvc;
 

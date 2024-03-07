@@ -1,13 +1,10 @@
-﻿using Core.Persistence.Repositories;
-using MongoDB.Bson;
-using MongoDB.Bson.Serialization.Attributes;
+﻿
+namespace Application.Feature.AbilityFeatures.AbilityAllyEffectStats.Queries.GetListByInActive;
 
-namespace Domain.Abilities;
-
-public class AbilityAllyEffectStat : Entity<string>
+public class GetListByInActiveAbilityAllyEffectStatResponse
 {
-    [BsonRepresentation(BsonType.ObjectId)]
-    public string? AbilityEffectStatsId { get; set; }
+    public string Id { get; set; }
+    public string AbilityEffectStatsId { get; set; }
     public int AbilityCooldownReductionForAllies { get; set; }
     public int AllyArmorBonus { get; set; }
     public int AllyAttackSpeedBonus { get; set; }
@@ -24,4 +21,7 @@ public class AbilityAllyEffectStat : Entity<string>
     public double BonusHealthRegeneration { get; set; }
     public int BonusManaRegeneration { get; set; }
     public double DamageTakenReductionForAllies { get; set; }
+    public DateTime CreatedDate { get; set; }
+    public DateTime UpdatedDate { get; set; }
+    public DateTime DeletedDate { get; set; }
 }

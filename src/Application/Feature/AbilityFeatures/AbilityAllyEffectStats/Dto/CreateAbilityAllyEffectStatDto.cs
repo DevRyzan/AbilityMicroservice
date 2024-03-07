@@ -1,12 +1,11 @@
-﻿using Core.Persistence.Repositories;
+﻿using MongoDB.Bson.Serialization.Attributes;
 using MongoDB.Bson;
-using MongoDB.Bson.Serialization.Attributes;
 
-namespace Domain.Abilities;
 
-public class AbilityAllyEffectStat : Entity<string>
+namespace Application.Feature.AbilityFeatures.AbilityAllyEffectStats.Dto;
+
+public class CreateAbilityAllyEffectStatDto
 {
-    [BsonRepresentation(BsonType.ObjectId)]
     public string? AbilityEffectStatsId { get; set; }
     public int AbilityCooldownReductionForAllies { get; set; }
     public int AllyArmorBonus { get; set; }
