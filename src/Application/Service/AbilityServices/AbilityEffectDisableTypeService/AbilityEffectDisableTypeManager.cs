@@ -19,7 +19,7 @@ public class AbilityEffectDisableTypeManager : IAbilityEffectDisableTypeService
     }
     public async Task<AbilityEffectDisableType> Remove(AbilityEffectDisableType abilityEffectDisableType)
     {
-        return await _abilityEffectDisableTypeRepository.UpdateAsync(abilityEffectDisableType.Id, abilityEffectDisableType);
+        return await _abilityEffectDisableTypeRepository.DeleteAsync(abilityEffectDisableType);
     }
     public async Task<AbilityEffectDisableType> Update(AbilityEffectDisableType abilityEffectDisableType)
     {
