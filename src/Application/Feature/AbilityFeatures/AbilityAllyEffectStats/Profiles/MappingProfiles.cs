@@ -5,6 +5,9 @@ using Application.Feature.AbilityFeatures.AbilityAllyEffectStats.Commands.Remove
 using Application.Feature.AbilityFeatures.AbilityAllyEffectStats.Commands.UndoDelete;
 using Application.Feature.AbilityFeatures.AbilityAllyEffectStats.Commands.Update;
 using Application.Feature.AbilityFeatures.AbilityAllyEffectStats.Dto;
+using Application.Feature.AbilityFeatures.AbilityAllyEffectStats.Queries.GetById;
+using Application.Feature.AbilityFeatures.AbilityAllyEffectStats.Queries.GetListByActive;
+using Application.Feature.AbilityFeatures.AbilityAllyEffectStats.Queries.GetListByInActive;
 using AutoMapper;
 using Domain.Abilities;
 
@@ -28,9 +31,9 @@ public class MappingProfiles : Profile
         CreateMap<AbilityAllyEffectStat, UpdateAbilityAllyEffectStatDto>().ReverseMap();
         CreateMap<AbilityAllyEffectStat, UpdateAbilityAllyEffectStatResponse>().ReverseMap();
 
-        CreateMap<AbilityAllyEffectStat, UpdateAbilityAllyEffectStatResponse>().ReverseMap();
-        CreateMap<AbilityAllyEffectStat, UpdateAbilityAllyEffectStatResponse>().ReverseMap();
-        CreateMap<AbilityAllyEffectStat, UpdateAbilityAllyEffectStatResponse>().ReverseMap();
+        CreateMap<AbilityAllyEffectStat, GetByIdAbilityAllyEffectStatResponse>().ReverseMap();
+        CreateMap<AbilityAllyEffectStat, GetListByActiveAbilityAllyEffectStatResponse>().ReverseMap();
+        CreateMap<AbilityAllyEffectStat, GetListByInActiveAbilityAllyEffectStatResponse>().ReverseMap();
 
     }
 }

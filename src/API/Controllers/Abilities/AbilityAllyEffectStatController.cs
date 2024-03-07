@@ -5,6 +5,10 @@ using Application.Feature.AbilityFeatures.AbilityAllyEffectStats.Commands.Remove
 using Application.Feature.AbilityFeatures.AbilityAllyEffectStats.Commands.UndoDelete;
 using Application.Feature.AbilityFeatures.AbilityAllyEffectStats.Commands.Update;
 using Application.Feature.AbilityFeatures.AbilityAllyEffectStats.Dto;
+using Application.Feature.AbilityFeatures.AbilityAllyEffectStats.Queries.GetById;
+using Application.Feature.AbilityFeatures.AbilityAllyEffectStats.Queries.GetListByActive;
+using Application.Feature.AbilityFeatures.AbilityAllyEffectStats.Queries.GetListByInActive;
+using Core.Application.Requests;
 using Microsoft.AspNetCore.Mvc;
 
 
@@ -78,6 +82,39 @@ public class AbilityAllyEffectStatController : BaseController
             RemoveAbilityAllyEffectStatDto = removeAbilityAllyEffectStatDto
         };
         RemoveAbilityAllyEffectStatResponse result = await Mediator.Send(request);
+        return Ok(result);
+    }
+
+    [HttpGet("GetById")]
+    public async Task<IActionResult> GetById([FromQuery] GetByIdAbilityAllyEffectStatDto getByIdAbilityAllyEffectStatDto)
+    {
+        GetByIdAbilityAllyEffectStatRequest request = new()
+        {
+            GetByIdAbilityAllyEffectStatDto = getByIdAbilityAllyEffectStatDto
+        };
+        GetByIdAbilityAllyEffectStatResponse result = await Mediator.Send(request);
+        return Ok(result);
+    }
+
+    [HttpGet("GetByActiveList")]
+    public async Task<IActionResult> GetByActiveList([FromQuery] PageRequest pageRequest)
+    {
+        GetListByActiveAbilityAllyEffectStatRequest request = new()
+        {
+            PageRequest = pageRequest
+        };
+        List<GetListByActiveAbilityAllyEffectStatResponse> result = await Mediator.Send(request);
+        return Ok(result);
+    }
+
+    [HttpGet("GetByInActiveList")]
+    public async Task<IActionResult> GetByInActiveList([FromQuery] PageRequest pageRequest)
+    {
+        GetListByInActiveAbilityAllyEffectStatRequest request = new()
+        {
+            PageRequest = pageRequest
+        };
+        List<GetListByInActiveAbilityAllyEffectStatResponse> result = await Mediator.Send(request);
         return Ok(result);
     }
 }
