@@ -87,7 +87,6 @@ public class AbilityEffectTypeController : BaseController
         return Ok(result);
     }
 
-
     [HttpGet("GetById")]
     public async Task<IActionResult> GetById([FromQuery] GetByIdAbilityEffectTypeDto getByIdAbilityEffectTypeDto)
     {
@@ -120,7 +119,5 @@ public class AbilityEffectTypeController : BaseController
         List<GetByInActiveListAbilityEffectTypeResponse> result = await Mediator.Send(request);
         return Ok(result);
     }
-
-
 
 }

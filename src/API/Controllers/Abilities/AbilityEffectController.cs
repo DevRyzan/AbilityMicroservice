@@ -5,6 +5,14 @@ using Application.Feature.AbilityFeatures.AbilityEffects.Commands.Remove;
 using Application.Feature.AbilityFeatures.AbilityEffects.Commands.UndoDelete;
 using Application.Feature.AbilityFeatures.AbilityEffects.Commands.Update;
 using Application.Feature.AbilityFeatures.AbilityEffects.Dtos;
+using Application.Feature.AbilityFeatures.AbilityEffects.Queries.GetById;
+using Application.Feature.AbilityFeatures.AbilityEffects.Queries.GetListByActive;
+using Application.Feature.AbilityFeatures.AbilityEffects.Queries.GetListByInActive;
+using Application.Feature.AbilityFeatures.AbilityEffectTypes.Dtos;
+using Application.Feature.AbilityFeatures.AbilityEffectTypes.Queries.GetById;
+using Application.Feature.AbilityFeatures.AbilityEffectTypes.Queries.GetListByActive;
+using Application.Feature.AbilityFeatures.AbilityEffectTypes.Queries.GetListByInActive;
+using Core.Application.Requests;
 using Microsoft.AspNetCore.Mvc;
 
 
@@ -78,6 +86,40 @@ public class AbilityEffectController : BaseController
             RemoveAbilityEffectDto = removeAbilityEffectDto
         };
         RemoveAbilityEffectResponse result = await Mediator.Send(request);
+        return Ok(result);
+    }
+
+
+    [HttpGet("GetById")]
+    public async Task<IActionResult> GetById([FromQuery] GetByIdAbilityEffectDto getByIdAbilityEffectDto)
+    {
+        GetByIdAbilityEffectRequest request = new()
+        {
+            GetByIdAbilityEffectDto = getByIdAbilityEffectDto
+        };
+        GetByIdAbilityEffectResponse result = await Mediator.Send(request);
+        return Ok(result);
+    }
+
+    [HttpGet("GetByActiveList")]
+    public async Task<IActionResult> GetByActiveList([FromQuery] PageRequest pageRequest)
+    {
+        GetListByActiveAbilityEffectRequest request = new()
+        {
+            PageRequest = pageRequest
+        };
+        List<GetListByActiveAbilityEffectResponse> result = await Mediator.Send(request);
+        return Ok(result);
+    }
+
+    [HttpGet("GetByInActiveList")]
+    public async Task<IActionResult> GetByInActiveList([FromQuery] PageRequest pageRequest)
+    {
+        GetListByInActiveAbilityEffectRequest request = new()
+        {
+            PageRequest = pageRequest
+        };
+        List<GetListByInActiveAbilityEffectResponse> result = await Mediator.Send(request);
         return Ok(result);
     }
 }
