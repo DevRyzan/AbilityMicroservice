@@ -8,13 +8,6 @@ using Application.Feature.AbilityFeatures.AbilityEffectTypes.Dtos;
 using Application.Feature.AbilityFeatures.AbilityEffectTypes.Queries.GetById;
 using Application.Feature.AbilityFeatures.AbilityEffectTypes.Queries.GetListByActive;
 using Application.Feature.AbilityFeatures.AbilityEffectTypes.Queries.GetListByInActive;
-using Application.Feature.AbilityFeatures.AbilityTypes.Commands.ChangeStatus;
-using Application.Feature.AbilityFeatures.AbilityTypes.Commands.Remove;
-using Application.Feature.AbilityFeatures.AbilityTypes.Commands.UndoDelete;
-using Application.Feature.AbilityFeatures.AbilityTypes.Dtos;
-using Application.Feature.AbilityFeatures.AbilityTypes.Queries.GetById;
-using Application.Feature.AbilityFeatures.AbilityTypes.Queries.GetListByActive;
-using Application.Feature.AbilityFeatures.AbilityTypes.Queries.GetListByInActive;
 using Core.Application.Requests;
 using Microsoft.AspNetCore.Mvc;
 
@@ -94,7 +87,6 @@ public class AbilityEffectTypeController : BaseController
         return Ok(result);
     }
 
-
     [HttpGet("GetById")]
     public async Task<IActionResult> GetById([FromQuery] GetByIdAbilityEffectTypeDto getByIdAbilityEffectTypeDto)
     {
@@ -127,7 +119,5 @@ public class AbilityEffectTypeController : BaseController
         List<GetByInActiveListAbilityEffectTypeResponse> result = await Mediator.Send(request);
         return Ok(result);
     }
-
-
 
 }
