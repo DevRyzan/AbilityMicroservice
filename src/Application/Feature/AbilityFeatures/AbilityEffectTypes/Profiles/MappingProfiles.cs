@@ -22,13 +22,9 @@ public class MappingProfiles : Profile
         CreateMap<AbilityEffectType, CreateAbilityEffectTypeResponse>().ReverseMap();
 
         CreateMap<AbilityEffectType, ChangeStatusAbilityEffectTypeResponse>().ReverseMap();
-
         CreateMap<AbilityEffectType, DeleteAbilityEffectTypeResponse>().ReverseMap();
-
         CreateMap<AbilityEffectType, RemoveAbilityEffectTypeResponse>().ReverseMap();
-
         CreateMap<AbilityEffectType, UpdateAbilityEffectTypeResponse>().ReverseMap();
-
         CreateMap<AbilityEffectType, UndoDeleteAbilityEffectTypeResponse>().ReverseMap();
 
 

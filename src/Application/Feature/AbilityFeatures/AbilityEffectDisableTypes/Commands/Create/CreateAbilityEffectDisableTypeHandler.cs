@@ -6,8 +6,6 @@ using Domain.Abilities;
 using MediatR;
 using MongoDB.Bson;
 
-
-
 namespace Application.Feature.AbilityFeatures.AbilityEffectDisableTypes.Commands.Create;
 
 public class CreateAbilityEffectDisableTypeHandler : IRequestHandler<CreateAbilityEffectDisableTypeRequest, CreateAbilityEffectDisableTypeResponse>
