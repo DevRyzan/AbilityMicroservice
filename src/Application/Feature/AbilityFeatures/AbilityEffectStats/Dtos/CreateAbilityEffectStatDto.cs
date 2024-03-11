@@ -4,7 +4,7 @@ namespace Application.Feature.AbilityFeatures.AbilityEffectStats.Dtos;
 
 public class CreateAbilityEffectStatDto
 {
-    public string AbilityEffectId { get; set; }
+    public string? AbilityEffectId { get; set; }
     public int CrowdControlDuration { get; set; }
     public int CrowdControlRange { get; set; }
     public int CrowdControlResistance { get; set; }
