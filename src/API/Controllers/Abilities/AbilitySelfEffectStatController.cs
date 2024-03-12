@@ -5,6 +5,10 @@ using Application.Feature.AbilityFeatures.AbilitySelfEffectStats.Commands.Remove
 using Application.Feature.AbilityFeatures.AbilitySelfEffectStats.Commands.UndoDelete;
 using Application.Feature.AbilityFeatures.AbilitySelfEffectStats.Commands.Update;
 using Application.Feature.AbilityFeatures.AbilitySelfEffectStats.Dtos;
+using Application.Feature.AbilityFeatures.AbilitySelfEffectStats.Queries.GetById;
+using Application.Feature.AbilityFeatures.AbilitySelfEffectStats.Queries.GetListByActive;
+using Application.Feature.AbilityFeatures.AbilitySelfEffectStats.Queries.GetListByInActive;
+using Core.Application.Requests;
 using Microsoft.AspNetCore.Mvc;
 
 
@@ -78,6 +82,39 @@ public class AbilitySelfEffectStatController : BaseController
             RemoveAbilitySelfEffectStatDto = removeAbilitySelfEffectStatDto
         };
         RemoveAbilitySelfEffectStatResponse result = await Mediator.Send(request);
+        return Ok(result);
+    }
+
+    [HttpGet("GetById")]
+    public async Task<IActionResult> GetById([FromQuery] GetByIdAbilitySelfEffectStatDto getByIdAbilitySelfEffectStatDto)
+    {
+        GetByIdAbilitySelfEffectStatRequest request = new()
+        {
+            GetByIdAbilitySelfEffectStatDto = getByIdAbilitySelfEffectStatDto
+        };
+        GetByIdAbilitySelfEffectStatResponse result = await Mediator.Send(request);
+        return Ok(result);
+    }
+
+    [HttpGet("GetByActiveList")]
+    public async Task<IActionResult> GetByActiveList([FromQuery] PageRequest pageRequest)
+    {
+        GetListByActiveAbilitySelfEffectStatRequest request = new()
+        {
+            PageRequest = pageRequest
+        };
+        List<GetListByActiveAbilitySelfEffectStatResponse> result = await Mediator.Send(request);
+        return Ok(result);
+    }
+
+    [HttpGet("GetByInActiveList")]
+    public async Task<IActionResult> GetByInActiveList([FromQuery] PageRequest pageRequest)
+    {
+        GetListByInActiveAbilitySelfEffectStatRequest request = new()
+        {
+            PageRequest = pageRequest
+        };
+        List<GetListByInActiveAbilitySelfEffectStatResponse> result = await Mediator.Send(request);
         return Ok(result);
     }
 }
