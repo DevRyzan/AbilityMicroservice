@@ -21,11 +21,17 @@ public class GetByIdAbilityActivationTypeHandler : IRequestHandler<GetByIdAbilit
 
     public async Task<GetByIdAbilityActivationTypeResponse> Handle(GetByIdAbilityActivationTypeRequest request, CancellationToken cancellationToken)
     {
+        // Check the existence of the specified ID; it should comply with business rules.
         await _abilityActivationTypeBusinessRules.IdShouldBeExist(request.GetByIdAbilityActivationTypeDto.Id);
 
+        // Retrieve the AbilityActivationType associated with the provided ID from the service.
         AbilityActivationType abilityActivationType = await _abilityActivationTypeService.GetById(request.GetByIdAbilityActivationTypeDto.Id);
 
+        // Map the retrieved AbilityActivationType to the response DTO.
         GetByIdAbilityActivationTypeResponse mappedResponse = _mapper.Map<GetByIdAbilityActivationTypeResponse>(abilityActivationType);
+
+        // Return the mapped response.
         return mappedResponse;
+
     }
 }

@@ -22,16 +22,26 @@ public class UpdateAbilityEffectStatHandler : IRequestHandler<UpdateAbilityEffec
 
     public async Task<UpdateAbilityEffectStatResponse> Handle(UpdateAbilityEffectStatRequest request, CancellationToken cancellationToken)
     {
+        // Check if the ID exists using business rules.
         await _abilityEffectStatBusinessRules.IdShouldBeExist(request.UpdateAbilityEffectStatDto.Id);
 
+        // Get the AbilityEffectStat entity by ID.
         AbilityEffectStat abilityEffectStat = await _abilityEffectStatService.GetById(request.UpdateAbilityEffectStatDto.Id);
 
+        // Map properties from the DTO to the entity.
         _mapper.Map(request.UpdateAbilityEffectStatDto, abilityEffectStat);
+
+        // Update additional properties.
         abilityEffectStat.UpdatedDate = DateTime.Now;
 
+        // Update the AbilityEffectStat entity in the database.
         await _abilityEffectStatService.Update(abilityEffectStat);
 
+        // Map the updated AbilityEffectStat entity to the response DTO.
         UpdateAbilityEffectStatResponse mappedResponse = _mapper.Map<UpdateAbilityEffectStatResponse>(abilityEffectStat);
+
+        // Return the mapped response.
         return mappedResponse;
+
     }
 }

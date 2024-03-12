@@ -21,11 +21,17 @@ public class GetByIdAbilityAllyEffectStatHandler : IRequestHandler<GetByIdAbilit
 
     public async Task<GetByIdAbilityAllyEffectStatResponse> Handle(GetByIdAbilityAllyEffectStatRequest request, CancellationToken cancellationToken)
     {
+        // Check the existence of the specified ID; it should comply with business rules.
         await _abilityAllyEffectStatsBusinessRules.IdShouldBeExist(request.GetByIdAbilityAllyEffectStatDto.Id);
 
+        // Retrieve the AbilityAllyEffectStat associated with the provided ID from the service.
         AbilityAllyEffectStat abilityAllyEffectStat = await _abilityAllyEffectStatService.GetById(request.GetByIdAbilityAllyEffectStatDto.Id);
 
+        // Map the retrieved AbilityAllyEffectStat to the response DTO.
         GetByIdAbilityAllyEffectStatResponse mappedResponse = _mapper.Map<GetByIdAbilityAllyEffectStatResponse>(abilityAllyEffectStat);
+
+        // Return the mapped response.
         return mappedResponse;
+
     }
 }

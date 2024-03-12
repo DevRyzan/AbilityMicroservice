@@ -22,11 +22,17 @@ public class GetListByActiveAbilityEffectDisableTypeHandler : IRequestHandler<Ge
 
     public async Task<List<GetListByActiveAbilityEffectDisableTypeResponse>> Handle(GetListByActiveAbilityEffectDisableTypeRequest request, CancellationToken cancellationToken)
     {
+        // Check the validity of the page request; it should comply with business rules.
         await _abilityEffectDisableTypeBusinessRules.PageRequestShouldBeValid(index: request.PageRequest.Page, size: request.PageRequest.PageSize);
 
+        // Retrieve a list of active AbilityEffectDisableTypes based on the specified page parameters.
         List<AbilityEffectDisableType> abilityEffectDisableTypeList = await _abilityEffectDisableTypeService.GetListByActive(index: request.PageRequest.Page, size: request.PageRequest.PageSize);
 
+        // Map the list of AbilityEffectDisableTypes to the response DTOs.
         List<GetListByActiveAbilityEffectDisableTypeResponse> mappedResponse = _mapper.Map<List<GetListByActiveAbilityEffectDisableTypeResponse>>(abilityEffectDisableTypeList);
+
+        // Return the mapped response.
         return mappedResponse;
+
     }
 }

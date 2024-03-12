@@ -24,18 +24,29 @@ public class CreateAbilityEffectTypeHandler : IRequestHandler<CreateAbilityEffec
 
     public async Task<CreateAbilityEffectTypeResponse> Handle(CreateAbilityEffectTypeRequest request, CancellationToken cancellationToken)
     {
+        // Create an instance of RandomCodeGenerator for generating unique codes
         RandomCodeGenerator randomCodeGenerator = new();
 
+        // Map the DTO to the entity (AbilityEffectType) using AutoMapper
         AbilityEffectType abilityEffectType = _mapper.Map<AbilityEffectType>(request.CreateAbilityEffectTypeDto);
-        abilityEffectType.Id = ObjectId.GenerateNewId().ToString();
-        abilityEffectType.Status = true;
-        abilityEffectType.IsDeleted = false;
-        abilityEffectType.Code = randomCodeGenerator.GenerateUniqueCode();
-        abilityEffectType.CreatedDate = DateTime.Now;
 
+        // Generate a new unique ID for the AbilityEffectType
+        abilityEffectType.Id = ObjectId.GenerateNewId().ToString();
+
+        // Set default values for the new AbilityEffectType
+        abilityEffectType.Status = true;            // Set status to true
+        abilityEffectType.IsDeleted = false;        // Set IsDeleted to false
+        abilityEffectType.Code = randomCodeGenerator.GenerateUniqueCode(); // Generate a unique code
+        abilityEffectType.CreatedDate = DateTime.Now;  // Set CreatedDate to the current timestamp
+
+        // Use the service to create the new AbilityEffectType in the database
         await _abilityTypeService.Create(abilityEffectType);
 
+        // Map the created AbilityEffectType to the response DTO
         CreateAbilityEffectTypeResponse mappedResponse = _mapper.Map<CreateAbilityEffectTypeResponse>(abilityEffectType);
+
+        // Return the mapped response
         return mappedResponse;
+
     }
 }

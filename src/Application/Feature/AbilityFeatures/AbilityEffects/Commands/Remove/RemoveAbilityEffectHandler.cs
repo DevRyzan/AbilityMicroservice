@@ -22,15 +22,23 @@ public class RemoveAbilityEffectHandler : IRequestHandler<RemoveAbilityEffectReq
 
     public async Task<RemoveAbilityEffectResponse> Handle(RemoveAbilityEffectRequest request, CancellationToken cancellationToken)
     {
+        // Ensure that the provided ID exists before proceeding.
         await _abilityEffectBusinessRules.IdShouldBeExist(request.RemoveAbilityEffectDto.Id);
+
+        // Apply additional business rules or conditions before removal.
         await _abilityEffectBusinessRules.RemoveCondition(request.RemoveAbilityEffectDto.Id);
 
+        // Retrieve the AbilityEffect entity by ID.
         AbilityEffect abilityEffect = await _abilityEffectService.GetById(request.RemoveAbilityEffectDto.Id);
 
+        // Remove the AbilityEffect in the service.
         await _abilityEffectService.Remove(abilityEffect);
 
+        // Map the removed AbilityEffect to the response DTO.
         RemoveAbilityEffectResponse mappedResponse = _mapper.Map<RemoveAbilityEffectResponse>(abilityEffect);
 
+        // Return the mapped response.
         return mappedResponse;
+
     }
 }

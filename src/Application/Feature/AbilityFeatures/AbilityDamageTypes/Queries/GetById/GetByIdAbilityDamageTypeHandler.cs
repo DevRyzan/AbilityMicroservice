@@ -22,11 +22,17 @@ public class GetByIdAbilityDamageTypeHandler : IRequestHandler<GetByIdAbilityDam
 
     public async Task<GetByIdAbilityDamageTypeResponse> Handle(GetByIdAbilityDamageTypeRequest request, CancellationToken cancellationToken)
     {
+        // Check the existence of the specified ID; it should comply with business rules.
         await _abilityDamageTypeBusinessRules.IdShouldBeExist(request.GetByIdAbilityDamageTypeDto.Id);
 
+        // Retrieve the AbilityDamageType associated with the provided ID from the service.
         AbilityDamageType abilityDamageType = await _abilityDamageTypeService.GetById(request.GetByIdAbilityDamageTypeDto.Id);
 
+        // Map the retrieved AbilityDamageType to the response DTO.
         GetByIdAbilityDamageTypeResponse mappedResponse = _mapper.Map<GetByIdAbilityDamageTypeResponse>(abilityDamageType);
+
+        // Return the mapped response.
         return mappedResponse;
+
     }
 }

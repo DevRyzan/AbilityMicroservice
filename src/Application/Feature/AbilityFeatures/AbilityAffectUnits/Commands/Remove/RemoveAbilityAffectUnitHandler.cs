@@ -21,14 +21,23 @@ public class RemoveAbilityAffectUnitHandler : IRequestHandler<RemoveAbilityAffec
 
     public async Task<RemoveAbilityAffectUnitResponse> Handle(RemoveAbilityAffectUnitRequest request, CancellationToken cancellationToken)
     {
+        // Check additional conditions for the removal process.
         await _abilityAffectUnitBusinessRules.RemoveCondition(id: request.RemoveAbilityAffectUnitDto.Id);
+
+        // Check the existence of the specified ID; it should comply with business rules.
         await _abilityAffectUnitBusinessRules.IdShouldBeExist(request.RemoveAbilityAffectUnitDto.Id);
 
+        // Retrieve the AbilityAffectUnit associated with the provided ID from the service.
         AbilityAffectUnit abilityAffectUnit = await _abilityAffectUnitService.GetById(request.RemoveAbilityAffectUnitDto.Id);
 
+        // Remove the AbilityAffectUnit from the database using the service.
         await _abilityAffectUnitService.Remove(abilityAffectUnit);
 
+        // Map the removed AbilityAffectUnit to the response DTO.
         RemoveAbilityAffectUnitResponse mappedResponse = _mapper.Map<RemoveAbilityAffectUnitResponse>(abilityAffectUnit);
+
+        // Return the mapped response.
         return mappedResponse;
+
     }
 }

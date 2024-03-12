@@ -21,13 +21,20 @@ public class RemoveAbilitySelfEffectStatHandler : IRequestHandler<RemoveAbilityS
 
     public async Task<RemoveAbilitySelfEffectStatResponse> Handle(RemoveAbilitySelfEffectStatRequest request, CancellationToken cancellationToken)
     {
+        // Ensure that the provided ID exists before attempting removal
         await _abilitySelfEffectStatBusinessRules.IdShouldBeExist(request.RemoveAbilitySelfEffectStatDto.Id);
 
+        // Retrieve the AbilitySelfEffectStat entity from the service by ID
         AbilitySelfEffectStat abilitySelfEffectStat = await _abilitySelfEffectStatService.GetById(request.RemoveAbilitySelfEffectStatDto.Id);
 
+        // Perform the removal of the entity from the database
         await _abilitySelfEffectStatService.Remove(abilitySelfEffectStat);
 
+        // Map the removed entity to the corresponding response DTO
         RemoveAbilitySelfEffectStatResponse mappedResponse = _mapper.Map<RemoveAbilitySelfEffectStatResponse>(abilitySelfEffectStat);
+
+        // Return the mapped response
         return mappedResponse;
+
     }
 }

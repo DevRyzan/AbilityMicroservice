@@ -22,15 +22,26 @@ public class ChangeStatusAbilityDamageTypeHandler : IRequestHandler<ChangeStatus
 
     public async Task<ChangeStatusAbilityDamageTypeResponse> Handle(ChangeStatusAbilityDamageTypeRequest request, CancellationToken cancellationToken)
     {
+        // Check the existence of the specified ID; it should comply with business rules.
         await _abilityDamageTypeBusinessRules.IdShouldBeExist(request.ChangeStatusAbilityDamageTypeDto.Id);
 
+        // Retrieve the AbilityDamageType associated with the provided ID from the service.
         AbilityDamageType abilityDamageType = await _abilityDamageTypeService.GetById(request.ChangeStatusAbilityDamageTypeDto.Id);
+
+        // Toggle the status of the retrieved AbilityDamageType (switch between true and false).
         abilityDamageType.Status = abilityDamageType.Status == true ? false : true;
+
+        // Update the 'UpdatedDate' property to the current date and time.
         abilityDamageType.UpdatedDate = DateTime.Now;
 
+        // Update the AbilityDamageType in the database.
         await _abilityDamageTypeService.Update(abilityDamageType);
 
+        // Map the updated AbilityDamageType to the response DTO.
         ChangeStatusAbilityDamageTypeResponse mappedResponse = _mapper.Map<ChangeStatusAbilityDamageTypeResponse>(abilityDamageType);
+
+        // Return the mapped response.
         return mappedResponse;
+
     }
 }

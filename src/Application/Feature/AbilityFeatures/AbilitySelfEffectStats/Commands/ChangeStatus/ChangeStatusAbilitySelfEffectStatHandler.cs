@@ -22,16 +22,26 @@ public class ChangeStatusAbilitySelfEffectStatHandler : IRequestHandler<ChangeSt
 
     public async Task<ChangeStatusAbilitySelfEffectStatResponse> Handle(ChangeStatusAbilitySelfEffectStatRequest request, CancellationToken cancellationToken)
     {
+        // Ensure that the specified ID exists before proceeding with the status change
         await _abilitySelfEffectStatBusinessRules.IdShouldBeExist(request.ChangeStatusAbilitySelfEffectStatDto.Id);
 
+        // Retrieve the AbilitySelfEffectStat by the provided ID
         AbilitySelfEffectStat abilitySelfEffectStat = await _abilitySelfEffectStatService.GetById(request.ChangeStatusAbilitySelfEffectStatDto.Id);
 
+        // Toggle the status of the AbilitySelfEffectStat
         abilitySelfEffectStat.Status = abilitySelfEffectStat.Status == true ? false : true;
+
+        // Update the 'UpdatedDate' to the current date and time
         abilitySelfEffectStat.UpdatedDate = DateTime.Now;
 
+        // Update the AbilitySelfEffectStat in the database
         await _abilitySelfEffectStatService.Update(abilitySelfEffectStat);
 
+        // Map the updated AbilitySelfEffectStat to the corresponding response DTO
         ChangeStatusAbilitySelfEffectStatResponse mappedResponse = _mapper.Map<ChangeStatusAbilitySelfEffectStatResponse>(abilitySelfEffectStat);
+
+        // Return the mapped response
         return mappedResponse;
+
     }
 }

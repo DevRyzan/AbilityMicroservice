@@ -21,16 +21,29 @@ public class DeleteAbilityDamageTypeHandler : IRequestHandler<DeleteAbilityDamag
 
     public async Task<DeleteAbilityDamageTypeResponse> Handle(DeleteAbilityDamageTypeRequest request, CancellationToken cancellationToken)
     {
+        // Check the existence of the specified ID; it should comply with business rules.
         await _abilityDamageTypeBusinessRules.IdShouldBeExist(request.DeleteAbilityDamageTypeDto.Id);
 
+        // Retrieve the AbilityDamageType associated with the provided ID from the service.
         AbilityDamageType abilityDamageType = await _abilityDamageTypeService.GetById(request.DeleteAbilityDamageTypeDto.Id);
+
+        // Set IsDeleted to true, indicating that the record is flagged as deleted.
         abilityDamageType.IsDeleted = true;
+
+        // Set Status to false, indicating that the record is no longer active.
         abilityDamageType.Status = false;
+
+        // Set the deletion timestamp for the AbilityDamageType.
         abilityDamageType.DeletedDate = DateTime.Now;
 
+        // Delete the AbilityDamageType in the database using the service.
         await _abilityDamageTypeService.Delete(abilityDamageType);
 
+        // Map the deleted AbilityDamageType to the response DTO.
         DeleteAbilityDamageTypeResponse mappedResponse = _mapper.Map<DeleteAbilityDamageTypeResponse>(abilityDamageType);
+
+        // Return the mapped response.
         return mappedResponse;
+
     }
 }

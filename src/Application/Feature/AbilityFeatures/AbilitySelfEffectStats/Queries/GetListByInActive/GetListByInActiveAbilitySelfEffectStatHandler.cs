@@ -22,11 +22,17 @@ public class GetListByInActiveAbilitySelfEffectStatHandler : IRequestHandler<Get
 
     public async Task<List<GetListByInActiveAbilitySelfEffectStatResponse>> Handle(GetListByInActiveAbilitySelfEffectStatRequest request, CancellationToken cancellationToken)
     {
+        // Ensure that the provided page request is valid before proceeding
         await _abilitySelfEffectStatBusinessRules.PageRequestShouldBeValid(index: request.PageRequest.Page, size: request.PageRequest.PageSize);
 
+        // Retrieve a list of inactive AbilitySelfEffectStat entities using the provided page index and size
         List<AbilitySelfEffectStat> abilitySelfEffectStatList = await _abilitySelfEffectStatService.GetListByInActive(index: request.PageRequest.Page, size: request.PageRequest.PageSize);
 
+        // Map the list of entities to the corresponding response DTOs
         List<GetListByInActiveAbilitySelfEffectStatResponse> mappedResponse = _mapper.Map<List<GetListByInActiveAbilitySelfEffectStatResponse>>(abilitySelfEffectStatList);
+
+        // Return the mapped response
         return mappedResponse;
+
     }
 }

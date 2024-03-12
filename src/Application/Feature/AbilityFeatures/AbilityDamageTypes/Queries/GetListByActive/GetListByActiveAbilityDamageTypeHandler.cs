@@ -22,11 +22,17 @@ public class GetListByActiveAbilityDamageTypeHandler : IRequestHandler<GetListBy
 
     public async Task<List<GetListByActiveAbilityDamageTypeResponse>> Handle(GetListByActiveAbilityDamageTypeRequest request, CancellationToken cancellationToken)
     {
+        // Check the validity of the page request parameters; they should comply with business rules.
         await _abilityDamageTypeBusinessRules.PageRequestShouldBeValid(index: request.PageRequest.Page, size: request.PageRequest.PageSize);
 
+        // Retrieve a list of active AbilityDamageTypes based on the specified page index and size.
         List<AbilityDamageType> abilityDamageTypeList = await _abilityDamageTypeService.GetListByActive(index: request.PageRequest.Page, size: request.PageRequest.PageSize);
 
+        // Map the list of AbilityDamageTypes to the response DTOs.
         List<GetListByActiveAbilityDamageTypeResponse> mappedResponse = _mapper.Map<List<GetListByActiveAbilityDamageTypeResponse>>(abilityDamageTypeList);
+
+        // Return the mapped response.
         return mappedResponse;
+
     }
 }

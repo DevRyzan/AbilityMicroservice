@@ -22,11 +22,17 @@ public class GetByIdAbilityEffectTypeHandler : IRequestHandler<GetByIdAbilityEff
 
     public async Task<GetByIdAbilityEffectTypeResponse> Handle(GetByIdAbilityEffectTypeRequest request, CancellationToken cancellationToken)
     {
+        // Ensure that the provided ID exists in the business rules before retrieving the AbilityEffectType
         await _abilityEffectTypeBusinessRules.IdShouldBeExist(request.GetByIdAbilityEffectTypeDto.Id);
 
+        // Retrieve the AbilityEffectType from the service using the provided ID
         AbilityEffectType abilityEffectType = await _abilityTypeService.GetById(request.GetByIdAbilityEffectTypeDto.Id);
 
+        // Map the retrieved AbilityEffectType to the response DTO
         GetByIdAbilityEffectTypeResponse mappedResponse = _mapper.Map<GetByIdAbilityEffectTypeResponse>(abilityEffectType);
+
+        // Return the mapped response
         return mappedResponse;
+
     }
 }

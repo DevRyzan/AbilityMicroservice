@@ -22,11 +22,17 @@ public class GetByIdAbilityEnemyEffectStatHandler : IRequestHandler<GetByIdAbili
 
     public async Task<GetByIdAbilityEnemyEffectStatResponse> Handle(GetByIdAbilityEnemyEffectStatRequest request, CancellationToken cancellationToken)
     {
+        // Check if the specified ID exists before attempting to retrieve the AbilityEnemyEffectStat
         await _abilityEnemyEffectStatBusinessRules.IdShouldBeExist(request.GetByIdAbilityEnemyEffectStatDto.Id);
 
+        // Retrieve the AbilityEnemyEffectStat using the specified ID
         AbilityEnemyEffectStat abilityEnemyEffectStat = await _abilityEnemyEffectStatService.GetById(request.GetByIdAbilityEnemyEffectStatDto.Id);
 
+        // Map the retrieved AbilityEnemyEffectStat to the response DTO
         GetByIdAbilityEnemyEffectStatResponse mappedResponse = _mapper.Map<GetByIdAbilityEnemyEffectStatResponse>(abilityEnemyEffectStat);
+
+        // Return the mapped response
         return mappedResponse;
+
     }
 }

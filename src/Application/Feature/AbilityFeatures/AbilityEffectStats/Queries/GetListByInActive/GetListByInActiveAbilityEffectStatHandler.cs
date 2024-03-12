@@ -21,11 +21,17 @@ public class GetListByInActiveAbilityEffectStatHandler : IRequestHandler<GetList
 
     public async Task<List<GetListByInActiveAbilityEffectStatResponse>> Handle(GetListByInActiveAbilityEffectStatRequest request, CancellationToken cancellationToken)
     {
+        // Ensure that the page request is valid using business rules.
         await _abilityEffectStatBusinessRules.PageRequestShouldBeValid(index: request.PageRequest.Page, size: request.PageRequest.PageSize);
 
+        // Get the list of AbilityEffectStat entities by inactive status, paginated.
         List<AbilityEffectStat> abilityEffectTypes = await _abilityEffectStatService.GetListByInActive(index: request.PageRequest.Page, size: request.PageRequest.PageSize);
 
+        // Map the list to the corresponding response DTOs.
         List<GetListByInActiveAbilityEffectStatResponse> mappedResponse = _mapper.Map<List<GetListByInActiveAbilityEffectStatResponse>>(abilityEffectTypes);
+
+        // Return the mapped response.
         return mappedResponse;
+
     }
 }

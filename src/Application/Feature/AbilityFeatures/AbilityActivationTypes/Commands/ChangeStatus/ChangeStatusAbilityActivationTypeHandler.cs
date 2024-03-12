@@ -21,16 +21,26 @@ public class ChangeStatusAbilityActivationTypeHandler : IRequestHandler<ChangeSt
     }
 
     public async Task<ChangeStatusAbilityActivationTypeResponse> Handle(ChangeStatusAbilityActivationTypeRequest request, CancellationToken cancellationToken)
-    {
+    {// Check if the provided ID exists, enforcing a business rule.
         await _abilityActivationTypeBusinessRules.IdShouldBeExist(request.ChangeStatusAbilityActivationTypeDto.Id);
 
+        // Retrieve the AbilityActivationType from the service based on the provided ID.
         AbilityActivationType abilityActivationType = await _abilityActivationTypeService.GetById(request.ChangeStatusAbilityActivationTypeDto.Id);
+
+        // Toggle the status of the retrieved AbilityActivationType (switch between true and false).
         abilityActivationType.Status = abilityActivationType.Status == true ? false : true;
+
+        // Update the 'UpdatedDate' property to the current date and time.
         abilityActivationType.UpdatedDate = DateTime.Now;
 
+        // Update the AbilityActivationType in the database.
         await _abilityActivationTypeService.Update(abilityActivationType);
 
+        // Map the updated AbilityActivationType to the response DTO.
         ChangeStatusAbilityActivationTypeResponse mappedResponse = _mapper.Map<ChangeStatusAbilityActivationTypeResponse>(abilityActivationType);
+
+        // Return the mapped response.
         return mappedResponse;
+
     }
 }
