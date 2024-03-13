@@ -22,17 +22,26 @@ public class DeleteAbilityEffectHandler : IRequestHandler<DeleteAbilityEffectReq
 
     public async Task<DeleteAbilityEffectResponse> Handle(DeleteAbilityEffectRequest request, CancellationToken cancellationToken)
     {
+        // Ensure that the provided ID exists before proceeding.
         await _abilityEffectBusinessRules.IdShouldBeExist(request.DeleteAbilityEffectDto.Id);
 
+        // Retrieve the AbilityEffect entity by ID.
         AbilityEffect abilityEffect = await _abilityEffectService.GetById(request.DeleteAbilityEffectDto.Id);
+
+        // Update properties to mark for deletion.
         abilityEffect.IsDeleted = true;
         abilityEffect.Status = false;
         abilityEffect.DeletedDate = DateTime.Now;
 
+        // Delete the AbilityEffect in the service.
         await _abilityEffectService.Delete(abilityEffect);
 
+        // Map the deleted AbilityEffect to the response DTO.
         DeleteAbilityEffectResponse mappedResponse = _mapper.Map<DeleteAbilityEffectResponse>(abilityEffect);
+
+        // Return the mapped response.
         return mappedResponse;
+
     }
 }
 

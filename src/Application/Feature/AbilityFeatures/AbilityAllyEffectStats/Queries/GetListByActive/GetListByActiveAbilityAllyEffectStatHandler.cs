@@ -22,11 +22,17 @@ public class GetListByActiveAbilityAllyEffectStatHandler : IRequestHandler<GetLi
 
     public async Task<List<GetListByActiveAbilityAllyEffectStatResponse>> Handle(GetListByActiveAbilityAllyEffectStatRequest request, CancellationToken cancellationToken)
     {
+        // Check the validity of the page request; it should comply with business rules.
         await _abilityAllyEffectStatsBusinessRules.PageRequestShouldBeValid(index: request.PageRequest.Page, size: request.PageRequest.PageSize);
 
+        // Retrieve a list of active AbilityAllyEffectStats based on the active page and page size.
         List<AbilityAllyEffectStat> abilityAllyEffectStatList = await _abilityAllyEffectStatService.GetListByActive(index: request.PageRequest.Page, size: request.PageRequest.PageSize);
 
+        // Map the list of active AbilityAllyEffectStats to the response DTO list.
         List<GetListByActiveAbilityAllyEffectStatResponse> mappedResponse = _mapper.Map<List<GetListByActiveAbilityAllyEffectStatResponse>>(abilityAllyEffectStatList);
+
+        // Return the mapped response.
         return mappedResponse;
+
     }
 }

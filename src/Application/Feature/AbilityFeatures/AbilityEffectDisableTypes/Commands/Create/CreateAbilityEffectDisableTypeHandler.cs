@@ -23,19 +23,30 @@ public class CreateAbilityEffectDisableTypeHandler : IRequestHandler<CreateAbili
 
     public async Task<CreateAbilityEffectDisableTypeResponse> Handle(CreateAbilityEffectDisableTypeRequest request, CancellationToken cancellationToken)
     {
-        RandomCodeGenerator randomCodeGenerator = new();
+        // Create a new instance of the RandomCodeGenerator.
+        RandomCodeGenerator randomCodeGenerator = new RandomCodeGenerator();
 
+        // Map the data from the request DTO to a new AbilityEffectDisableType instance.
         AbilityEffectDisableType abilityEffectDisableType = _mapper.Map<AbilityEffectDisableType>(request.CreateAbilityEffectDisableTypeDto);
+
+        // Generate a new ID for the AbilityEffectDisableType.
         abilityEffectDisableType.Id = ObjectId.GenerateNewId().ToString();
+
+        // Set initial values for the Status, IsDeleted, and Code properties.
         abilityEffectDisableType.Status = true;
         abilityEffectDisableType.IsDeleted = false;
         abilityEffectDisableType.Code = randomCodeGenerator.GenerateUniqueCode();
         abilityEffectDisableType.CreatedDate = DateTime.Now;
 
+        // Create the AbilityEffectDisableType in the database using the service.
         await _abilityEffectDisableTypeService.Create(abilityEffectDisableType);
 
+        // Map the created AbilityEffectDisableType to the response DTO.
         CreateAbilityEffectDisableTypeResponse mappedResponse = _mapper.Map<CreateAbilityEffectDisableTypeResponse>(abilityEffectDisableType);
+
+        // Return the mapped response.
         return mappedResponse;
+
 
     }
 }

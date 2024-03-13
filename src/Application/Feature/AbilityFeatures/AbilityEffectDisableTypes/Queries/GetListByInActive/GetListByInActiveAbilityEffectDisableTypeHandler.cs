@@ -22,11 +22,17 @@ public class GetListByInActiveAbilityEffectDisableTypeHandler : IRequestHandler<
 
     public async Task<List<GetListByInActiveAbilityEffectDisableTypeResponse>> Handle(GetListByInActiveAbilityEffectDisableTypeRequest request, CancellationToken cancellationToken)
     {
+        // Check the validity of the page request; it should comply with business rules.
         await _abilityEffectDisableTypeBusinessRules.PageRequestShouldBeValid(index: request.PageRequest.Page, size: request.PageRequest.PageSize);
 
+        // Retrieve a list of inactive AbilityEffectDisableTypes based on the specified page parameters.
         List<AbilityEffectDisableType> abilityEffectDisableTypeList = await _abilityEffectDisableTypeService.GetListByInActive(index: request.PageRequest.Page, size: request.PageRequest.PageSize);
 
+        // Map the list of AbilityEffectDisableTypes to the response DTOs.
         List<GetListByInActiveAbilityEffectDisableTypeResponse> mappedResponse = _mapper.Map<List<GetListByInActiveAbilityEffectDisableTypeResponse>>(abilityEffectDisableTypeList);
+
+        // Return the mapped response.
         return mappedResponse;
+
     }
 }

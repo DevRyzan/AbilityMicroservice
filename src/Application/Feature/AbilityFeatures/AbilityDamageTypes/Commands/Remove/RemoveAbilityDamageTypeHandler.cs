@@ -22,14 +22,23 @@ public class RemoveAbilityDamageTypeHandler : IRequestHandler<RemoveAbilityDamag
 
     public async Task<RemoveAbilityDamageTypeResponse> Handle(RemoveAbilityDamageTypeRequest request, CancellationToken cancellationToken)
     {
+        // Check the existence of the specified ID; it should comply with business rules.
         await _abilityDamageTypeBusinessRules.IdShouldBeExist(request.RemoveAbilityDamageTypeDto.Id);
+
+        // Check additional conditions for the removal process.
         await _abilityDamageTypeBusinessRules.RemoveCondition(request.RemoveAbilityDamageTypeDto.Id);
 
+        // Retrieve the AbilityDamageType associated with the provided ID from the service.
         AbilityDamageType abilityDamageType = await _abilityDamageTypeService.GetById(request.RemoveAbilityDamageTypeDto.Id);
 
+        // Remove the AbilityDamageType from the database using the service.
         await _abilityDamageTypeService.Remove(abilityDamageType);
 
+        // Map the removed AbilityDamageType to the response DTO.
         RemoveAbilityDamageTypeResponse mappedResponse = _mapper.Map<RemoveAbilityDamageTypeResponse>(abilityDamageType);
+
+        // Return the mapped response.
         return mappedResponse;
+
     }
 }

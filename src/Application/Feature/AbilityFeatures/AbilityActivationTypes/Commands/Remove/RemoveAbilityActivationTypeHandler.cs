@@ -22,14 +22,23 @@ public class RemoveAbilityActivationTypeHandler : IRequestHandler<RemoveAbilityA
 
     public async Task<RemoveAbilityActivationTypeResponse> Handle(RemoveAbilityActivationTypeRequest request, CancellationToken cancellationToken)
     {
+        // Check the existence of the specified ID; it should comply with business rules.
         await _abilityActivationTypeBusinessRules.IdShouldBeExist(request.RemoveAbilityActivationTypeDto.Id);
+
+        // Check additional conditions for the removal process.
         await _abilityActivationTypeBusinessRules.RemoveCondition(request.RemoveAbilityActivationTypeDto.Id);
 
+        // Retrieve the AbilityActivationType associated with the provided ID from the service.
         AbilityActivationType abilityActivationType = await _abilityActivationTypeService.GetById(request.RemoveAbilityActivationTypeDto.Id);
 
+        // Remove the AbilityActivationType from the database.
         await _abilityActivationTypeService.Remove(abilityActivationType);
 
+        // Map the removed AbilityActivationType to the response DTO.
         RemoveAbilityActivationTypeResponse mappedResponse = _mapper.Map<RemoveAbilityActivationTypeResponse>(abilityActivationType);
+
+        // Return the mapped response.
         return mappedResponse;
+
     }
 }

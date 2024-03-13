@@ -22,16 +22,26 @@ public class UpdateAbilityActivationTypeHandler : IRequestHandler<UpdateAbilityA
 
     public async Task<UpdateAbilityActivationTypeResponse> Handle(UpdateAbilityActivationTypeRequest request, CancellationToken cancellationToken)
     {
+        // Check the existence of the specified ID; it should comply with business rules.
         await _abilityActivationTypeBusinessRules.IdShouldBeExist(request.UpdateAbilityActivationTypeDto.Id);
 
+        // Retrieve the AbilityActivationType associated with the provided ID from the service.
         AbilityActivationType abilityActivationType = await _abilityActivationTypeService.GetById(request.UpdateAbilityActivationTypeDto.Id);
+
+        // Update properties with the values from the request DTO.
         abilityActivationType.Name = request.UpdateAbilityActivationTypeDto.Name;
         abilityActivationType.Description = request.UpdateAbilityActivationTypeDto.Description;
+
+        // Update the 'UpdatedDate' property to the current date and time.
         abilityActivationType.UpdatedDate = DateTime.Now;
 
+        // Update the AbilityActivationType in the database.
         await _abilityActivationTypeService.Update(abilityActivationType);
 
+        // Map the updated AbilityActivationType to the response DTO.
         UpdateAbilityActivationTypeResponse mappedResponse = _mapper.Map<UpdateAbilityActivationTypeResponse>(abilityActivationType);
+
+        // Return the mapped response.
         return mappedResponse;
     }
 }

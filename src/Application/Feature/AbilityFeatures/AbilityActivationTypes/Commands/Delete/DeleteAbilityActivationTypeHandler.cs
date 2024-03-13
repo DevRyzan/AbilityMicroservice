@@ -21,17 +21,29 @@ public class DeleteAbilityActivationTypeHandler : IRequestHandler<DeleteAbilityA
     }
 
     public async Task<DeleteAbilityActivationTypeResponse> Handle(DeleteAbilityActivationTypeRequest request, CancellationToken cancellationToken)
-    {
+    {// Check if the provided ID exists, enforcing a business rule.
         await _abilityActivationTypeBusinessRules.IdShouldBeExist(request.DeleteAbilityActivationTypeDto.Id);
 
+        // Retrieve the AbilityActivationType from the service based on the provided ID.
         AbilityActivationType abilityActivationType = await _abilityActivationTypeService.GetById(request.DeleteAbilityActivationTypeDto.Id);
+
+        // Set IsDeleted to true, indicating that the record is flagged as deleted.
         abilityActivationType.IsDeleted = true;
+
+        // Set Status to false, indicating that the record is no longer active.
         abilityActivationType.Status = false;
+
+        // Set the deletion timestamp for the AbilityActivationType.
         abilityActivationType.DeletedDate = DateTime.Now;
 
+        // Delete the AbilityActivationType in the database using the service.
         await _abilityActivationTypeService.Delete(abilityActivationType);
 
+        // Map the deleted AbilityActivationType to the response DTO.
         DeleteAbilityActivationTypeResponse mappedResponse = _mapper.Map<DeleteAbilityActivationTypeResponse>(abilityActivationType);
+
+        // Return the mapped response.
         return mappedResponse;
+
     }
 }

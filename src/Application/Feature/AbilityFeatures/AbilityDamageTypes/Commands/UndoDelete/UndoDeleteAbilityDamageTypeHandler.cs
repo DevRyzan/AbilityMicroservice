@@ -22,17 +22,25 @@ public class UndoDeleteAbilityDamageTypeHandler : IRequestHandler<UndoDeleteAbil
 
     public async Task<UndoDeleteAbilityDamageTypeResponse> Handle(UndoDeleteAbilityDamageTypeRequest request, CancellationToken cancellationToken)
     {
+        // Check the existence of the specified ID; it should comply with business rules.
         await _abilityDamageTypeBusinessRules.IdShouldBeExist(request.UndoDeleteAbilityDamageTypeDto.Id);
 
+        // Retrieve the AbilityDamageType associated with the provided ID from the service.
         AbilityDamageType abilityDamageType = await _abilityDamageTypeService.GetById(request.UndoDeleteAbilityDamageTypeDto.Id);
+
+        // Set the 'IsDeleted' flag to false, indicating the undo of the deletion.
         abilityDamageType.IsDeleted = false;
+
+        // Update the 'UpdatedDate' property to the current date and time.
         abilityDamageType.UpdatedDate = DateTime.Now;
 
+        // Update the AbilityDamageType in the database.
         await _abilityDamageTypeService.Update(abilityDamageType);
 
+        // Map the updated AbilityDamageType to the response DTO.
         UndoDeleteAbilityDamageTypeResponse mappedResponse = _mapper.Map<UndoDeleteAbilityDamageTypeResponse>(abilityDamageType);
+
+        // Return the mapped response.
         return mappedResponse;
-
-
     }
 }

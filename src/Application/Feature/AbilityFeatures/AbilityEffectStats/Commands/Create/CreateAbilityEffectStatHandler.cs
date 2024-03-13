@@ -24,19 +24,26 @@ public class CreateAbilityEffectStatHandler : IRequestHandler<CreateAbilityEffec
 
     public async Task<CreateAbilityEffectStatResponse> Handle(CreateAbilityEffectStatRequest request, CancellationToken cancellationToken)
     {
-        RandomCodeGenerator randomCodeGenerator = new();
+        // Create an instance of the RandomCodeGenerator.
+        RandomCodeGenerator randomCodeGenerator = new RandomCodeGenerator();
 
+        // Map the DTO to the entity.
         AbilityEffectStat abilityEffectStat = _mapper.Map<AbilityEffectStat>(request.CreateAbilityEffectStatDto);
 
+        // Generate a new ID, set default values, and assign a unique code.
         abilityEffectStat.Id = ObjectId.GenerateNewId().ToString();
         abilityEffectStat.Status = true;
         abilityEffectStat.IsDeleted = false;
         abilityEffectStat.Code = randomCodeGenerator.GenerateUniqueCode();
         abilityEffectStat.CreatedDate = DateTime.Now;
 
+        // Create the AbilityEffectStat entity in the database.
         await _abilityEffectStatService.Create(abilityEffectStat);
 
+        // Map the created AbilityEffectStat entity to the response DTO.
         CreateAbilityEffectStatResponse mappedResponse = _mapper.Map<CreateAbilityEffectStatResponse>(abilityEffectStat);
+
+        // Return the mapped response.
         return mappedResponse;
 
     }

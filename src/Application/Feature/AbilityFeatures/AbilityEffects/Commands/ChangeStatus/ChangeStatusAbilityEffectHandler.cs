@@ -22,15 +22,24 @@ public class ChangeStatusAbilityEffectHandler : IRequestHandler<ChangeStatusAbil
 
     public async Task<ChangeStatusAbilityEffectResponse> Handle(ChangeStatusAbilityEffectRequest request, CancellationToken cancellationToken)
     {
+        // Check the existence of the specified ID; it should comply with business rules.
         await _abilityEffectBusinessRules.IdShouldBeExist(request.ChangeStatusAbilityEffectDto.Id);
 
+        // Retrieve the AbilityEffect associated with the provided ID from the service.
         AbilityEffect abilityEffect = await _abilityEffectService.GetById(request.ChangeStatusAbilityEffectDto.Id);
-        abilityEffect.Status = abilityEffect.Status == true ? false : true;
+
+        // Toggle the Status property and update the UpdatedDate.
+        abilityEffect.Status = !abilityEffect.Status;
         abilityEffect.UpdatedDate = DateTime.Now;
 
+        // Update the AbilityEffect in the service.
         await _abilityEffectService.Update(abilityEffect);
 
+        // Map the updated AbilityEffect to the response DTO.
         ChangeStatusAbilityEffectResponse mappedResponse = _mapper.Map<ChangeStatusAbilityEffectResponse>(abilityEffect);
+
+        // Return the mapped response.
         return mappedResponse;
+
     }
 }

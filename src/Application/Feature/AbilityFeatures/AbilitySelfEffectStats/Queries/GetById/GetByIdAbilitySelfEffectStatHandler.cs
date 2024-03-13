@@ -21,11 +21,17 @@ public class GetByIdAbilitySelfEffectStatHandler : IRequestHandler<GetByIdAbilit
 
     public async Task<GetByIdAbilitySelfEffectStatResponse> Handle(GetByIdAbilitySelfEffectStatRequest request, CancellationToken cancellationToken)
     {
+        // Ensure that the provided ID exists before attempting to retrieve the entity
         await _abilitySelfEffectStatBusinessRules.IdShouldBeExist(request.GetByIdAbilitySelfEffectStatDto.Id);
 
+        // Retrieve the AbilitySelfEffectStat entity from the service by ID
         AbilitySelfEffectStat abilitySelfEffectStat = await _abilitySelfEffectStatService.GetById(request.GetByIdAbilitySelfEffectStatDto.Id);
 
+        // Map the retrieved entity to the corresponding response DTO
         GetByIdAbilitySelfEffectStatResponse mappedResponse = _mapper.Map<GetByIdAbilitySelfEffectStatResponse>(abilitySelfEffectStat);
+
+        // Return the mapped response
         return mappedResponse;
+
     }
 }

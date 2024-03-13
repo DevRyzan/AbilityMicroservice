@@ -22,16 +22,29 @@ public class DeleteAbilityAllyEffectStatHandler : IRequestHandler<DeleteAbilityA
 
     public async Task<DeleteAbilityAllyEffectStatResponse> Handle(DeleteAbilityAllyEffectStatRequest request, CancellationToken cancellationToken)
     {
+        // Check the existence of the specified ID; it should comply with business rules.
         await _abilityAllyEffectStatsBusinessRules.IdShouldBeExist(request.DeleteAbilityAllyEffectStatDto.Id);
 
+        // Retrieve the AbilityAllyEffectStat associated with the provided ID from the service.
         AbilityAllyEffectStat abilityAllyEffectStat = await _abilityAllyEffectStatService.GetById(request.DeleteAbilityAllyEffectStatDto.Id);
+
+        // Set IsDeleted to true, indicating that the record is flagged as deleted.
         abilityAllyEffectStat.IsDeleted = true;
+
+        // Set Status to false, indicating that the record is no longer active.
         abilityAllyEffectStat.Status = false;
+
+        // Set the deletion timestamp for the AbilityAllyEffectStat.
         abilityAllyEffectStat.DeletedDate = DateTime.Now;
 
+        // Delete the AbilityAllyEffectStat in the database using the service.
         await _abilityAllyEffectStatService.Delete(abilityAllyEffectStat);
 
+        // Map the deleted AbilityAllyEffectStat to the response DTO.
         DeleteAbilityAllyEffectStatResponse mappedResponse = _mapper.Map<DeleteAbilityAllyEffectStatResponse>(abilityAllyEffectStat);
+
+        // Return the mapped response.
         return mappedResponse;
+
     }
 }

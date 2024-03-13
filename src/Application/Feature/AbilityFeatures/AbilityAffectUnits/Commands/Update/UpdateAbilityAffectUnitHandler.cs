@@ -22,15 +22,26 @@ public class UpdateAbilityAffectUnitHandler : IRequestHandler<UpdateAbilityAffec
 
     public async Task<UpdateAbilityAffectUnitResponse> Handle(UpdateAbilityAffectUnitRequest request, CancellationToken cancellationToken)
     {
+        // Check the existence of the specified ID; it should comply with business rules.
         await _abilityAffectUnitBusinessRules.IdShouldBeExist(request.UpdateAbilityAffectUnitDto.Id);
 
+        // Retrieve the AbilityAffectUnit associated with the provided ID from the service.
         AbilityAffectUnit abilityAffectUnit = await _abilityAffectUnitService.GetById(request.UpdateAbilityAffectUnitDto.Id);
+
+        // Update properties with the values from the request DTO.
         abilityAffectUnit.Name = request.UpdateAbilityAffectUnitDto.Name;
+
+        // Update the 'UpdatedDate' property to the current date and time.
         abilityAffectUnit.UpdatedDate = DateTime.Now;
 
+        // Update the AbilityAffectUnit in the database.
         await _abilityAffectUnitService.Update(abilityAffectUnit);
 
+        // Map the updated AbilityAffectUnit to the response DTO.
         UpdateAbilityAffectUnitResponse mappedResponse = _mapper.Map<UpdateAbilityAffectUnitResponse>(abilityAffectUnit);
+
+        // Return the mapped response.
         return mappedResponse;
+
     }
 }

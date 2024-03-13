@@ -22,15 +22,26 @@ public class ChangeStatusAbilityEffectDisableTypeHandler : IRequestHandler<Chang
 
     public async Task<ChangeStatusAbilityEffectDisableTypeResponse> Handle(ChangeStatusAbilityEffectDisableTypeRequest request, CancellationToken cancellationToken)
     {
+        // Check the existence of the specified ID; it should comply with business rules.
         await _abilityEffectDisableTypeBusinessRules.IdShouldBeExist(request.ChangeStatusAbilityEffectDisableTypeDto.Id);
 
+        // Retrieve the AbilityEffectDisableType associated with the provided ID from the service.
         AbilityEffectDisableType abilityEffectDisableType = await _abilityEffectDisableTypeService.GetById(request.ChangeStatusAbilityEffectDisableTypeDto.Id);
-        abilityEffectDisableType.Status = abilityEffectDisableType.Status == true ? false : true;
+
+        // Toggle the 'Status' property, indicating an activation or deactivation.
+        abilityEffectDisableType.Status = !abilityEffectDisableType.Status;
+
+        // Update the 'UpdatedDate' property to the current date and time.
         abilityEffectDisableType.UpdatedDate = DateTime.Now;
 
+        // Update the AbilityEffectDisableType in the database.
         await _abilityEffectDisableTypeService.Update(abilityEffectDisableType);
 
+        // Map the updated AbilityEffectDisableType to the response DTO.
         ChangeStatusAbilityEffectDisableTypeResponse mappedResponse = _mapper.Map<ChangeStatusAbilityEffectDisableTypeResponse>(abilityEffectDisableType);
+
+        // Return the mapped response.
         return mappedResponse;
+
     }
 }

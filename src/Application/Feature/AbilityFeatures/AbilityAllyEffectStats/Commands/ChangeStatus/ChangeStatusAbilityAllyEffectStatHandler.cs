@@ -22,15 +22,26 @@ public class ChangeStatusAbilityAllyEffectStatHandler : IRequestHandler<ChangeSt
 
     public async Task<ChangeStatusAbilityAllyEffectStatResponse> Handle(ChangeStatusAbilityAllyEffectStatRequest request, CancellationToken cancellationToken)
     {
+        // Check the existence of the specified ID; it should comply with business rules.
         await _abilityAllyEffectStatsBusinessRules.IdShouldBeExist(request.ChangeStatusAbilityAllyEffectStatDto.Id);
 
+        // Retrieve the AbilityAllyEffectStat associated with the provided ID from the service.
         AbilityAllyEffectStat abilityAllyEffectStat = await _abilityAllyEffectStatService.GetById(request.ChangeStatusAbilityAllyEffectStatDto.Id);
+
+        // Toggle the status of the retrieved AbilityAllyEffectStat (switch between true and false).
         abilityAllyEffectStat.Status = abilityAllyEffectStat.Status == true ? false : true;
+
+        // Update the 'UpdatedDate' property to the current date and time.
         abilityAllyEffectStat.UpdatedDate = DateTime.Now;
 
+        // Update the AbilityAllyEffectStat in the database.
         await _abilityAllyEffectStatService.Update(abilityAllyEffectStat);
 
+        // Map the updated AbilityAllyEffectStat to the response DTO.
         ChangeStatusAbilityAllyEffectStatResponse mappedResponse = _mapper.Map<ChangeStatusAbilityAllyEffectStatResponse>(abilityAllyEffectStat);
+
+        // Return the mapped response.
         return mappedResponse;
+
     }
 }

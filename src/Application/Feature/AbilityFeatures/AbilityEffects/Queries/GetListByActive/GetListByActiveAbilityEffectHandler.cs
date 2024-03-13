@@ -22,11 +22,17 @@ public class GetListByActiveAbilityEffectHandler : IRequestHandler<GetListByActi
 
     public async Task<List<GetListByActiveAbilityEffectResponse>> Handle(GetListByActiveAbilityEffectRequest request, CancellationToken cancellationToken)
     {
+        // Ensure that the provided page request is valid.
         await _abilityEffectBusinessRules.PageRequestShouldBeValid(index: request.PageRequest.Page, size: request.PageRequest.PageSize);
 
+        // Retrieve a list of active AbilityEffect entities based on the page request.
         List<AbilityEffect> abilityEffects = await _abilityEffectService.GetListByActive(index: request.PageRequest.Page, size: request.PageRequest.PageSize);
 
+        // Map the list of AbilityEffect entities to the response DTO list.
         List<GetListByActiveAbilityEffectResponse> mappedResponse = _mapper.Map<List<GetListByActiveAbilityEffectResponse>>(abilityEffects);
+
+        // Return the mapped response list.
         return mappedResponse;
+
     }
 }

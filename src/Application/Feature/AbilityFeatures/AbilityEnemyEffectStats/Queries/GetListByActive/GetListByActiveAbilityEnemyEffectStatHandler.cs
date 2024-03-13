@@ -21,11 +21,17 @@ public class GetListByActiveAbilityEnemyEffectStatHandler : IRequestHandler<GetL
 
     public async Task<List<GetListByActiveAbilityEnemyEffectStatResponse>> Handle(GetListByActiveAbilityEnemyEffectStatRequest request, CancellationToken cancellationToken)
     {
+        // Ensure that the page request is valid before proceeding
         await _abilityEnemyEffectStatBusinessRules.PageRequestShouldBeValid(index: request.PageRequest.Page, size: request.PageRequest.PageSize);
 
+        // Retrieve a list of active AbilityEnemyEffectStat based on the specified page and page size
         List<AbilityEnemyEffectStat> abilityEnemyEffectStatList = await _abilityEnemyEffectStatService.GetListByActive(index: request.PageRequest.Page, size: request.PageRequest.PageSize);
 
+        // Map the list of AbilityEnemyEffectStat to the corresponding response DTOs
         List<GetListByActiveAbilityEnemyEffectStatResponse> mappedResponse = _mapper.Map<List<GetListByActiveAbilityEnemyEffectStatResponse>>(abilityEnemyEffectStatList);
+
+        // Return the mapped response
         return mappedResponse;
+
     }
 }
