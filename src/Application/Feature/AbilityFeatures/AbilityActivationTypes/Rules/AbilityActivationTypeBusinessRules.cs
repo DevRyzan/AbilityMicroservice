@@ -16,17 +16,22 @@ public class AbilityActivationTypeBusinessRules : BaseBusinessRules
         _abilityActivationTypeRepository = abilityActivationTypeRepository;
     }
 
+    public AbilityActivationTypeBusinessRules()
+    {
+        
+    }
+
     public async Task PageRequestShouldBeValid(int index, int size)
     {
         if (index < 0 || size <= 0) throw new BusinessException(AbilityActivationTypeMessages.PageRequestShouldBeValid);
     }
 
-    public async Task IdShouldBeExist(string id)
+    public virtual async Task IdShouldBeExist(string id)
     {
         AbilityActivationType abilityActivationType = await _abilityActivationTypeRepository.GetAsync(x => x.Id.Equals(id));
         if (abilityActivationType == null) throw new BusinessException(AbilityActivationTypeMessages.IdShouldBeExist);
     }
-    public async Task RemoveCondition(string id)
+    public virtual async Task RemoveCondition(string id)
     {
         AbilityActivationType abilityActivationType = await _abilityActivationTypeRepository.GetAsync(x => x.Id.Equals(id));
         if (abilityActivationType.Status == true || abilityActivationType.IsDeleted == false) throw new BusinessException(AbilityActivationTypeMessages.RemoveCondition);

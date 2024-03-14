@@ -67,7 +67,7 @@ public class UndoDeleteAbilityTypeCommandHandlerTest
         _abilityTypeServiceMock.Setup(m => m.GetById(id))
                                     .ReturnsAsync(abilityTypes);
 
-        _abilityTypeServiceMock.Setup(m => m.Remove(abilityTypes))
+        _abilityTypeServiceMock.Setup(m => m.Update(abilityTypes))
                                     .ReturnsAsync(abilityTypes);
 
         _mapperMock.Setup(m => m.Map<UndoDeleteAbilityTypeCommandResponse>(abilityTypes))
@@ -78,7 +78,6 @@ public class UndoDeleteAbilityTypeCommandHandlerTest
         Assert.Equal(expectedResponse, response);
 
         _abilityTypeServiceMock.Verify(m => m.GetById(abilityTypes.Id), Times.Once);
+        _abilityTypeServiceMock.Verify(m => m.Update(abilityTypes), Times.Once);
     }
-
-
 }

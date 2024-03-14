@@ -1,5 +1,4 @@
-﻿using Application.Feature.AbilityFeatures.AbilityTargetType.Commands.Remove;
-using Application.Feature.AbilityFeatures.AbilityTargetType.Commands.Update;
+﻿using Application.Feature.AbilityFeatures.AbilityTargetType.Commands.Update;
 using Application.Feature.AbilityFeatures.AbilityTargetType.Dto;
 using Application.Feature.AbilityFeatures.AbilityTargetType.Rules;
 using Application.Service.AbilityServices.AbilityTargetTypeService;
