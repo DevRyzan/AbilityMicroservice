@@ -5,7 +5,6 @@ using Application.Service.AbilityServices.AbilityActivationTypeService;
 using Application.Service.Repositories;
 using AutoMapper;
 using Domain.Abilities;
-using Microsoft.IdentityModel.Tokens;
 using Moq;
 using Xunit;
 
