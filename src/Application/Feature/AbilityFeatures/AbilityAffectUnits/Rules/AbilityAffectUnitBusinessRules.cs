@@ -17,17 +17,22 @@ public class AbilityAffectUnitBusinessRules : BaseBusinessRules
         _abilityAffectUnitRepository = abilityAffectUnitRepository;
     }
 
+    public AbilityAffectUnitBusinessRules()
+    {
+        
+    }
+
     public async Task PageRequestShouldBeValid(int index, int size)
     {
         if (index < 0 || size <= 0) throw new BusinessException(AbilityAffectUnitMessages.PageRequestShouldBeValid);
     }
 
-    public async Task IdShouldBeExist(string id)
+    public virtual async Task IdShouldBeExist(string id)
     {
         AbilityAffectUnit abilityAffectUnit = await _abilityAffectUnitRepository.GetAsync(x => x.Id.Equals(id));
         if (abilityAffectUnit == null) throw new BusinessException(AbilityAffectUnitMessages.IdShouldBeExist);
     }
-    public async Task RemoveCondition(string id)
+    public virtual async Task RemoveCondition(string id)
     {
         AbilityAffectUnit abilityAffectUnit = await _abilityAffectUnitRepository.GetAsync(x => x.Id.Equals(id));
         if (abilityAffectUnit.Status == true || abilityAffectUnit.IsDeleted == false) throw new BusinessException(AbilityAffectUnitMessages.RemoveCondition);
