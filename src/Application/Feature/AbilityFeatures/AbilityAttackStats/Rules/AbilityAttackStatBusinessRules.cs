@@ -15,18 +15,22 @@ public class AbilityAttackStatBusinessRules : BaseBusinessRules
     {
         _abilityAttackStatRepository = abilityAttackStatRepository;
     }
+    public AbilityAttackStatBusinessRules()
+    {
+        
+    }
 
     public async Task PageRequestShouldBeValid(int index, int size)
     {
         if (index < 0 || size <= 0) throw new BusinessException(AbilityAttackStatMessages.PageRequestShouldBeValid);
     }
 
-    public async Task IdShouldBeExist(string id)
+    public virtual async Task IdShouldBeExist(string id)
     {
         AbilityAttackStat abilityAttackStat = await _abilityAttackStatRepository.GetAsync(x => x.Id.Equals(id));
         if (abilityAttackStat == null) throw new BusinessException(AbilityAttackStatMessages.IdShouldBeExist);
     }
-    public async Task RemoveCondition(string id)
+    public virtual async Task RemoveCondition(string id)
     {
         AbilityAttackStat abilityAttackStat = await _abilityAttackStatRepository.GetAsync(x => x.Id.Equals(id));
         if (abilityAttackStat.Status == true || abilityAttackStat.IsDeleted == false) throw new BusinessException(AbilityAttackStatMessages.RemoveCondition);
