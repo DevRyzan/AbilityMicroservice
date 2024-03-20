@@ -32,7 +32,7 @@ public class DeleteAbilityComboCommandHandler : IRequestHandler<DeleteAbilityCom
         abilityCombo.DeletedDate = DateTime.Now;
 
         // Update the AbilityCombo in the database.
-        await _abilityComboService.Update(abilityCombo);
+        await _abilityComboService.Delete(abilityCombo);
 
         // Map the deleted AbilityCombo to a response object.
         DeleteAbilityComboCommandResponse mappedResponse = _mapper.Map<DeleteAbilityComboCommandResponse>(abilityCombo);
