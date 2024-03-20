@@ -14,7 +14,7 @@ namespace Unit.Test.AbilityAttackStats;
 
 public class CreateAbilityAttackStatHandlerTest
 {
-    public static IEnumerable<object[]> CreateCreateAbilityAttackStatDtoTestData()
+    public static IEnumerable<object[]> CreateAbilityAttackStatDtoTestData()
     {
         yield return new object[] { new CreateAbilityAttackStatDto { } };
     }
@@ -33,7 +33,7 @@ public class CreateAbilityAttackStatHandlerTest
     }
 
     [Theory]
-    [MemberData(nameof(CreateCreateAbilityAttackStatDtoTestData))]
+    [MemberData(nameof(CreateAbilityAttackStatDtoTestData))]
     public async Task AbilityActivationType_CreateHandler_ValidRequest_ReturnsResponse(CreateAbilityAttackStatDto createAbilityAttackStatDto)
     {
         var businessRuleMock = new Mock<AbilityAttackStatBusinessRules>(_abilityAttackStatRepositoryMock.Object);
