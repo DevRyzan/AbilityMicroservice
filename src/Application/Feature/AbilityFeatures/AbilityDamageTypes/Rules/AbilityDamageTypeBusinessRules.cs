@@ -15,18 +15,22 @@ public class AbilityDamageTypeBusinessRules :  BaseBusinessRules
     {
         _abilityDamageTypeRepository = abilityDamageTypeRepository;
     }
+    public AbilityDamageTypeBusinessRules()
+    {
+        
+    }
 
     public async Task PageRequestShouldBeValid(int index, int size)
     {
         if (index < 0 || size <= 0) throw new BusinessException(AbilityDamageTypeMessages.PageRequestShouldBeValid);
     }
-    public async Task IdShouldBeExist(string id)
+    public virtual async Task IdShouldBeExist(string id)
     {
         AbilityDamageType abilityDamageType = await _abilityDamageTypeRepository.GetAsync(x => x.Id.Equals(id));
         if (abilityDamageType == null) throw new BusinessException(AbilityDamageTypeMessages.IdShouldBeExist);
     }
 
-    public async Task RemoveCondition(string id)
+    public virtual async Task RemoveCondition(string id)
     {
         AbilityDamageType abilityDamageType = await _abilityDamageTypeRepository.GetAsync(x => x.Id.Equals(id));
         if (abilityDamageType.Status == true || abilityDamageType.IsDeleted == false) throw new BusinessException(AbilityDamageTypeMessages.RemoveCondition);
