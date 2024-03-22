@@ -15,18 +15,22 @@ public class AbilityEffectTypeBusinessRules : BaseBusinessRules
     {
         _abilityEffectTypeRepository = abilityEffectTypeRepository;
     }
+    public AbilityEffectTypeBusinessRules()
+    {
+        
+    }
 
     public async Task PageRequestShouldBeValid(int index, int size)
     {
         if (index < 0 || size <= 0) throw new BusinessException(AbilityEffectTypeMessages.PageRequestShouldBeValid);
     }
-    public async Task IdShouldBeExist(string id)
+    public virtual async Task IdShouldBeExist(string id)
     {
         AbilityEffectType abilityEffectType = await _abilityEffectTypeRepository.GetAsync(x => x.Id.Equals(id));
         if (abilityEffectType == null) throw new BusinessException(AbilityEffectTypeMessages.IdShouldBeExist);
     }
 
-    public async Task RemoveCondition(string id)
+    public virtual async Task RemoveCondition(string id)
     {
         AbilityEffectType abilityEffectType = await _abilityEffectTypeRepository.GetAsync(x => x.Id.Equals(id));
         if (abilityEffectType.Status == true || abilityEffectType.IsDeleted == false) throw new BusinessException(AbilityEffectTypeMessages.RemoveCondition);
