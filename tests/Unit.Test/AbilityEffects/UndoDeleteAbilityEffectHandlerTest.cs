@@ -1,7 +1,4 @@
-﻿using Application.Feature.AbilityFeatures.AbilityDamageTypes.Commands.UndoDelete;
-using Application.Feature.AbilityFeatures.AbilityDamageTypes.Dtos;
-using Application.Feature.AbilityFeatures.AbilityDamageTypes.Rules;
-using Application.Feature.AbilityFeatures.AbilityEffects.Commands.UndoDelete;
+﻿using Application.Feature.AbilityFeatures.AbilityEffects.Commands.UndoDelete;
 using Application.Feature.AbilityFeatures.AbilityEffects.Dtos;
 using Application.Feature.AbilityFeatures.AbilityEffects.Rules;
 using Application.Service.AbilityServices.AbilityEffectService;
@@ -30,7 +27,7 @@ public class UndoDeleteAbilityEffectHandlerTest
 
     [Theory]
     [InlineData("65e6071da3101fa3c673ef32")]
-    public async Task AbilityAttackStat_UndoDeleteHandler_ValidRequest_ReturnsResponse(string id)
+    public async Task AbilityEffect_UndoDeleteHandler_ValidRequest_ReturnsResponse(string id)
     {
         var businessRuleMock = new Mock<AbilityEffectBusinessRules>(_abilityEffectRepositoryMock.Object);
 
