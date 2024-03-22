@@ -28,7 +28,7 @@ public class RemoveAbilityEffectHandlerTest
 
     [Theory]
     [InlineData("65e6071da3101fa3c673ef32")]
-    public async Task AbilityDamageType_RemoveHandler_ValidRequest_ReturnsResponse(string id)
+    public async Task AbilityEffect_RemoveHandler_ValidRequest_ReturnsResponse(string id)
     {
         var businessRuleMock = new Mock<AbilityEffectBusinessRules>(_abilityEffectRepositoryMock.Object);
 
