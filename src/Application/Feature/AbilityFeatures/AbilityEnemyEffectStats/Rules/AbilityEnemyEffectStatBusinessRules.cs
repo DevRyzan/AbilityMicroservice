@@ -15,18 +15,22 @@ public class AbilityEnemyEffectStatBusinessRules : BaseBusinessRules
     {
         _abilityEnemyEffectStatRepository = abilityEnemyEffectStatRepository;
     }
+    public AbilityEnemyEffectStatBusinessRules()
+    {
+        
+    }
 
     public async Task PageRequestShouldBeValid(int index, int size)
     {
         if (index < 0 || size <= 0) throw new BusinessException(AbilityEnemyEffectStatMessages.PageRequestShouldBeValid);
     }
-    public async Task IdShouldBeExist(string id)
+    public virtual async Task IdShouldBeExist(string id)
     {
         AbilityEnemyEffectStat abilityEnemyEffectStat = await _abilityEnemyEffectStatRepository.GetAsync(x => x.Id.Equals(id));
         if (abilityEnemyEffectStat == null) throw new BusinessException(AbilityEnemyEffectStatMessages.IdShouldBeExist);
     }
 
-    public async Task RemoveCondition(string id)
+    public virtual async Task RemoveCondition(string id)
     {
         AbilityEnemyEffectStat abilityEnemyEffectStat = await _abilityEnemyEffectStatRepository.GetAsync(x => x.Id.Equals(id));
         if (abilityEnemyEffectStat.Status == true || abilityEnemyEffectStat.IsDeleted == false) throw new BusinessException(AbilityEnemyEffectStatMessages.RemoveCondition);
