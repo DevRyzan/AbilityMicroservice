@@ -1,7 +1,4 @@
-﻿using Application.Feature.AbilityFeatures.AbilityCombo.Commands.Update;
-using Application.Feature.AbilityFeatures.AbilityCombo.Dto;
-using Application.Feature.AbilityFeatures.AbilityCombo.Rules;
-using Application.Feature.AbilityFeatures.AbilityEffects.Commands.Update;
+﻿using Application.Feature.AbilityFeatures.AbilityEffects.Commands.Update;
 using Application.Feature.AbilityFeatures.AbilityEffects.Dtos;
 using Application.Feature.AbilityFeatures.AbilityEffects.Rules;
 using Application.Service.AbilityServices.AbilityEffectService;
@@ -40,7 +37,7 @@ public class UpdateAbilityEffectHandlerTest
 
     [Theory]
     [MemberData(nameof(UpdateAbilityEffectDtoTestData))]
-    public async Task AbilityAllyEffectStat_UpdateHandler_ValidRequest_ReturnsResponse(UpdateAbilityEffectDto updateAbilityEffectDto)
+    public async Task AbilityEffect_UpdateHandler_ValidRequest_ReturnsResponse(UpdateAbilityEffectDto updateAbilityEffectDto)
     {
         var businessRuleMock = new Mock<AbilityEffectBusinessRules>(_abilityEffectRepositoryMock.Object);
 
