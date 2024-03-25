@@ -20,6 +20,7 @@ public class AbilityEnemyEffectStat : Entity<string>
     public int EnemySilenceDuration { get; set; }
     public bool EnemySpellVampirism { get; set; }
     public int EnemyStunDuration { get; set; }
+
     public int EnemyVisionReduction { get; set; }
     public int? InterruptEnemyCasts { get; set; }
 }

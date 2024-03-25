@@ -1,5 +1,4 @@
-﻿using Application.Feature.AbilityFeatures.AbilityTargetType.Commands.ChangeStatus;
-using Application.Feature.AbilityFeatures.AbilityTargetType.Commands.Create;
+﻿using Application.Feature.AbilityFeatures.AbilityTargetType.Commands.Create;
 using Application.Feature.AbilityFeatures.AbilityTargetType.Dto;
 using Application.Feature.AbilityFeatures.AbilityTargetType.Rules;
 using Application.Service.AbilityServices.AbilityTargetTypeService;
